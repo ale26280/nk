@@ -6,6 +6,7 @@ var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 jQuery(document).ready(function($) {
 
 	compruebaDbLocal()
+	alert($(window).width())
 });
 
 $('#agrega').on('click',function(){
