@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, user-scalable=no"></meta>
+<link rel="stylesheet" href="css/css.css"></link>
+<title>Nokia Lumia 1020</title>
+<script type="text/javascript" src="cordova.js"></script>
+
+</head>
+<body>
+
+<div id="preload" class="transparent">
+	<img src="img/ajaxLoader.gif" alt="ajaxLoader" width="" height="" />
+	
+</div>
+
+
+<div id="encabezado" class="">
+	<img src="img/cabecera.jpg" width="100%" align="middle"/>
+</div>
+
+<div id="" class="form">
+
+<input type="text" name="nombre" id="nombre"  class="input" placeholder="Nombre"/>
+<input type="text" name="apellido" id="apellido" class="input" placeholder="Apellido"/>
+<!-- <input type="text" name="dia" id="dia" class="input2" placeholder="D&iacute;a"> -->
+<select name="dia" id="dia" class="input2">
+	<option value="">Dia</option>
+
+		
+</select>
+<select  name="mes" id="mes" class="input2">
+	<option value="">Mes</option>
+
+		
+</select>
+
+<select type="text" name="ano" id="ano" class="input2">
+
+	<option value="">Ano</option>
+
+</select>		
+
+<input type="tel" name="telefono" id="telefono" class="input" placeholder="Telefono"/>
+<input type="tel" name="dni" id="dni" class="input" placeholder="Dni"/>
+<input type="text" name="correo" id="correo" class="input" placeholder="Mail"/>
+<select name="operador" id="operador">
+	<option value="">Operador</option>
+	<option value="Personal">Personal</option>
+	<option value="Movistar">Movistar</option>
+	<option value="Claro">Claro</option>
+	<option value="Nextel">Nextel</option>
+</select>
+<input type="text" name="modelo" id="modelo" class="input" placeholder="Modelo"/>
+<div id="basesWrap" class="">
+<input type="checkbox" name="bases" id="bases"/> <span id="abreBases">Acepto bases y condiciones</span>
+</div>
+
+
+<div id="response" class="" >Error</div>
+<div id="gracias" class="" >¡Gracias...!</div>
+<div id="agrega" class="" >Enviar</div>
+
+</div> <!-- fin form -->
+
+
+<div id="basesMuestra" class="">
+<div id="closeMuestra" class="">X</div>
+	<div id="basesInside" class="">
+	bases
+		
+	</div>
+	
+</div>
+
+
+
+<!--
+<div id="" style="display:none">En local storage esta</div>
+<div id="salida">
+</div>
+ -->
+
+<script  src="lib/jquery-1.10.2.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
