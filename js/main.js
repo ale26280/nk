@@ -2,6 +2,10 @@
 
 
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
+var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
+var origen = 'ipad';
+
+
 
 jQuery(document).ready(function($) {
 
@@ -200,3 +204,201 @@ function apagaCarga(){
 	
 	preload.fadeOut();
 }
+
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+        	pictureSource=navigator.camera.PictureSourceType;
+			destinationType=navigator.camera.DestinationType;
+            // Retrieve image file location from specified source
+            //alert(localStorage.getItem('imagenes'))
+			//recorreDir()
+        }
+
+
+//captura foto
+ function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+                                    quality: 50,
+                                    destinationType: destinationType.FILE_URI,
+                                    encodingType: Camera.EncodingType.JPEG,
+                                    targetWidth: 500,
+                                    targetHeight: 373,
+                                    //,saveToPhotoAlbum: true
+         });
+    }
+
+//si esta ok la captura
+
+function onPhotoDataSuccess(imageURI) {
+	 //var smallImage = document.getElementById('smallImage');
+	 
+	 //smallImage.style.display = 'block';
+      //muestra la foto 
+      //smallImage.src = imageURI;
+      //mueve la foto 
+      
+      movePic(imageURI);
+    }
+
+
+//si esta mal la captura
+
+function onFail(message) {
+      alert('Error al tomar foto');
+    }
+    
+    
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+   
+//mueve la foto 
+
+
+function movePic(file){ 
+    window.resolveLocalFileSystemURI(file, resolveOnSuccess, resOnError); 
+	}  
+       
+    function resolveOnSuccess(entry){ 
+    var d = new Date();
+    var n = d.getTime();
+    //new file name
+    var newFileName = n + ".jpg";
+    var myFolderApp = "kenzo";
+
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) {      
+    //The folder is created if doesn't exist
+    fileSys.root.getDirectory( myFolderApp,
+                    {create:true, exclusive: false},
+                    function(directory) {
+                        entry.moveTo(directory, newFileName,  successMove, resOnError);
+                        
+                    },
+                    resOnError);
+                    },
+    resOnError);
+}
+    
+// si mueve y esta ok
+
+
+function successMove(entry) {
+    //devuelve la ruta de la imagen
+    
+    if(localStorage['imagenes']){
+    	todo = localStorage.getItem('imagenes')+','+entry.fullPath;
+	    localStorage.setItem('imagenes',todo);
+    }else{
+	    localStorage.setItem('imagenes', entry.fullPath);
+    }
+
+    
+    
+    
+    to = entry.fullPath.split('/');
+	imgTemporal = to[7];
+	imgTemporalCompleta = entry.fullPath;
+	$('#smallImage').attr('src',entry.fullPath).fadeIn()
+
+}
+
+// si mueve y esta mal
+
+function resOnError(error) {
+    alert(error.code);
+}
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+//recorre array y carga las imagenes
+
+
+function recorreDir(){
+		
+		 
+		 //alert(localStorage.getItem('imagenes'))
+		 
+		 imgs = localStorage.getItem('imagenes').split(',');
+		 
+		 for(i=0;i<=imgs.length-1;i++){
+			 
+			//$('#datos').append('<img src="'+imgs[i]+'" width="200"><br>')
+			 //$('#datos').append('<img src="'+imgs[i]+'" width="200">')
+			 uploadPhoto(imgs[i])
+			 
+			 if(i==imgs.length-1){
+				 localStorage.setItem('imagenes','');
+				  $.post(rutaEnviaCorreo, {},function(data){
+					  alert('Correos enviados')
+				  })
+				 
+			 }
+		 }
+		
+	}
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+//sube las imagenes
+
+
+function uploadPhoto(imageURI) {
+			//alert(imageURI)
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            //options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.fileName=imageURI.replace(" ","");
+            options.mimeType="image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, encodeURI(rutaUpload), win, fail, options);
+        }
+
+        function win(r) {
+        	//alert('subida')
+        	oculta_carga();
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+            alert("upload error source " + error.source);
+            alert("upload error target " + error.target);
+        }
+
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
