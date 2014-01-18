@@ -56,7 +56,7 @@ $('#agrega').on('click',function(){
 		
 		prendeCarga();
 			
-		$.post('ingresa.php', {	
+		$.post(rutaCarga, {	
 			nombre: $('#nombre').val(),
 			apellido: $('#apellido').val(),
 			dia: $('#dia').val(),
@@ -112,7 +112,7 @@ function compruebaDbLocal(){
 	//myData.webdb.getAllItems(recorre);
 	if(localStorage.length>0){
 	for(var key in localStorage) {
-  console.log(localStorage.getItem(key));
+  //console.log(localStorage.getItem(key));
   
   v = localStorage.getItem(key).split('-');
   
