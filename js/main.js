@@ -1,5 +1,8 @@
 /// circuito carga el formulario si tien conexion va a la db sino guarda en local storage. Cuando envia si es correcto se de debe fijar si hay registros en local storage si los hay actualiza.
 
+
+var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
+
 jQuery(document).ready(function($) {
 
 	compruebaDbLocal()
@@ -116,7 +119,7 @@ function compruebaDbLocal(){
  
  
      
-    $.post('ingresa.php', {	
+    $.post(rutaCarga, {	
 			nombre: v[0],
 			apellido: v[1],
 			dia: v[2],
@@ -150,44 +153,6 @@ if(data==2){
 }
 
 
-function recorre(tx, rs){
-	if(rs.rows.length<1){
-       console.log('vacio');
-	   
-	   }else{    
-    
-		   for (var i=0; i < rs.rows.length; i++) {
-     // console.log(rs.rows.item(i).nombre+'-'+rs.rows.item(i).apellido+'-'+rs.rows.item(i).fechaNacimiento+'-'+rs.rows.item(i).telefono+'-'+rs.rows.item(i).dni+'-'+rs.rows.item(i).correo+'-'+rs.rows.item(i).operador+'-'+rs.rows.item(i).modelo);
-    
-    
-    $.post('ingresa.php', {	
-			nombre: rs.rows.item(i).nombre,
-			apellido: rs.rows.item(i).apellido,
-			dia: rs.rows.item(i).fechaNacimiento,
-			mes: rs.rows.item(i).fechaNacimiento,
-			ano: rs.rows.item(i).fechaNacimiento,
-			telefono: rs.rows.item(i).telefono,
-			dni: rs.rows.item(i).dni,
-			correo: rs.rows.item(i).correo,
-			operador: rs.rows.item(i).operador,
-			modelo: rs.rows.item(i).modelo
-		},function(data){					
-			console.log(data);					
-			// 1 sie s correcto limpia formulario si devuelve error carga en local storage
-			/*
-if(data==2){
-				myData.webdb.addData($("#nombre").val(), $("#apellido").val(), ($("#dia").val()+'-'+$("#mes").val()+'-'+$("#ano").val()),$("#telefono").val(),$("#dni").val(),$("#correo").val(),$("#operador").val(),$("#modelo").val());
-				//console.log('es');
-			}else{
-				
-*/
-			})
-		
-		}	
-
-}
-
-}
 
 
 
