@@ -204,3 +204,13 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 	/* Opera 9+, IE 9+ */
 	opacity: 0.5;
 }
+
+
+
+	#botonFoto{
+		background-color: #fbe118;
+		height: 35px;
+		width: 100%;
+		line-height: 35px;
+		text-align: center;
+	}
