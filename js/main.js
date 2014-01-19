@@ -158,8 +158,8 @@ function compruebaDbLocal() {
             alert(v[9]);
             alert(v[10]);
             alert(v[11]);
-*/
-
+*/	
+					alert(v[10])
             $.post(rutaCarga, {
                 nombre: v[0],
                 apellido: v[1],
@@ -175,7 +175,7 @@ function compruebaDbLocal() {
                 origen: v[11]
             }, function (data) {
                 //console.log(data);
-                uploadPhoto(v[10]);
+                //uploadPhoto(v[10]);
                  alert(v[10])
                 totalLocal();
                 totalOrigen();
