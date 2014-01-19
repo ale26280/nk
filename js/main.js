@@ -159,7 +159,7 @@ function compruebaDbLocal() {
             alert(v[10]);
             alert(v[11]);
 */	
-					alert(v[10])
+				
             $.post(rutaCarga, {
                 nombre: v[0],
                 apellido: v[1],
@@ -175,10 +175,9 @@ function compruebaDbLocal() {
                 origen: v[11]
             }, function (data) {
                 //console.log(data);
-                //uploadPhoto(v[10]);
-                 alert(v[10])
-                totalLocal();
-                totalOrigen();
+                uploadPhoto(v[10]);
+                //alert(v[10])
+                
                 localStorage.removeItem(key);
                 alert('actualizado')
 
@@ -187,7 +186,8 @@ function compruebaDbLocal() {
 
             });
 
-
+			totalLocal();
+            totalOrigen();
 
 
         }
