@@ -21,13 +21,14 @@ $('#agrega').on('click', function () {
     $("#gracias").hide();
     
     
-    if ($("#nombre").val() == "") {
+  
+if ($("#nombre").val() == "") {
         $("#response").css({
             'background-color': 'red'
         });
         $("#response").html('Nombre requerido');
         $("#response").show().delay(800).fadeOut();
-    } else if ($("#apellido").val() == "") {
+    }  /* else if ($("#apellido").val() == "") {
         $("#response").css({
             'background-color': 'red'
         });
@@ -82,7 +83,8 @@ $('#agrega').on('click', function () {
         });
         $("#response").html('Debe aceptar las bases');
         $("#response").show().delay(800).fadeOut();;
-    } else {
+    } */else
+ {
 
         prendeCarga();
 
@@ -427,7 +429,7 @@ function uploadPhoto(imageURI) {
 }
 
 function win(r) {
-    //alert('subida')
+    alert('subida')
     //oculta_carga();
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
