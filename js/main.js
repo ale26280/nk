@@ -227,6 +227,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 //captura foto
  function capturePhoto() {
+ 	alert('')
       // Take picture using device camera and retrieve image as base64-encoded string
       	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
                                     quality: 50,
