@@ -28,7 +28,7 @@ if ($("#nombre").val() == "") {
         });
         $("#response").html('Nombre requerido');
         $("#response").show().delay(800).fadeOut();
-    }  /* else if ($("#apellido").val() == "") {
+    } else if ($("#apellido").val() == "") {
         $("#response").css({
             'background-color': 'red'
         });
@@ -83,7 +83,7 @@ if ($("#nombre").val() == "") {
         });
         $("#response").html('Debe aceptar las bases');
         $("#response").show().delay(800).fadeOut();;
-    } */else
+    }else
  {
 
         prendeCarga();
@@ -137,7 +137,7 @@ if ($("#nombre").val() == "") {
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, origen) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img+'|'+origen);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
 }
 
 
