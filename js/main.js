@@ -226,20 +226,36 @@ function apagaCarga() {
 // --------------------------------------------------------------
 // 
 // --------------------------------------------------------------
+     var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
 
-document.addEventListener("deviceready", onDeviceReady, false);
 
-// device APIs are available
-//
-function onDeviceReady() {
-    pictureSource = navigator.camera.PictureSourceType;
-    destinationType = navigator.camera.DestinationType;
-    // Retrieve image file location from specified source
-    //alert(localStorage.getItem('imagenes'))
-    //recorreDir()
-    alert('ready')
-}
 
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+      pictureSource=navigator.camera.PictureSourceType;
+      destinationType=navigator.camera.DestinationType;
+
+};
 
 //captura foto
 function capturePhoto() {
