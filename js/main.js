@@ -108,8 +108,8 @@ $('#agrega').on('click', function () {
 
             resetForm();
 
-        }).error(function () {
-
+        }).error(function () {	
+			alert('aca')
              agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             resetForm();
