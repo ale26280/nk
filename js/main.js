@@ -109,7 +109,7 @@ $('#agrega').on('click', function () {
             resetForm();
 
         }).error(function () {	
-			alert('aca')
+		
              agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             resetForm();
@@ -128,7 +128,7 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, imgD, origenD) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD) {
 
     localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + imgD + '|' + origenD);
 }
