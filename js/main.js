@@ -2,6 +2,7 @@
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
+var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
 var origen = 'origen1';
 
 
@@ -495,18 +496,16 @@ $('#compruebalocal').on('click',function(){
 
 function totalOrigen(){
 	
-	if(navigator.onLine){
+	
 		
 		$.post(rutaTotalRegistros,{origen:origen}, function (data) {
             $('#totalOrigen').html(data);
-        })
-		
-	}else{
-	
-		$('#totalOrigen').html('Sin conexión');
-	
-	}
-	
+        }).fail(function () {
+    
+        $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
+
+		})		
+
 	
 }
 
@@ -519,16 +518,23 @@ function totalLocal(){
 
 
 function estadoRed(){
-	
-	if(navigator.onLine){
+
+	$.post(rutaTest, {
+        conect: 1
+    }, function (data) {
+        
+
+       $('#estadoRed').html('<span style="color:green">Conectado</span>');
 		
-		
-            $('#estadoRed').html('Conectado');
-       
-		
-	}else{
-	
-		$('#estadoRed').html('Sin conexión');
-	
-	}
+
+    }).fail(function () {
+    
+        $('#estadoRed').html('<span style="color:red">Sin conexión</span>');
+
+    })
+
+
 }
+
+
+
