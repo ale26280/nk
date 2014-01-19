@@ -194,9 +194,10 @@ function resetForm() {
     $("#telefono").val('');
     $("#dni").val('');
     $("#correo").val('');
-    $("#operador").prop('selectedIndex', 0);
+    //$("#operador").prop('selectedIndex', 0);
+    $("#operador").val('');
     $("#modelo").val('');
-    $('#smallImage').attr('src','').fadeOut();
+    $('#smallImage').fadeOut('fast',function(){ $('#smallImage').attr('src',''); });
     apagaCarga();
     $("#gracias").show().delay(800).fadeOut();
 }
@@ -430,7 +431,7 @@ function uploadPhoto(imageURI) {
 }
 
 function win(r) {
-    alert('subida')
+    //alert('subida')
     //oculta_carga();
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
@@ -457,3 +458,11 @@ function limpaLocalStorage(){
 	alert(localStorage.length)
 	
 }
+
+
+
+
+$('#encabezado').on('click',function(){
+	limpaLocalStorage()
+	
+})
