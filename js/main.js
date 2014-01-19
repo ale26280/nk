@@ -1,7 +1,7 @@
 /// circuito carga el formulario si tien conexion va a la db sino guarda en local storage. Cuando envia si es correcto se de debe fijar si hay registros en local storage si los hay actualiza.
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
-var origen = 'ipad';
+var origen = 'orgigen1';
 
 
 
@@ -97,13 +97,14 @@ $('#agrega').on('click', function () {
             correo: $('#correo').val(),
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
-            img : img
+            img : img,
+            origen : origen
         }, function (data) {
             console.log(data);
             // 1 sie s correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img)
+                agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img,origen)
 
             } else {
             	uploadPhoto(img);
@@ -114,7 +115,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img);
+            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img,origen);
 
             resetForm();
 
@@ -132,9 +133,9 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, origen) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img+'|'+origen);
 }
 
 
@@ -162,7 +163,8 @@ function compruebaDbLocal() {
                 correo: v[7],
                 operador: v[8],
                 modelo: v[9],
-                img : v[10]
+                img : v[10],
+                origen : v[11]
             }, function (data) {
                 console.log(data);
                 uploadPhoto(v[10])
