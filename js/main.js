@@ -7,7 +7,7 @@ var origen = 'origen1';
 
 jQuery(document).ready(function ($) {
 	//limpaLocalStorage();
-    compruebaDbLocal();
+    //compruebaDbLocal();
 
 });
 
@@ -145,6 +145,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, o
 
 function compruebaDbLocal() {
     //myData.webdb.getAllItems(recorre);
+    alert(localStorage.length)
     if (localStorage.length > 0) {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
@@ -168,7 +169,7 @@ function compruebaDbLocal() {
                 img : v[10],
                 origen : v[11]
             }, function (data) {
-                console.log(data);
+                //console.log(data);
                 uploadPhoto(v[10])
 
             })
