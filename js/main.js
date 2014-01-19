@@ -222,12 +222,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
             // Retrieve image file location from specified source
             //alert(localStorage.getItem('imagenes'))
 			//recorreDir()
+			alert('ready')
         }
 
 
 //captura foto
  function capturePhoto() {
- 	alert('')
+ 
       // Take picture using device camera and retrieve image as base64-encoded string
       	navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
                                     quality: 50,
@@ -248,7 +249,7 @@ function onPhotoDataSuccess(imageURI) {
       //muestra la foto 
       //smallImage.src = imageURI;
       //mueve la foto 
-      
+      alert(imageURI)
       movePic(imageURI);
     }
 
@@ -384,7 +385,7 @@ function uploadPhoto(imageURI) {
 
         function win(r) {
         	//alert('subida')
-        	oculta_carga();
+        	//oculta_carga();
             console.log("Code = " + r.responseCode);
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);
