@@ -171,7 +171,9 @@ function compruebaDbLocal() {
                 //console.log(data);
                 uploadPhoto(v[10]);
                 alert('actualizado')
-                totalLocal()
+                totalLocal();
+                totalOrigen();
+                localStorage.removeItem(v[2]);
 
             }).fail(function () {
             	alert('Error al cargar');
