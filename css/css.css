@@ -251,3 +251,9 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 		text-align: center;
 		font-size: 30px;
 	}
+	
+	
+	.configItem{
+		height: 50px;
+		line-height: 50px;
+	}

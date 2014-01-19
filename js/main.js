@@ -153,7 +153,7 @@ function compruebaDbLocal() {
             v = localStorage.getItem(key).split('|');
 
 
-
+			if(navigator.onLine){
 
             $.post(rutaCarga, {
                 nombre: v[0],
@@ -173,7 +173,10 @@ function compruebaDbLocal() {
                 uploadPhoto(v[10])
 
             })
-
+			
+			}else{
+				alert('No conexion')
+			}
 
 
 
@@ -479,3 +482,12 @@ $('#borraDatos').on('click',function(){
 	limpaLocalStorage()
 	
 })
+
+
+$('#compruebalocal').on('click',function(){
+	compruebaDbLocal()()
+	
+})
+
+
+
