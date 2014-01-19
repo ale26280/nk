@@ -139,7 +139,7 @@ if ($("#nombre").val() == "") {
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, origen) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '-' + mes + '-' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
 }
 
 
@@ -151,9 +151,9 @@ function compruebaDbLocal() {
     if (localStorage.length > 0) {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
-			alert(localStorage.getItem(key))
+			
             v = localStorage.getItem(key).split('|');
-			 img = v[10];
+			
 			
             $.post(rutaCarga, {
                 nombre: v[0],
