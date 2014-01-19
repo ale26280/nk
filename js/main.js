@@ -6,8 +6,8 @@ var origen = 'ipad';
 
 
 jQuery(document).ready(function ($) {
-
-    compruebaDbLocal()
+	limpaLocalStorage();
+    compruebaDbLocal();
 
 });
 
@@ -107,16 +107,16 @@ $('#agrega').on('click', function () {
 
             } else {
             	uploadPhoto(img);
-                compruebaDbLocal() //comprueba si hay registros que cargar
+                compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
-            resetForm()
+            resetForm();
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img))
+            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img);
 
-            resetForm()
+            resetForm();
 
         })
 
@@ -132,9 +132,9 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img)) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img))
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img);
 }
 
 
