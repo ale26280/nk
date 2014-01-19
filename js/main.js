@@ -257,6 +257,8 @@ var app = {
 
 };
 
+};
+
 //captura foto
 function capturePhoto() {
 
