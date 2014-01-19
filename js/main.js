@@ -490,4 +490,19 @@ $('#compruebalocal').on('click',function(){
 })
 
 
-
+function totalOrigen(){
+	
+	if(navigator.onLine){
+		
+		$.post(rutaTregistros, function (data) {
+            $('#totalOrigen').html(data);
+        })
+		
+	}else{
+	
+		$('#totalOrigen').html('Sin conexión');
+	
+	}
+	
+	
+}
