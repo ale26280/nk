@@ -455,15 +455,27 @@ function fail(error) {
 
 function limpaLocalStorage(){
 	alert(localStorage.length)
-	//localStorage.clear();
-	//alert(localStorage.length)
+	localStorage.clear();
+	alert(localStorage.length)
 	
 }
 
 
 
+$('.configOpen').on('click', function () {
+    $('#configMuestra').fadeIn();
 
-$('#encabezado').on('click',function(){
+
+})
+
+$('#configClose').on('click', function () {
+    $('#configMuestra').fadeOut();
+
+
+})
+
+
+$('#borraDatos').on('click',function(){
 	limpaLocalStorage()
 	
 })
