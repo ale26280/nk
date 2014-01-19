@@ -130,7 +130,7 @@ $('#agrega').on('click', function () {
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + imgD + '|' + origenD);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|'+ operador +'|'+ modelo + '|' + imgD + '|' + origenD);
 }
 
 
