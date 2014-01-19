@@ -153,7 +153,7 @@ function compruebaDbLocal() {
             //console.log(localStorage.getItem(key));
 
             v = localStorage.getItem(key).split('|');
-			 
+			 img = v[10];
 			
             $.post(rutaCarga, {
                 nombre: v[0],
@@ -166,23 +166,23 @@ function compruebaDbLocal() {
                 correo: v[7],
                 operador: v[8],
                 modelo: v[9],
-                img : v[10],
+                img :img,
                 origen : v[11]
             }, function (data) {
                 //console.log(data);
                // uploadPhoto(v[10]);
-                alert('actualizado')
-                
+                //alert('actualizado')
+                alert(img)
 
             }).fail(function () {
             	alert('Error al cargar');
-            	return false;
+            	
             });
 			
-			uploadPhoto(v[10]);	
+			//uploadPhoto(v[10]);	
 			totalLocal();
             totalOrigen();
-            localStorage.removeItem(v[2]);
+            localStorage.removeItem(key);
 			
 
 
