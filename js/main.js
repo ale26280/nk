@@ -1,6 +1,7 @@
 /// circuito carga el formulario si tien conexion va a la db sino guarda en local storage. Cuando envia si es correcto se de debe fijar si hay registros en local storage si los hay actualiza.
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
+var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
 var origen = 'origen1';
 
 
@@ -467,7 +468,9 @@ function limpaLocalStorage(){
 
 $('.configOpen').on('click', function () {
     $('#configMuestra').fadeIn();
-
+	totalOrigen();
+	totalLocal();
+	estadoRed();
 
 })
 
@@ -494,7 +497,7 @@ function totalOrigen(){
 	
 	if(navigator.onLine){
 		
-		$.post(rutaTregistros, function (data) {
+		$.post(rutaTotalRegistros,{origen:origen}, function (data) {
             $('#totalOrigen').html(data);
         })
 		
@@ -505,4 +508,27 @@ function totalOrigen(){
 	}
 	
 	
+}
+
+
+function totalLocal(){
+
+		$('#totalLocal').html(localStorage.length);
+
+}
+
+
+function estadoRed(){
+	
+	if(navigator.onLine){
+		
+		
+            $('#estadoRed').html('Conectado');
+       
+		
+	}else{
+	
+		$('#estadoRed').html('Sin conexión');
+	
+	}
 }
