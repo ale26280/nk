@@ -489,7 +489,7 @@ $('#borraDatos').on('click',function(){
 
 
 $('#compruebalocal').on('click',function(){
-	compruebaDbLocal()()
+	compruebaDbLocal();
 	
 })
 
@@ -501,7 +501,7 @@ function totalOrigen(){
 		$.post(rutaTotalRegistros,{origen:origen}, function (data) {
             $('#totalOrigen').html(data);
         }).fail(function () {
-    
+		$('#nombreOrigen').html(origen);
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
 
 		})		
