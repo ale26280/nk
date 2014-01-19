@@ -282,8 +282,8 @@ function onPhotoDataSuccess(imageURI) {
     //muestra la foto 
     //smallImage.src = imageURI;
     //mueve la foto 
-    alert(imageURI)
-    //movePic(imageURI);
+    //alert(imageURI)
+    movePic(imageURI);
 }
 
 
