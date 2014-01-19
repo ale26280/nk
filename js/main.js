@@ -85,8 +85,7 @@ if ($("#nombre").val() == "") {
         });
         $("#response").html('Debe aceptar las bases');
         $("#response").show().delay(800).fadeOut();;
-    }else
- {
+    }else{
 
         prendeCarga();
 
@@ -101,14 +100,14 @@ if ($("#nombre").val() == "") {
             correo: $('#correo').val(),
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
-            img : img,
+            img : $('#smallImage').attr('src'),
             origen : origen
         }, function (data) {
             console.log(data);
             // 1 sie s correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             } else {
             	uploadPhoto(img);
@@ -119,7 +118,7 @@ if ($("#nombre").val() == "") {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             resetForm();
 
