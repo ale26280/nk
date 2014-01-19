@@ -154,9 +154,6 @@ function compruebaDbLocal() {
 
             v = localStorage.getItem(key).split('|');
 
-
-			if(navigator.onLine){
-
             $.post(rutaCarga, {
                 nombre: v[0],
                 apellido: v[1],
@@ -172,13 +169,15 @@ function compruebaDbLocal() {
                 origen : v[11]
             }, function (data) {
                 //console.log(data);
-                uploadPhoto(v[10])
+                uploadPhoto(v[10]);
+                alert('actualizado')
+                totalLocal()
 
-            })
+            }).fail(function () {
+            	alert('Error al cargar');
+            });
 			
-			}else{
-				alert('No conexion')
-			}
+			
 
 
 
@@ -459,10 +458,10 @@ function fail(error) {
 
 
 function limpaLocalStorage(){
-	alert(localStorage.length)
+	//alert(localStorage.length)
 	localStorage.clear();
-	alert(localStorage.length)
-	
+	//alert(localStorage.length)
+	totalLocal();
 }
 
 
