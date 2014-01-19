@@ -3,7 +3,7 @@ var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
 var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
-var origen = 'origen1';
+var origen = 'origen2';
 
 
 
@@ -13,7 +13,8 @@ $('#agrega').on('click', function () {
 
     $("#response").hide();
     $("#gracias").hide();
-
+	
+	img = $('#smallImage').attr('src');
 
 
     if ($("#nombre").val() == "") {
@@ -99,7 +100,7 @@ $('#agrega').on('click', function () {
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
+                agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             } else {
                 uploadPhoto($('#smallImage').attr('src'));
@@ -110,7 +111,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {	
 		
-             agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
+             agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             resetForm();
 
@@ -138,28 +139,17 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 
 function compruebaDbLocal() {
     
+    start = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
         for (var key in localStorage) {
+        	 setTimeout(function () {
+				 start++;
+        
             //console.log(localStorage.getItem(key));
 
             v = localStorage.getItem(key).split('|');
-
-     /*
-       alert(v[0]);
-            alert(v[1]);
-            alert(v[2]);
-            alert(v[3]);
-            alert(v[4]);
-            alert(v[5]);
-            alert(v[6]);
-            alert(v[7]);
-            alert(v[8]);
-            alert(v[9]);
-            alert(v[10]);
-            alert(v[11]);
-*/	
-				
+	
             $.post(rutaCarga, {
                 nombre: v[0],
                 apellido: v[1],
@@ -179,18 +169,24 @@ function compruebaDbLocal() {
                 //alert(v[10])
                 
                 localStorage.removeItem(key);
-                alert('actualizado')
+                //alert('actualizado')
+                totalLocal();
+				totalOrigen();
 
             }).fail(function () {
                 alert('Error al cargar');
 
             });
 
-			totalLocal();
-            totalOrigen();
+			
 
 
-        }
+        },3000 * start)// time
+        
+        }//for
+        
+        
+        
     }
 
 }
@@ -386,37 +382,6 @@ function resOnError(error) {
 }
 
 
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-//recorre array y carga las imagenes
-
-
-function recorreDir() {
-
-
-    //alert(localStorage.getItem('imagenes'))
-
-    imgs = localStorage.getItem('imagenes').split(',');
-
-    for (i = 0; i <= imgs.length - 1; i++) {
-
-        //$('#datos').append('<img src="'+imgs[i]+'" width="200"><br>')
-        //$('#datos').append('<img src="'+imgs[i]+'" width="200">')
-        uploadPhoto(imgs[i])
-
-        if (i == imgs.length - 1) {
-            localStorage.setItem('imagenes', '');
-            $.post(rutaEnviaCorreo, {}, function (data) {
-                alert('Correos enviados')
-            })
-
-        }
-    }
-
-}
 
 
 
