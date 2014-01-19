@@ -145,7 +145,8 @@ function compruebaDbLocal() {
 
             v = localStorage.getItem(key).split('|');
 
-            alert(v[0]);
+     /*
+       alert(v[0]);
             alert(v[1]);
             alert(v[2]);
             alert(v[3]);
@@ -157,6 +158,7 @@ function compruebaDbLocal() {
             alert(v[9]);
             alert(v[10]);
             alert(v[11]);
+*/
 
             $.post(rutaCarga, {
                 nombre: v[0],
@@ -174,6 +176,7 @@ function compruebaDbLocal() {
             }, function (data) {
                 //console.log(data);
                 uploadPhoto(v[10]);
+                 alert(v[10])
                 totalLocal();
                 totalOrigen();
                 localStorage.removeItem(key);
