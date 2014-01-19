@@ -1,4 +1,4 @@
-
+/// circuito carga el formulario si tien conexion va a la db sino guarda en local storage. Cuando envia si es correcto se de debe fijar si hay registros en local storage si los hay actualiza.
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
@@ -7,9 +7,17 @@ var origen = 'origen1';
 
 
 
+jQuery(document).ready(function ($) {
+    //limpaLocalStorage();
+    //compruebaDbLocal();
+
+});
 
 $('#agrega').on('click', function () {
-
+    img = $('#smallImage').attr('src');
+    //alert(img)
+    //uploadPhoto(img)
+    //return false;
 
     $("#response").hide();
     $("#gracias").hide();
@@ -96,13 +104,13 @@ $('#agrega').on('click', function () {
             origen: origen
         }, function (data) {
             console.log(data);
-            // 1 si es correcto limpia formulario si devuelve error carga en local storage
+            // 1 sie s correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             } else {
-                uploadPhoto($('#smallImage').attr('src'));
+                uploadPhoto(img);
                 compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
@@ -110,7 +118,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-             agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), $('#smallImage').attr('src'), 'o');
 
             resetForm();
 
@@ -137,8 +145,8 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, imgD, 
 
 
 function compruebaDbLocal() {
-    
-    //alert(localStorage.length)
+    //myData.webdb.getAllItems(recorre);
+    alert(localStorage.length)
     if (localStorage.length > 0) {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
