@@ -151,7 +151,7 @@ function compruebaDbLocal() {
     if (localStorage.length > 0) {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
-
+			alert(localStorage.getItem(key))
             v = localStorage.getItem(key).split('|');
 			 img = v[10];
 			
@@ -170,19 +170,19 @@ function compruebaDbLocal() {
                 origen : v[11]
             }, function (data) {
                 //console.log(data);
-               // uploadPhoto(v[10]);
-                //alert('actualizado')
-                alert(img)
+               uploadPhoto(img);
+               totalLocal();
+			   totalOrigen();
+			   localStorage.removeItem(key);
+               alert(img)
 
             }).fail(function () {
             	alert('Error al cargar');
             	
             });
 			
-			//uploadPhoto(v[10]);	
-			totalLocal();
-            totalOrigen();
-            localStorage.removeItem(key);
+			
+			
 			
 
 
