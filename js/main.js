@@ -147,7 +147,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, o
 
 function compruebaDbLocal() {
     //myData.webdb.getAllItems(recorre);
-    //alert(localStorage.length)
+    alert(localStorage.length)
     if (localStorage.length > 0) {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
