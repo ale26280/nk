@@ -108,7 +108,7 @@ if ($("#nombre").val() == "") {
             // 1 sie s correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img,origen)
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             } else {
             	uploadPhoto(img);
@@ -119,7 +119,7 @@ if ($("#nombre").val() == "") {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img,origen);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val() , $("#mes").val() , $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             resetForm();
 
@@ -139,7 +139,7 @@ if ($("#nombre").val() == "") {
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, origen) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '-' + mes + '-' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
 }
 
 
