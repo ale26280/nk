@@ -136,9 +136,9 @@ if ($("#nombre").val() == "") {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img, origen) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, imgD, origenD) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + img + '|' + origen);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + imgD + '|' + origenD);
 }
 
 
