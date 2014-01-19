@@ -6,7 +6,7 @@ var origen = 'ipad';
 
 
 jQuery(document).ready(function ($) {
-	limpaLocalStorage();
+	//limpaLocalStorage();
     compruebaDbLocal();
 
 });
