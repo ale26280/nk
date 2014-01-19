@@ -169,7 +169,7 @@ function compruebaDbLocal() {
                 origen : v[11]
             }, function (data) {
                 //console.log(data);
-                uploadPhoto(v[10]);
+                //uploadPhoto(v[10]);
                 alert('actualizado')
                 totalLocal();
                 totalOrigen();
