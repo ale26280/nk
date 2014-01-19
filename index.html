@@ -12,18 +12,30 @@
 
 <body>
 
+ <!--  preload -->
+
     <div id="preload" class="transparent">
         <img src="img/ajaxLoader.gif" alt="ajaxLoader" width="43" height="43" />
-
     </div>
+ <!-- fin preload -->
+
+
+ <!--  encabezado -->
 
 
     <div id="encabezado" class="">
         <img src="img/cabecera.jpg" width="100%" align="middle" />
     </div>
 
-    <div id="" class="form">
+ <!--  fin encabezado -->
 
+ <!--  form wrap -->
+    <div id="" class="form">
+    	
+    
+ <!--  incia campos -->
+ 
+ 	
         <input type="text" name="nombre" id="nombre" class="input" placeholder="Nombre" />
         <input type="text" name="apellido" id="apellido" class="input" placeholder="Apellido" />
         <!-- <input type="text" name="dia" id="dia" class="input2" placeholder="D&iacute;a"> -->
@@ -62,6 +74,9 @@
             <option value="31">31</option>
 
         </select>
+        
+        
+        
         <select name="mes" id="mes" class="input2">
             <option value="">Mes</option>
             <option value="2">2</option>
@@ -77,6 +92,8 @@
             <option value="12">12</option>
 
         </select>
+
+
 
         <select type="text" name="ano" id="ano" class="input2">
 
@@ -192,6 +209,9 @@
         <input type="tel" name="telefono" id="telefono" class="input" placeholder="Telefono" />
         <input type="tel" name="dni" id="dni" class="input" placeholder="Dni" />
         <input type="text" name="correo" id="correo" class="input" placeholder="Mail" />
+        
+        
+        
         <select name="operador" id="operador">
             <option value="">Operador</option>
             <option value="Personal">Personal</option>
@@ -199,7 +219,11 @@
             <option value="Claro">Claro</option>
             <option value="Nextel">Nextel</option>
         </select>
+        
+        
         <input type="text" name="modelo" id="modelo" class="input" placeholder="Modelo" />
+        
+        
         <div id="basesWrap" class="">
             <input type="checkbox" name="bases" id="bases" /> <span id="abreBases">Acepto bases y condiciones</span>
         </div>
@@ -214,19 +238,20 @@
         <br>
         <br>
         <center>
-            <img style="display:none;" id="smallImage" src="" width="500" height="373" align="center" />
+            <img style="display:none;" id="smallImage" src="" width="320" align="center" />
         </center>
 
-
-
-    </div>
-    <!--  -->
+		
+		<!--  -->
 
 
 
     <div id="response" class="">Error</div>
     <div id="gracias" class="">¡Gracias...!</div>
     <div id="agrega" class="">Enviar</div>
+
+
+	 <!-- fin form -->
 
     </div>
     <!-- fin form -->
@@ -242,17 +267,11 @@
     </div>
 
 
-
-    <!--
-<div id="" style="display:none">En local storage esta</div>
-<div id="salida">
-</div>
- -->
  	<script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="lib/jquery-1.10.2.min.js"></script>
+    <script src="js/main.js"></script>
     
-    <script type="text/javascript">
+    <script>
     app.initialize();
     </script>
 
