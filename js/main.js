@@ -12,8 +12,15 @@ jQuery(document).ready(function ($) {
 });
 
 $('#agrega').on('click', function () {
+	img = $('#smallImage').attr('src');
+	alert(img)
+	uploadPhoto(img)
+	return false;
+	
     $("#response").hide();
     $("#gracias").hide();
+    
+    
     if ($("#nombre").val() == "") {
         $("#response").css({
             'background-color': 'red'
@@ -155,14 +162,7 @@ function compruebaDbLocal() {
                 modelo: v[9]
             }, function (data) {
                 console.log(data);
-                // 1 sie s correcto limpia formulario si devuelve error carga en local storage
-                /*
-if(data==2){
-				myData.webdb.addData($("#nombre").val(), $("#apellido").val(), ($("#dia").val()+'-'+$("#mes").val()+'-'+$("#ano").val()),$("#telefono").val(),$("#dni").val(),$("#correo").val(),$("#operador").val(),$("#modelo").val());
-				//console.log('es');
-			}else{
-				
-*/
+
             })
 
 
@@ -226,36 +226,36 @@ function apagaCarga() {
 // --------------------------------------------------------------
 // 
 // --------------------------------------------------------------
-     var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+var pictureSource; // picture source
+var destinationType; // sets the format of returned value
 
 
 
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-      pictureSource=navigator.camera.PictureSourceType;
-      destinationType=navigator.camera.DestinationType;
+    receivedEvent: function (id) {
+        pictureSource = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
 
-	  },
+    },
 
 };
 
