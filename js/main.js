@@ -13,9 +13,9 @@ jQuery(document).ready(function ($) {
 
 $('#agrega').on('click', function () {
 	img = $('#smallImage').attr('src');
-	alert(img)
-	uploadPhoto(img)
-	return false;
+	//alert(img)
+	//uploadPhoto(img)
+	//return false;
 	
     $("#response").hide();
     $("#gracias").hide();
@@ -96,15 +96,17 @@ $('#agrega').on('click', function () {
             dni: $('#dni').val(),
             correo: $('#correo').val(),
             operador: $('#operador').val(),
-            modelo: $('#modelo').val()
+            modelo: $('#modelo').val(),
+            img : img
         }, function (data) {
             console.log(data);
             // 1 sie s correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val())
+                agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img)
 
             } else {
+            	uploadPhoto(img);
                 compruebaDbLocal() //comprueba si hay registros que cargar
             }
 
@@ -112,7 +114,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val())
+            agregaLS($("#nombre").val(), $("#apellido").val(), ($("#dia").val() + '-' + $("#mes").val() + '-' + $("#ano").val()), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(),img))
 
             resetForm()
 
@@ -130,9 +132,9 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, img)) {
 
-    localStorage.setItem('' + dni + '', nombre + '-' + apellido + '-' + dia + '-' + mes + '-' + ano + '-' + telefono + '-' + dni + '-' + correo)
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo+'|'+img))
 }
 
 
@@ -144,7 +146,7 @@ function compruebaDbLocal() {
         for (var key in localStorage) {
             //console.log(localStorage.getItem(key));
 
-            v = localStorage.getItem(key).split('-');
+            v = localStorage.getItem(key).split('|');
 
 
 
@@ -159,9 +161,11 @@ function compruebaDbLocal() {
                 dni: v[6],
                 correo: v[7],
                 operador: v[8],
-                modelo: v[9]
+                modelo: v[9],
+                img : v[10]
             }, function (data) {
                 console.log(data);
+                uploadPhoto(v[10])
 
             })
 
@@ -334,12 +338,14 @@ function resolveOnSuccess(entry) {
 function successMove(entry) {
     //devuelve la ruta de la imagen
 
+/*
     if (localStorage['imagenes']) {
         todo = localStorage.getItem('imagenes') + ',' + entry.fullPath;
         localStorage.setItem('imagenes', todo);
     } else {
         localStorage.setItem('imagenes', entry.fullPath);
     }
+*/
 
 
 
@@ -438,3 +444,11 @@ function fail(error) {
 // --------------------------------------------------------------
 // 
 // --------------------------------------------------------------
+
+
+function limpaLocalStorage(){
+	alert(localStorage.length)
+	localStorage.clear();
+	alert(localStorage.length)
+	
+}
