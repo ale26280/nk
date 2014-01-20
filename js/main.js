@@ -116,7 +116,7 @@ $('#agrega').on('click', function () {
 
             agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
-            resetForm();
+            resetForm(img,origen);
 
         })
 
@@ -204,7 +204,7 @@ function compruebaDbLocal() {
 
 
 
-function resetForm() {
+function resetForm(img,origen) {
 
     $("#nombre").val('');
     $("#apellido").val('');
@@ -225,6 +225,14 @@ function resetForm() {
     $("#gracias").show().delay(800).fadeOut('slow', function () {
         window.scrollTo(0, 0);
         document.body.scrollTop = 0;
+        
+        if (img != 'no') {
+                    $('#origneFoto').html(origen);
+                    $('#idFoto').html(img);		 
+                    $('#aviso').fadeIn();
+                }
+        
+        
     });
 
 
@@ -554,3 +562,11 @@ function estadoRed() {
 
 
 }
+
+
+
+$('#avisoClose').on('click',function(){
+	
+	$('#aviso').fadeOut();
+	
+})
