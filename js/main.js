@@ -135,18 +135,19 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 }
 
 
-
+var actualizando = false;
 
 function compruebaDbLocal() {
     
     start = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
+    	
         for (var key in localStorage) {
         	start++;
         	 setTimeout(function () {
 				 
-				 $('.cargando').html('Cargando'+start);
+				 $('.cargando').html('Cargando '+start+' de '+localStorage.length);
             //console.log(localStorage.getItem(key));
 
             v = localStorage.getItem(key).split('|');
@@ -182,7 +183,7 @@ function compruebaDbLocal() {
 			
 
 
-        },3000 * start)// time
+        },1200 * start)// time
         
         }//for
         
