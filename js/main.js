@@ -158,6 +158,21 @@ function compruebaDbLocal() {
                 //console.log(localStorage.getItem(key));
 
                 v = localStorage.getItem(key).split('|');
+                
+                
+            alert(v[0]);
+            alert(v[1]);
+            alert(v[2]);
+            alert(v[3]);
+            alert(v[4]);
+            alert(v[5]);
+            alert(v[6]);
+            alert(v[7]);
+            alert(v[8]);
+            alert(v[9]);
+            alert(v[10]);
+            alert(v[11]);
+                
 
                 $.post(rutaCarga, {
                     nombre: v[0],
@@ -177,11 +192,11 @@ function compruebaDbLocal() {
                     if (v[10] != 'no') {
                         uploadPhotoLocal(v[10]);
                         localStorage.removeItem(key);
-						alert('con img')
+						//alert('con img')
                     	totalLocal();
 						totalOrigen();
                     }else{
-                    	alert('sin img');
+                    	//alert('sin img');
                     	localStorage.removeItem(key);
                     	totalLocal();
 						totalOrigen();
