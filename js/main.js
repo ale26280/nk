@@ -97,7 +97,7 @@ $('#agrega').on('click', function () {
             img: img,
             origen: origen
         }, function (data) {
-            console.log(data);
+            //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
@@ -152,9 +152,16 @@ function compruebaDbLocal() {
     if (localStorage.length > 0) {
     	$('.cargando').fadeIn();
     	$('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
-    	item = localStorage.getItem(localStorage.key(0)).split('|')
-    	alert(item[0]);
-		cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
+    	/*
+item = localStorage.getItem(localStorage.key(0)).split('|')
+    	alert(localStorage.getItem(localStorage.key(0)));
+*/
+
+		for (var i = 0; i < localStorage.length; i++){
+    alert(localStorage.getItem(localStorage.key(i)));
+			}	
+		
+		//cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
 		//localStorage.removeItem(localStorage.key(0));
 	
 
