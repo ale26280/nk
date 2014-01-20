@@ -104,7 +104,7 @@ $('#agrega').on('click', function () {
 
             } else {
                 uploadPhoto($('#smallImage').attr('src'));
-                compruebaDbLocal(); //comprueba si hay registros que cargar
+                //compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
             resetForm();
@@ -212,6 +212,10 @@ function resetForm() {
     });
     apagaCarga();
     $("#gracias").show().delay(800).fadeOut();
+    
+    window.scrollTo(0,0); 
+	document.body.scrollTop = 0;
+    
 }
 
 
@@ -286,7 +290,7 @@ function capturePhoto() {
 
     // Take picture using device camera and retrieve image as base64-encoded string
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-        quality: 50,
+        quality: 100,
         destinationType: destinationType.FILE_URI,
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 440,
