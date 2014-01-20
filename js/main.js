@@ -181,7 +181,10 @@ function compruebaDbLocal() {
                     	totalLocal();
 						totalOrigen();
                     }else{
-                    	alert('sin img')
+                    	alert('sin img');
+                    	localStorage.removeItem(key);
+                    	totalLocal();
+						totalOrigen();
 						compruebaDbLocal()
 	                    
                     }
