@@ -138,7 +138,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 	
 	#basesMuestra{
 		background: #fff;
-		position: fixed;
+		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
@@ -146,6 +146,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 		overflow: auto;
 		z-index: 1000;
 		display: none;
+		bottom: 0;
 		
 	}
 	
@@ -229,13 +230,14 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 
 	#configMuestra{
 		background: #fff;
-		position: fixed;
+		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
 		height: 100%;
+		bottom: 0;
 		overflow: auto;
-		z-index: 1000;
+		z-index: 1500;
 		display: none;
 		
 	}
