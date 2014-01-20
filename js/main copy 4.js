@@ -128,7 +128,7 @@ $('#agrega').on('click', function () {
 })
 
 ///////////////////////////////////////////////////////////
-///////////////// ingresa //////////////////////////////////
+///////////////// WEB DB //////////////////////////////////
 ///////////////////////////////////////////////////////////
 
 
@@ -138,9 +138,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 }
 
 
-///////////////////////////////////////////////////////////
-///////////////// ingresa los locales //////////////////////
-///////////////////////////////////////////////////////////
+
 
 function compruebaDbLocal() {
 	$('#compruebalocal').fadeOut();
@@ -204,9 +202,7 @@ function compruebaDbLocal() {
 }
 
 
-///////////////////////////////////////////////////////////
-//////reset formulario y muestra aviso id /////////////////
-///////////////////////////////////////////////////////////
+
 
 function resetForm(img,origen) {
 
@@ -244,9 +240,7 @@ function resetForm(img,origen) {
 }
 
 
-///////////////////////////////////////////////////////////
-///////////////// eventos //////////////////////////////////
-///////////////////////////////////////////////////////////
+
 
 $('#abreBases').on('click', function () {
     window.scrollTo(0, 0);
@@ -265,12 +259,6 @@ $('#closeMuestra').on('click', function () {
 
 
 })
-
-
-///////////////////////////////////////////////////////////
-///////////////// preload //////////////////////////////////
-///////////////////////////////////////////////////////////
-
 
 var preload = $('#preload');
 
@@ -403,6 +391,17 @@ function resolveOnSuccess(entry) {
 
 function successMove(entry) {
     //devuelve la ruta de la imagen
+
+    /*
+    if (localStorage['imagenes']) {
+        todo = localStorage.getItem('imagenes') + ',' + entry.fullPath;
+        localStorage.setItem('imagenes', todo);
+    } else {
+        localStorage.setItem('imagenes', entry.fullPath);
+    }
+*/
+
+
     //alert(entry.fullPath)
 
     to = entry.fullPath.split('/');
@@ -473,9 +472,9 @@ function fail(error) {
 
 
 function limpaLocalStorage() {
-   
-   localStorage.clear();
- 
+    //alert(localStorage.length)
+    localStorage.clear();
+    //alert(localStorage.length)
     totalLocal();
 }
 
@@ -536,11 +535,11 @@ function totalOrigen() {
 function totalLocal() {
 if (localStorage.length > 0) {
 	$('#compruebalocal').fadeIn();
-	
+	$('#totalLocal').html(localStorage.length);
 }else{
 	$('#compruebalocal').fadeOut();
 }
-    $('#totalLocal').html(localStorage.length);
+    
 
 }
 
