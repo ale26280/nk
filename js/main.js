@@ -308,7 +308,7 @@ function onPhotoDataSuccess(imageURI) {
     //muestra la foto 
     //smallImage.src = imageURI;
     //mueve la foto 
-    alert(imageURI)
+    //alert(imageURI)
     movePic(imageURI);
 }
 
@@ -337,8 +337,8 @@ function resolveOnSuccess(entry) {
     var n = d.getTime();
     //new file name
     var newFileName = n + ".jpg";
-    var myFolderApp = "Documents";
-
+    var myFolderApp = "Nokia";
+	alert(entry)
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
             //The folder is created if doesn't exist
             fileSys.root.getDirectory(myFolderApp, {
@@ -371,7 +371,7 @@ function successMove(entry) {
 */
 
 
-	alert(entry.fullPath)
+	//alert(entry.fullPath)
 
     to = entry.fullPath.split('/');
     imgTemporal = to[7];
