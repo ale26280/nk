@@ -226,13 +226,13 @@ function resetForm() {
 
 $('#abreBases').on('click', function () {
     $('#basesMuestra').fadeIn();
-
+	$('body').css('overflow','hidden');
 
 })
 
 $('#closeMuestra').on('click', function () {
     $('#basesMuestra').fadeOut();
-
+	$('body').css('overflow','auto');
 
 })
 
