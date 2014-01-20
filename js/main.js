@@ -347,7 +347,7 @@ function resolveOnSuccess(entry) {
                 },
                 function (directory) {
                     entry.moveTo(directory, newFileName, successMove, resOnError);
-                    alert(directory)
+                    
 
                 },
                 resOnError);
@@ -371,7 +371,7 @@ function successMove(entry) {
 */
 
 
-
+	alert(entry.fullPath)
 
     to = entry.fullPath.split('/');
     imgTemporal = to[7];
