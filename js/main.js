@@ -176,6 +176,10 @@ function compruebaDbLocal() {
                     //console.log(data);
                     if (v[10] != 'no') {
                         uploadPhotoLocal(v[10]);
+                    }else{
+	                    setTimeout(function(){
+		                    compruebaDbLocal()
+	                    }, 500);
                     }
                     //alert(v[10])
 
@@ -487,7 +491,7 @@ function uploadPhotoLocal(imageURI) {
 }
 
 function winLocal(r) {
-    alert('subida')
+    //alert('subida')
     //oculta_carga();
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
