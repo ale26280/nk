@@ -160,9 +160,9 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
 */
 
-		for (var i = 0; i < 1; i++){
-    alert(localStorage.getItem(localStorage.key(0)));
-    item = localStorage.getItem(localStorage.key(0)).split('|');
+		for (var i = 0; i < 2; i++){
+    alert(localStorage.getItem(localStorage.key(i)));
+    item = localStorage.getItem(localStorage.key(i)).split('|');
     alert(item[0]);
 			}	
 		
