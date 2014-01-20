@@ -343,7 +343,7 @@ function resolveOnSuccess(entry) {
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
             //The folder is created if doesn't exist
             
-			 alert(fileSys.root);
+			
         
             fileSys.root.getDirectory(myFolderApp, {
                     create: true,
