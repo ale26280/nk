@@ -145,7 +145,10 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 
 
 function compruebaDbLocal() {
-
+$.post(rutaTest, {
+        conect: 1
+    }, function (data) {
+    
 	$('#compruebalocal').fadeOut();
     inicia = 0;
     //alert(localStorage.length)
@@ -160,9 +163,9 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 		//for (var i = 0; i < localStorage.length; i++){
     alert(localStorage.getItem(localStorage.key(0)));
 			//}	
-		
-		//cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
-		//localStorage.removeItem(localStorage.key(0));
+		item = localStorage.getItem(localStorage.key(0)).split('|');
+		cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
+		localStorage.removeItem(localStorage.key(0));
 	
 
 }else{//fin local storage lenght
@@ -172,6 +175,7 @@ if(inicia==localStorage.length){
 				}
 }
 
+});
 
 }
 
