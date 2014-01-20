@@ -138,7 +138,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 }
 
 
-var actualizando = false;
+
 
 function compruebaDbLocal() {
 	$('#compruebalocal').fadeOut();
@@ -525,8 +525,13 @@ function totalOrigen() {
 
 
 function totalLocal() {
-
-    $('#totalLocal').html(localStorage.length);
+if (localStorage.length > 0) {
+	$('#compruebalocal').fadeIn();
+	$('#totalLocal').html(localStorage.length);
+}else{
+	$('#compruebalocal').fadeOut();
+}
+    
 
 }
 
