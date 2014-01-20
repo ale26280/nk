@@ -148,10 +148,12 @@ function compruebaDbLocal() {
     inicia = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
+    
+    
 
         for (var key in localStorage) {
         inicia++
-        if(inicia==1){
+        if(inicia==0){
         	//alert(key)
             $('.cargando').fadeIn();
 				
@@ -162,7 +164,8 @@ function compruebaDbLocal() {
                 
                 
             alert(v[0]);
-            alert(v[1]);
+        /*
+    alert(v[1]);
             alert(v[2]);
             alert(v[3]);
             alert(v[4]);
@@ -173,6 +176,7 @@ function compruebaDbLocal() {
             alert(v[9]);
             alert(v[10]);
             alert(v[11]);
+*/
                 
 
                 $.post(rutaCarga, {
