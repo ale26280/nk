@@ -336,9 +336,10 @@ function resolveOnSuccess(entry) {
     var d = new Date();
     var n = d.getTime();
     //new file name
-    var newFileName = n + ".jpg";
+   // var newFileName = n + ".jpg";
+    var newFileName = entry.name + ".jpg"; 
     var myFolderApp = "Nokia";
-	alert(entry[0])
+	alert(newFileName)
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
             //The folder is created if doesn't exist
             fileSys.root.getDirectory(myFolderApp, {
