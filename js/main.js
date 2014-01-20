@@ -7,7 +7,7 @@ var origen = 'origen2';
 
 
 
-$('#agrega').on('touchstart', function () {
+$('#agrega').on('click', function () {
 
 
     $("#response").hide();
@@ -266,7 +266,7 @@ function resetForm(img,origen) {
 ///////////////// eventos //////////////////////////////////
 ///////////////////////////////////////////////////////////
 
-$('#abreBases').on('touchstart', function () {
+$('#abreBases').on('click', function () {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
     $('.form').fadeOut('slow', function () {
@@ -276,7 +276,7 @@ $('#abreBases').on('touchstart', function () {
 
 })
 
-$('#closeMuestra').on('touchstart', function () {
+$('#closeMuestra').on('click', function () {
     $('#basesMuestra').fadeOut('slow', function () {
         $('.form').fadeIn();
     });
@@ -534,7 +534,7 @@ function limpaLocalStorage() {
 
 
 
-$('.configOpen').on('touchstart', function () {
+$('.configOpen').on('click', function () {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
     $('.form').fadeOut('slow', function () {
@@ -546,7 +546,7 @@ $('.configOpen').on('touchstart', function () {
 
 })
 
-$('#configClose').on('touchstart', function () {
+$('#configClose').on('click', function () {
     $('#configMuestra').fadeOut('slow', function () {
         $('.form').fadeIn();
     });
@@ -555,13 +555,13 @@ $('#configClose').on('touchstart', function () {
 })
 
 
-$('#borraDatos').on('touchstart', function () {
+$('#borraDatos').on('click', function () {
     limpaLocalStorage()
 
 })
 
 
-$('#compruebalocal').on('touchstart', function () {
+$('#compruebalocal').on('click', function () {
 	
     compruebaDbLocal();
 
@@ -619,7 +619,7 @@ function estadoRed() {
 
 
 
-$('#avisoClose').on('touchstart',function(){
+$('#avisoClose').on('click',function(){
 	
 	$('#aviso').fadeOut();
 	
