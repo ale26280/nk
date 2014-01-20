@@ -151,7 +151,7 @@ function compruebaDbLocal() {
         for (var key in localStorage) {
         inicia++
         if(inicia==1){
-        	alert(key)
+        	//alert(key)
             $('.cargando').fadeIn();
 				
                 $('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
@@ -175,7 +175,7 @@ function compruebaDbLocal() {
                 }, function (data) {
                     //console.log(data);
                     if (v[10] != 'no') {
-                        uploadPhoto(v[10]);
+                        uploadPhotoLocal(v[10]);
                     }
                     //alert(v[10])
 
@@ -461,6 +461,41 @@ function win(r) {
 }
 
 function fail(error) {
+    //alert("An error has occurred: Code = " + error.code);
+    //alert("upload error source " + error.source);
+    //alert("upload error target " + error.target);
+}
+
+
+
+function uploadPhotoLocal(imageURI) {
+    //alert(imageURI)
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    //options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+    options.fileName = imageURI.replace(" ", "");
+    options.mimeType = "image/jpeg";
+
+    var params = {};
+    params.value1 = "test";
+    params.value2 = "param";
+
+    options.params = params;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURI, encodeURI(rutaUpload), winLocal, failLocal, options);
+}
+
+function winLocal(r) {
+    //alert('subida')
+    //oculta_carga();
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+    compruebaDbLocal();
+}
+
+function failLocal(error) {
     //alert("An error has occurred: Code = " + error.code);
     //alert("upload error source " + error.source);
     //alert("upload error target " + error.target);
