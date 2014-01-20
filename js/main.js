@@ -207,6 +207,7 @@ function resetForm() {
     //$("#operador").prop('selectedIndex', 0);
     $("#operador").val('');
     $("#modelo").val('');
+    $('#imageWrap').fadeOut('fast');
     $('#smallImage').fadeOut('fast', function () {
         $('#smallImage').attr('src', '');
     });
@@ -382,7 +383,10 @@ function successMove(entry) {
     to = entry.fullPath.split('/');
     imgTemporal = to[7];
     imgTemporalCompleta = entry.fullPath;
-    $('#smallImage').attr('src', entry.fullPath).fadeIn()
+    $('#imageWrap').fadeIn('fast',function(){
+	    $('#smallImage').attr('src', entry.fullPath).fadeIn()
+    });
+    
 
 }
 

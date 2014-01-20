@@ -220,6 +220,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 		line-height: 35px;
 		text-align: center;
 		color: #555;
+		margin-top: 10px;
 	}
 	
 	
@@ -264,4 +265,6 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 	#imageWrap{
 		height: 188px;
 		margin-bottom: 20px;
+		margin-top: 20px;
+		display: none;
 	}
