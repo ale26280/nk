@@ -149,10 +149,11 @@ function compruebaDbLocal() {
     if (localStorage.length > 0) {
 
         for (var key in localStorage) {
+        inicia++
+        if(inicia==1){
         	alert(key)
             $('.cargando').fadeIn();
-            setTimeout(function () {
-				inicia++;
+				
                 $('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
                 //console.log(localStorage.getItem(key));
 
@@ -194,7 +195,7 @@ function compruebaDbLocal() {
 					$('#compruebalocal').fadeIn();
 				}
 
-            }, 1500 * inicia); // time
+           }
 
         } //for
 
