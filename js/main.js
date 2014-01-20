@@ -149,6 +149,7 @@ function compruebaDbLocal() {
     if (localStorage.length > 0) {
 
         for (var key in localStorage) {
+        	alert(key)
             $('.cargando').fadeIn();
             setTimeout(function () {
 				inicia++;
