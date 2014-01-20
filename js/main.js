@@ -15,7 +15,9 @@ $('#agrega').on('click', function () {
     $("#gracias").hide();
 	
 	img = $('#smallImage').attr('src');
-
+	if(img==''){
+		img = 'no';
+	}
 
     if ($("#nombre").val() == "") {
         $("#response").css({
@@ -103,7 +105,9 @@ $('#agrega').on('click', function () {
                 agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             } else {
-                uploadPhoto($('#smallImage').attr('src'));
+            	if(img!='no'){
+                uploadPhoto(img);
+                }
                 //compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
@@ -147,7 +151,7 @@ function compruebaDbLocal() {
         	start++;
         	 setTimeout(function () {
 				 
-				 $('.cargando').html('Cargando '+start+' de '+localStorage.length);
+				 $('.cargando').html('<b>Cargando '+start+' de '+localStorage.length+'</b>');
             //console.log(localStorage.getItem(key));
 
             v = localStorage.getItem(key).split('|');
@@ -167,7 +171,9 @@ function compruebaDbLocal() {
                 origen: v[11]
             }, function (data) {
                 //console.log(data);
+                if(v[10]!='no'){
                 uploadPhoto(v[10]);
+                }
                 //alert(v[10])
                 
                 localStorage.removeItem(key);
