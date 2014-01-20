@@ -143,9 +143,10 @@ function compruebaDbLocal() {
     //alert(localStorage.length)
     if (localStorage.length > 0) {
         for (var key in localStorage) {
+        	start++;
         	 setTimeout(function () {
-				 start++;
-        
+				 
+				 $('.cargando').html('Cargando'+start);
             //console.log(localStorage.getItem(key));
 
             v = localStorage.getItem(key).split('|');
