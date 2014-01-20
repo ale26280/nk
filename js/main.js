@@ -95,7 +95,7 @@ $('#agrega').on('click', function () {
             correo: $('#correo').val(),
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
-            img: $('#smallImage').attr('src'),
+            img: img,
             origen: origen
         }, function (data) {
             console.log(data);
