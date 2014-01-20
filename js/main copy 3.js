@@ -1,3 +1,4 @@
+
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
@@ -12,11 +13,11 @@ $('#agrega').on('click', function () {
 
     $("#response").hide();
     $("#gracias").hide();
-
-    img = $('#smallImage').attr('src');
-    if (img == '') {
-        img = 'no';
-    }
+	
+	img = $('#smallImage').attr('src');
+	if(img==''){
+		img = 'no';
+	}
 
     if ($("#nombre").val() == "") {
         $("#response").css({
@@ -101,20 +102,20 @@ $('#agrega').on('click', function () {
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+                agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             } else {
-                if (img != 'no') {
-                    uploadPhoto(img);
+            	if(img!='no'){
+                uploadPhoto(img);
                 }
                 //compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
             resetForm();
 
-        }).error(function () {
-
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+        }).error(function () {	
+		
+             agregaLS( $("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
 
             resetForm();
 
@@ -134,66 +135,66 @@ $('#agrega').on('click', function () {
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD) {
 
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD);
+    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|'+ operador +'|'+ modelo + '|' + imgD + '|' + origenD);
 }
 
 
 var actualizando = false;
 
 function compruebaDbLocal() {
-	$('#compruebalocal').fadeOut();
+    
     start = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
-
+    	
         for (var key in localStorage) {
-            start++;
-            setTimeout(function () {
-				alert(start)
-                $('.cargando').html('<b>Cargando ' + start + ' de ' + localStorage.length + '</b>');
-                //console.log(localStorage.getItem(key));
+        	start++;
+        	 setTimeout(function () {
+				 
+				 $('.cargando').html('<b>Cargando '+start+' de '+localStorage.length+'</b>');
+            //console.log(localStorage.getItem(key));
 
-                v = localStorage.getItem(key).split('|');
+            v = localStorage.getItem(key).split('|');
+	
+            $.post(rutaCarga, {
+                nombre: v[0],
+                apellido: v[1],
+                dia: v[2],
+                mes: v[3],
+                ano: v[4],
+                telefono: v[5],
+                dni: v[6],
+                correo: v[7],
+                operador: v[8],
+                modelo: v[9],
+                img: v[10],
+                origen: v[11]
+            }, function (data) {
+                //console.log(data);
+                if(v[10]!='no'){
+                uploadPhoto(v[10]);
+                }
+                //alert(v[10])
+                
+                localStorage.removeItem(key);
+                //alert('actualizado')
+                totalLocal();
+				totalOrigen();
 
-                $.post(rutaCarga, {
-                    nombre: v[0],
-                    apellido: v[1],
-                    dia: v[2],
-                    mes: v[3],
-                    ano: v[4],
-                    telefono: v[5],
-                    dni: v[6],
-                    correo: v[7],
-                    operador: v[8],
-                    modelo: v[9],
-                    img: v[10],
-                    origen: v[11]
-                }, function (data) {
-                    //console.log(data);
-                    if (v[10] != 'no') {
-                        uploadPhoto(v[10]);
-                    }
-                    //alert(v[10])
+            }).fail(function () {
+                alert('Error al cargar');
 
-                    localStorage.removeItem(key);
-                    //alert('actualizado')
-                    totalLocal();
-                    totalOrigen();
+            });
 
-                }).fail(function () {
-                    alert('Error al cargar');
-
-                });
-
-
-
-
-            }, 1200 * start); // time
-
-        } //for
+			
 
 
-
+        },1200 * start)// time
+        
+        }//for
+        
+        
+        
     }
 
 }
@@ -219,33 +220,33 @@ function resetForm() {
         $('#smallImage').attr('src', '');
     });
     apagaCarga();
-    $("#gracias").show().delay(800).fadeOut('slow', function () {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0;
+    $("#gracias").show().delay(800).fadeOut('slow',function(){
+	    window.scrollTo(0,0); 
+		document.body.scrollTop = 0;
     });
-
-
-
+    
+    
+    
 }
 
 
 
 
 $('#abreBases').on('click', function () {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    $('.form').fadeOut('slow', function () {
-        $('#basesMuestra').fadeIn();
+	window.scrollTo(0,0); 
+	document.body.scrollTop = 0;
+	$('.form').fadeOut('slow',function(){
+    $('#basesMuestra').fadeIn();
     })
-
+	
 
 })
 
 $('#closeMuestra').on('click', function () {
-    $('#basesMuestra').fadeOut('slow', function () {
-        $('.form').fadeIn();
+    $('#basesMuestra').fadeOut('slow',function(){
+	    $('.form').fadeIn();
     });
-
+	
 
 })
 
@@ -352,22 +353,22 @@ function resolveOnSuccess(entry) {
     var d = new Date();
     var n = d.getTime();
     //new file name
-    // var newFileName = n + ".jpg";
-    var newFileName = entry.name;
+   // var newFileName = n + ".jpg";
+    var newFileName = entry.name; 
     var myFolderApp = "Nokia";
-
+	
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
             //The folder is created if doesn't exist
-
-
-
+            
+			
+        
             fileSys.root.getDirectory(myFolderApp, {
                     create: true,
                     exclusive: false
                 },
                 function (directory) {
                     entry.moveTo(directory, newFileName, successMove, resOnError);
-
+                   
 
                 },
                 resOnError);
@@ -391,15 +392,15 @@ function successMove(entry) {
 */
 
 
-    //alert(entry.fullPath)
+	//alert(entry.fullPath)
 
     to = entry.fullPath.split('/');
     imgTemporal = to[7];
     imgTemporalCompleta = entry.fullPath;
-    $('#imageWrap').fadeIn('fast', function () {
-        $('#smallImage').attr('src', entry.fullPath).fadeIn()
+    $('#imageWrap').fadeIn('fast',function(){
+	    $('#smallImage').attr('src', entry.fullPath).fadeIn()
     });
-
+    
 
 }
 
@@ -408,6 +409,7 @@ function successMove(entry) {
 function resOnError(error) {
     alert(error.code);
 }
+
 
 
 
@@ -470,10 +472,10 @@ function limpaLocalStorage() {
 
 
 $('.configOpen').on('click', function () {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    $('.form').fadeOut('slow', function () {
-        $('#configMuestra').fadeIn();
+	window.scrollTo(0,0); 
+	document.body.scrollTop = 0;
+	$('.form').fadeOut('slow',function(){
+    $('#configMuestra').fadeIn();
     });
     totalOrigen();
     totalLocal();
@@ -482,8 +484,8 @@ $('.configOpen').on('click', function () {
 })
 
 $('#configClose').on('click', function () {
-    $('#configMuestra').fadeOut('slow', function () {
-        $('.form').fadeIn();
+    $('#configMuestra').fadeOut('slow',function(){
+	    $('.form').fadeIn();
     });
 
 
@@ -497,7 +499,6 @@ $('#borraDatos').on('click', function () {
 
 
 $('#compruebalocal').on('click', function () {
-	
     compruebaDbLocal();
 
 })
