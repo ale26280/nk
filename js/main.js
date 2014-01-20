@@ -176,17 +176,18 @@ function compruebaDbLocal() {
                     //console.log(data);
                     if (v[10] != 'no') {
                         uploadPhotoLocal(v[10]);
+                        localStorage.removeItem(key);
+						alert('con img')
+                    	totalLocal();
+						totalOrigen();
                     }else{
-	                    setTimeout(function(){
-		                    compruebaDbLocal()
-	                    }, 500);
+                    	alert('sin img')
+						compruebaDbLocal()
+	                    
                     }
                     //alert(v[10])
 
-                    localStorage.removeItem(key);
-                    //alert('actualizado')
-                    totalLocal();
-                    totalOrigen();
+                    
 
                 }).fail(function () {
                     alert('Error al cargar');
@@ -238,7 +239,7 @@ function resetForm(img,origen) {
         
         if (img != 'no') {
                     $('#origneFoto').html(origen);
-                    $('#idFoto').html(img);		 
+                    $('#idFoto').html(img.replace('//Nokia/',''));		 
                     $('#aviso').fadeIn();
                 }
         
