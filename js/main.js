@@ -143,18 +143,9 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
 
-var compruebaBucle = true;
 
 function compruebaDbLocal() {
-/*
-	if(compruebaBucle==false){
-		return false;
-	}
-	
-	compruebaBucle=false
-*/
-	
-	
+
 	$('#compruebalocal').fadeOut();
     inicia = 0;
     //alert(localStorage.length)
