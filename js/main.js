@@ -347,6 +347,7 @@ function resolveOnSuccess(entry) {
                 },
                 function (directory) {
                     entry.moveTo(directory, newFileName, successMove, resOnError);
+                    alert(directory)
 
                 },
                 resOnError);
