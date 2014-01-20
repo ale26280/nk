@@ -110,7 +110,7 @@ $('#agrega').on('click', function () {
                 //compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
-            resetForm();
+           resetForm(img,origen);
 
         }).error(function () {
 
@@ -133,8 +133,9 @@ $('#agrega').on('click', function () {
 
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD) {
-
-    localStorage.setItem('' + dni + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD);
+	var d = new Date();
+    var n = d.getTime();
+  localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD);
 }
 
 
