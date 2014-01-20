@@ -338,10 +338,13 @@ function resolveOnSuccess(entry) {
     //new file name
    // var newFileName = n + ".jpg";
     var newFileName = entry.name; 
-    var myFolderApp = "../../Documents";
+    var myFolderApp = "Nokia";
 	
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
             //The folder is created if doesn't exist
+             alert(fileSys.name);
+			 alert(fileSys.root.name);
+        
             fileSys.root.getDirectory(myFolderApp, {
                     create: true,
                     exclusive: false
@@ -372,7 +375,7 @@ function successMove(entry) {
 */
 
 
-	alert(entry.fullPath)
+	//alert(entry.fullPath)
 
     to = entry.fullPath.split('/');
     imgTemporal = to[7];
