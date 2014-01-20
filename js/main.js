@@ -211,10 +211,12 @@ function resetForm() {
         $('#smallImage').attr('src', '');
     });
     apagaCarga();
-    $("#gracias").show().delay(800).fadeOut();
+    $("#gracias").show().delay(800).fadeOut('slow',function(){
+	    window.scrollTo(0,0); 
+		document.body.scrollTop = 0;
+    });
     
-    window.scrollTo(0,0); 
-	document.body.scrollTop = 0;
+    
     
 }
 
