@@ -225,14 +225,20 @@ function resetForm() {
 
 
 $('#abreBases').on('click', function () {
+	window.scrollTo(0,0); 
+	document.body.scrollTop = 0;
+	$('.form').fadeOut('slow',function(){
     $('#basesMuestra').fadeIn();
-	$('body').css('overflow','hidden');
+    })
+	
 
 })
 
 $('#closeMuestra').on('click', function () {
-    $('#basesMuestra').fadeOut();
-	$('body').css('overflow','auto');
+    $('#basesMuestra').fadeOut('slow',function(){
+	    $('.form').fadeIn();
+    });
+	
 
 })
 
@@ -458,7 +464,11 @@ function limpaLocalStorage() {
 
 
 $('.configOpen').on('click', function () {
+	window.scrollTo(0,0); 
+	document.body.scrollTop = 0;
+	$('.form').fadeOut('slow',function(){
     $('#configMuestra').fadeIn();
+    });
     totalOrigen();
     totalLocal();
     estadoRed();
@@ -466,7 +476,9 @@ $('.configOpen').on('click', function () {
 })
 
 $('#configClose').on('click', function () {
-    $('#configMuestra').fadeOut();
+    $('#configMuestra').fadeOut('slow',function(){
+	    $('.form').fadeIn();
+    });
 
 
 })
