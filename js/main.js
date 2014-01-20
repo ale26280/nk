@@ -153,7 +153,7 @@ function compruebaDbLocal() {
     	$('.cargando').fadeIn();
     	$('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
     	item = localStorage.getItem(localStorage.key(0)).split('|')
-    	console.log(item[0]);
+    	alert(item[0]);
 		cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
 		localStorage.removeItem(localStorage.key(0));
 	
