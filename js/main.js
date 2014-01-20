@@ -143,67 +143,68 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
 
+var compruebaBucle = true;
+
 function compruebaDbLocal() {
+/*
+	if(compruebaBucle==false){
+		return false;
+	}
+	
+	compruebaBucle=false
+*/
+	
+	
 	$('#compruebalocal').fadeOut();
     inicia = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
-    
-    
+    	$('.cargando').fadeIn();
+    	$('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
+    	item = localStorage.getItem(localStorage.key(0)).split('|')
+    	console.log(item[0]);
+		cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
+		localStorage.removeItem(localStorage.key(0));
+	
 
-        for (var key in localStorage) {
-       
-        if(inicia==0){
-         inicia++
-        	//alert(key)
-            $('.cargando').fadeIn();
-				
-                $('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
-                //console.log(localStorage.getItem(key));
+}else{//fin local storage lenght
+if(inicia==localStorage.length){
+					$('.cargando').fadeOut();
+					$('#compruebalocal').fadeIn();
+				}
+}
 
-                v = localStorage.getItem(key).split('|');
-                
-                
-            alert(v[0]);
-        /*
-    alert(v[1]);
-            alert(v[2]);
-            alert(v[3]);
-            alert(v[4]);
-            alert(v[5]);
-            alert(v[6]);
-            alert(v[7]);
-            alert(v[8]);
-            alert(v[9]);
-            alert(v[10]);
-            alert(v[11]);
-*/
-                
 
-                $.post(rutaCarga, {
-                    nombre: v[0],
-                    apellido: v[1],
-                    dia: v[2],
-                    mes: v[3],
-                    ano: v[4],
-                    telefono: v[5],
-                    dni: v[6],
-                    correo: v[7],
-                    operador: v[8],
-                    modelo: v[9],
-                    img: v[10],
-                    origen: v[11]
+}
+
+
+function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD){
+	
+	
+	$.post(rutaCarga, {
+                    nombre: nombre,
+                    apellido: apellido,
+                    dia: dia,
+                    mes: mes,
+                    ano: ano,
+                    telefono: telefono,
+                    dni: dni,
+                    correo:correo,
+                    operador: operador,
+                    modelo: modelo,
+                    img: imgD,
+                    origen: origenD
                 }, function (data) {
                     //console.log(data);
-                    if (v[10] != 'no') {
+                    if (imgD != 'no') {
                         uploadPhotoLocal(v[10]);
-                        localStorage.removeItem(key);
+                        //localStorage.removeItem(key);
 						//alert('con img')
                     	totalLocal();
 						totalOrigen();
                     }else{
                     	//alert('sin img');
-                    	localStorage.removeItem(key);
+                    	//localStorage.removeItem(key);
                     	totalLocal();
 						totalOrigen();
 						compruebaDbLocal()
@@ -211,28 +212,16 @@ function compruebaDbLocal() {
                     }
                     //alert(v[10])
 
-                    
-
-                }).fail(function () {
+                 }).fail(function () {
                     alert('Error al cargar');
 
                 });
 
 
-				if(inicia==localStorage.length){
-					$('.cargando').fadeOut();
-					$('#compruebalocal').fadeIn();
-				}
-
-           }
-
-        } //for
-
-
-
-    }
+				
 
 }
+
 
 
 ///////////////////////////////////////////////////////////
