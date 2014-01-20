@@ -142,15 +142,15 @@ var actualizando = false;
 
 function compruebaDbLocal() {
 	$('#compruebalocal').fadeOut();
-    start = 0;
+    inicia = 0;
     //alert(localStorage.length)
     if (localStorage.length > 0) {
 
         for (var key in localStorage) {
-            start++;
+            $('.cargando').fadeIn();
             setTimeout(function () {
-				alert(start)
-                $('.cargando').html('<b>Cargando ' + start + ' de ' + localStorage.length + '</b>');
+				inicia++;
+                $('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
                 //console.log(localStorage.getItem(key));
 
                 v = localStorage.getItem(key).split('|');
@@ -186,9 +186,11 @@ function compruebaDbLocal() {
                 });
 
 
+				if(inicia==localStorage.length){
+					$('.cargando').fadeOut();
+				}
 
-
-            }, 1200 * start); // time
+            }, 1500 * inicia); // time
 
         } //for
 
@@ -447,9 +449,9 @@ function win(r) {
 }
 
 function fail(error) {
-    alert("An error has occurred: Code = " + error.code);
-    alert("upload error source " + error.source);
-    alert("upload error target " + error.target);
+    //alert("An error has occurred: Code = " + error.code);
+    //alert("upload error source " + error.source);
+    //alert("upload error target " + error.target);
 }
 
 
