@@ -188,6 +188,7 @@ function compruebaDbLocal() {
 
 				if(inicia==localStorage.length){
 					$('.cargando').fadeOut();
+					$('#compruebalocal').fadeIn();
 				}
 
             }, 1500 * inicia); // time
