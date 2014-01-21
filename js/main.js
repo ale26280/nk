@@ -95,13 +95,13 @@ $('#agrega').on('click', function () {
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
             img: img,
-            origen: sessionStorage.origenDatos
+            origen: localStorage.origenDatos
         }, function (data) {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, sessionStorage.origenDatos);
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos);
 
             } else {
                 if (img != 'no') {
@@ -114,7 +114,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, sessionStorage.origenDatos);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos);
 
             resetForm(img,origen);
 
@@ -268,7 +268,7 @@ function resetForm(img,origen) {
         document.body.scrollTop = 0;
         
         if (img != 'no') {
-                    $('#origneFoto').html(sessionStorage.origenDatos);
+                    $('#origneFoto').html(localStorage.origenDatos);
                     $('#idFoto').html(img.replace('//Nokia/',''));		 
                     $('#aviso').fadeIn();
                 }
@@ -592,11 +592,11 @@ function totalOrigen() {
 
 
     $.post(rutaTotalRegistros, {
-        origen: sessionStorage.origenDatos
+        origen: localStorage.origenDatos
     }, function (data) {
         $('#totalOrigen').html(data);
     }).fail(function () {
-        $('#nombreOrigen').html(sessionStorage.origenDatos);
+        $('#nombreOrigen').html(localStorage.origenDatos);
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
 
     })
@@ -612,7 +612,7 @@ if (localStorage.length > 0) {
 }else{
 	$('#compruebalocal').fadeOut();
 }
-    $('#totalLocal').html(localStorage.length);
+    $('#totalLocal').html(localStorage.length-1);
 
 }
 
@@ -648,15 +648,15 @@ $('#avisoClose').on('click',function(){
 
 
 function origenApp() {
-//alert(sessionStorage.origenDatos)
+//alert(localStorage.origenDatos)
   
   if ($('input[name="origen"]').val() == '') {
-  //if (typeof (sessionStorage.origenDatos) == "undefined") {
+  //if (typeof (localStorage.origenDatos) == "undefined") {
         alert('Debe ingresar un origen para usar la app.')
         return false;
     }
 
-sessionStorage.origenDatos = $('input[name="origen"]').val();
+localStorage.origenDatos = $('input[name="origen"]').val();
 
 
 
@@ -670,10 +670,10 @@ sessionStorage.origenDatos = $('input[name="origen"]').val();
 
 $(function () {
     //sessionStorage.removeItem('origenDatos');
-    alert(sessionStorage.origenDatos)
+    alert(localStorage.origenDatos)
 
  
-  if (typeof (sessionStorage.origenDatos) != "undefined") {
+  if (typeof (localStorage.origenDatos) != "undefined") {
         $('#origen').hide();
     }
 
