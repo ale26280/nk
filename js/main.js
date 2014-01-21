@@ -185,7 +185,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 
 
         } else { //fin local storage lenght
-            if (inicia == (localStorage.length - 1)) {
+            if (localStorage.length == 1)) {
                 $('.cargando').fadeOut();
                 $('#compruebalocal').fadeIn();
             }
