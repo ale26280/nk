@@ -2,7 +2,7 @@ var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
 var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
-var origen ;
+var origen;
 
 
 
@@ -97,13 +97,13 @@ $('#agrega').on('click', function () {
             modelo: $('#modelo').val(),
             img: img,
             origen: localStorage.origenDatos,
-            fecha : fecha
+            fecha: fecha
         }, function (data) {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos,fecha);
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
             } else {
                 if (img != 'no') {
@@ -112,13 +112,13 @@ $('#agrega').on('click', function () {
                 //compruebaDbLocal(); //comprueba si hay registros que cargar
             }
 
-           resetForm(img,origen);
+            resetForm(img, origen);
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos,fecha);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
-            resetForm(img,origen);
+            resetForm(img, origen);
 
         })
 
@@ -134,10 +134,10 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD,fecha) {
-	var d = new Date();
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
+    var d = new Date();
     var n = d.getTime();
-  localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD+ '|' + fecha);
+    localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha);
 }
 
 
@@ -147,98 +147,97 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 
 
 function compruebaDbLocal() {
-$.post(rutaTest, {
+    $.post(rutaTest, {
         conect: 1
     }, function (data) {
-    
-	$('#compruebalocal').fadeOut();
-    inicia = 0;
-    //alert(localStorage.length)
-    if (localStorage.length > 0) {
-    	$('.cargando').fadeIn();
-    	$('.cargando').html('<b>Cargando  ' + (localStorage.length-1) + '</b>');
-    	/*
+
+        $('#compruebalocal').fadeOut();
+        inicia = 0;
+        //alert(localStorage.length)
+        if (localStorage.length > 0) {
+            $('.cargando').fadeIn();
+            $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>');
+            /*
 item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
 */
 
-		//for (var i = 0; i < 1; i++){
-		for (var i = 0; i < localStorage.length; i++){
-		inicia++
-    //alert(localStorage.getItem(localStorage.key(i)));
-    todo = localStorage.getItem(localStorage.key(i));
-    var n = todo.indexOf("|");
-    if(n=='-1'){
-    }else{
-    p = todo.split('|');
-    //alert(p[0]);
-    cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11],p[12]);
-    localStorage.removeItem(localStorage.key(i));
-		return false;
-		}	
-			
-			
-			}	
-		
-		
-		//cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
-		//localStorage.removeItem(localStorage.key(0));
-	
+            //for (var i = 0; i < 1; i++){
+            for (var i = 0; i < localStorage.length; i++) {
+                inicia++
+                //alert(localStorage.getItem(localStorage.key(i)));
+                todo = localStorage.getItem(localStorage.key(i));
+                var n = todo.indexOf("|");
+                if (n == '-1') {} else {
+                    p = todo.split('|');
+                    //alert(p[0]);
+                    cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                    localStorage.removeItem(localStorage.key(i));
+                    return false;
+                }
 
-}else{//fin local storage lenght
-if(inicia==(localStorage.length-1)){
-					$('.cargando').fadeOut();
-					$('#compruebalocal').fadeIn();
-				}
+
+            }
+
+
+            //cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
+            //localStorage.removeItem(localStorage.key(0));
+
+
+        } else { //fin local storage lenght
+            if (inicia == (localStorage.length - 1)) {
+                $('.cargando').fadeOut();
+                $('#compruebalocal').fadeIn();
+            }
+        }
+
+    });
+
 }
 
-});
 
-}
-
-
-function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD,fecha){
-	
-	
-	$.post(rutaCarga, {
-                    nombre: nombre,
-                    apellido: apellido,
-                    dia: dia,
-                    mes: mes,
-                    ano: ano,
-                    telefono: telefono,
-                    dni: dni,
-                    correo:correo,
-                    operador: operador,
-                    modelo: modelo,
-                    img: imgD,
-                    origen: origenD,
-                    fecha:fecha
-                }, function (data) {
-                    //console.log(data);
-                    if (imgD != 'no') {
-                        uploadPhotoLocal(imgD);
-                        //localStorage.removeItem(key);
-						//alert('con img')
-                    	totalLocal();
-						totalOrigen();
-                    }else{
-                    	//alert('sin img');
-                    	//localStorage.removeItem(key);
-                    	totalLocal();
-						totalOrigen();
-						compruebaDbLocal()
-	                    
-                    }
-                    //alert(v[10])
-
-                 }).fail(function () {
-                    alert('Error al cargar');
-
-                });
+function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
 
 
-				
+    $.post(rutaCarga, {
+        nombre: nombre,
+        apellido: apellido,
+        dia: dia,
+        mes: mes,
+        ano: ano,
+        telefono: telefono,
+        dni: dni,
+        correo: correo,
+        operador: operador,
+        modelo: modelo,
+        img: imgD,
+        origen: origenD,
+        fecha: fecha
+    }, function (data) {
+        //console.log(data);
+        if (imgD != 'no') {
+            uploadPhotoLocal(imgD);
+            //localStorage.removeItem(key);
+            //alert('con img')
+            totalLocal();
+            totalOrigen();
+        } else {
+            //alert('sin img');
+            //localStorage.removeItem(key);
+            totalLocal();
+            totalOrigen();
+            compruebaDbLocal()
+
+        }
+        //alert(v[10])
+
+    }).fail(function () {
+        alert('Error al cargar');
+
+    });
+
+
+
 
 }
 
@@ -248,7 +247,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
 //////reset formulario y muestra aviso id /////////////////
 ///////////////////////////////////////////////////////////
 
-function resetForm(img,origen) {
+function resetForm(img, origen) {
 
     $("#nombre").val('');
     $("#apellido").val('');
@@ -269,14 +268,14 @@ function resetForm(img,origen) {
     $("#gracias").show().delay(800).fadeOut('slow', function () {
         window.scrollTo(0, 0);
         document.body.scrollTop = 0;
-        
+
         if (img != 'no') {
-                    $('#origneFoto').html(localStorage.origenDatos);
-                    $('#idFoto').html(img.replace('//Nokia/',''));		 
-                    $('#aviso').fadeIn();
-                }
-        
-        
+            $('#origneFoto').html(localStorage.origenDatos);
+            $('#idFoto').html(img.replace('//Nokia/', ''));
+            $('#aviso').fadeIn();
+        }
+
+
     });
 
 
@@ -548,9 +547,9 @@ function failLocal(error) {
 
 
 function limpaLocalStorage() {
-   
-   localStorage.clear();
- 
+
+    localStorage.clear();
+
     totalLocal();
 }
 
@@ -584,7 +583,7 @@ $('#borraDatos').on('click', function () {
 
 
 $('#compruebalocal').on('click', function () {
-	
+
     compruebaDbLocal();
 
 })
@@ -609,13 +608,13 @@ function totalOrigen() {
 
 
 function totalLocal() {
-if (localStorage.length > 0) {
-	$('#compruebalocal').fadeIn();
-	
-}else{
-	$('#compruebalocal').fadeOut();
-}
-    $('#totalLocal').html(localStorage.length-1);
+    if (localStorage.length > 0) {
+        $('#compruebalocal').fadeIn();
+
+    } else {
+        $('#compruebalocal').fadeOut();
+    }
+    $('#totalLocal').html(localStorage.length - 1);
 
 }
 
@@ -641,25 +640,25 @@ function estadoRed() {
 
 
 
-$('#avisoClose').on('click',function(){
-	
-	$('#aviso').fadeOut();
-	
+$('#avisoClose').on('click', function () {
+
+    $('#aviso').fadeOut();
+
 })
 
 
 
 
 function origenApp() {
-//alert(localStorage.origenDatos)
-  
-  if ($('input[name="origen"]').val() == '') {
-  //if (typeof (localStorage.origenDatos) == "undefined") {
+    //alert(localStorage.origenDatos)
+
+    if ($('input[name="origen"]').val() == '') {
+        //if (typeof (localStorage.origenDatos) == "undefined") {
         alert('Debe ingresar un origen para usar la app.')
         return false;
     }
 
-localStorage.origenDatos = $('input[name="origen"]').val();
+    localStorage.origenDatos = $('input[name="origen"]').val();
 
 
 
@@ -675,11 +674,10 @@ $(function () {
     //localStorage.removeItem('origenDatos');
     //alert(localStorage.origenDatos)
 
- 
-  if (typeof (localStorage.origenDatos) != "undefined") {
+
+    if (typeof (localStorage.origenDatos) != "undefined") {
         $('#origen').hide();
     }
-
 
 
 
@@ -689,14 +687,13 @@ $(function () {
 
 
 
-
 function fechaHora(tipo) {
 
 
     marcacion = new Date()
-	Hora = marcacion.getHours()
-	Minutos = marcacion.getMinutes()
-	Segundos = marcacion.getSeconds()
+    Hora = marcacion.getHours()
+    Minutos = marcacion.getMinutes()
+    Segundos = marcacion.getSeconds()
 
     if (Hora <= 9)
         Hora = "0" + Hora
