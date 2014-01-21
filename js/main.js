@@ -154,7 +154,7 @@ $.post(rutaTest, {
     //alert(localStorage.length)
     if (localStorage.length > 0) {
     	$('.cargando').fadeIn();
-    	$('.cargando').html('<b>Cargando ' + inicia + ' de ' + localStorage.length + '</b>');
+    	$('.cargando').html('<b>Cargando 1 de ' + (localStorage.length-1) + '</b>');
     	/*
 item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
@@ -669,8 +669,8 @@ localStorage.origenDatos = $('input[name="origen"]').val();
 
 
 $(function () {
-    //sessionStorage.removeItem('origenDatos');
-    alert(localStorage.origenDatos)
+    //localStorage.removeItem('origenDatos');
+    //alert(localStorage.origenDatos)
 
  
   if (typeof (localStorage.origenDatos) != "undefined") {
