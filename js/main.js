@@ -162,7 +162,8 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 
 		for (var i = 0; i < 2; i++){
     alert(localStorage.getItem(localStorage.key(i)));
-    item = localStorage.getItem(localStorage.key(i)).split('|');
+    todo = localStorage.getItem(localStorage.key(i));
+    item = todo.split('|');
     alert(item[0]);
 			}	
 		
