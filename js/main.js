@@ -153,12 +153,13 @@ function compruebaDbLocal() {
     }, function (data) {
 
         $('#compruebalocal').fadeOut();
-         $('.cargando').fadeOut();
+         
+         $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>').fadeIn();
         inicia = 0;
         //alert(localStorage.length)
-        if (localStorage.length > 0) {
-            $('.cargando').fadeIn();
-            $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>');
+        if ( (localStorage.length -1) > 0) {
+           
+            
             /*
 item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));

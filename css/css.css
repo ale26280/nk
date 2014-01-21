@@ -170,7 +170,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 		left: 0;
 		top: 0;
 		width: 100%;
-		height: 100%;
+		height: 130%;
 		z-index: 200000;
 		display: none;
 		
@@ -184,7 +184,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,img,small,sub,b,dl,dd,dt,ul,
 	height: 43px;
 	left: 50%;
 	top:50%;
-	margin-left: -22px;
+	margin-left: -50px;
 	margin-top: -22px;
 	padding: 0;
 	}
