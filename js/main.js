@@ -2,7 +2,7 @@ var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
 var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
-var origen = 'origen2';
+var origen ;
 
 
 
@@ -95,13 +95,13 @@ $('#agrega').on('click', function () {
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
             img: img,
-            origen: origen
+            origen: sessionStorage.origenDatos
         }, function (data) {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, sessionStorage.origenDatos);
 
             } else {
                 if (img != 'no') {
@@ -114,7 +114,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, origen);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, sessionStorage.origenDatos);
 
             resetForm(img,origen);
 
@@ -260,7 +260,7 @@ function resetForm(img,origen) {
         document.body.scrollTop = 0;
         
         if (img != 'no') {
-                    $('#origneFoto').html(origen);
+                    $('#origneFoto').html(sessionStorage.origenDatos);
                     $('#idFoto').html(img.replace('//Nokia/',''));		 
                     $('#aviso').fadeIn();
                 }
@@ -584,11 +584,11 @@ function totalOrigen() {
 
 
     $.post(rutaTotalRegistros, {
-        origen: origen
+        origen: sessionStorage.origenDatos
     }, function (data) {
         $('#totalOrigen').html(data);
     }).fail(function () {
-        $('#nombreOrigen').html(origen);
+        $('#nombreOrigen').html(sessionStorage.origenDatos);
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
 
     })
@@ -634,4 +634,41 @@ $('#avisoClose').on('click',function(){
 	
 	$('#aviso').fadeOut();
 	
+})
+
+
+
+
+function origenApp() {
+//alert(sessionStorage.origenDatos)
+  
+  if ($('input[name="origen"]').val() == '') {
+  //if (typeof (sessionStorage.origenDatos) == "undefined") {
+        alert('Debe ingresar un origen para usar la app.')
+        return false;
+    }
+
+sessionStorage.origenDatos = $('input[name="origen"]').val();
+
+
+
+    $('#origen').fadeOut();
+
+
+}
+
+
+$(function () {
+    //localStorage.removeItem('origen');
+    //alert(localStorage.origenDatos)
+
+ 
+  if (typeof (sessionStorage.origenDatos) != "undefined") {
+        $('#origen').hide();
+    }
+
+
+
+
+
 })
