@@ -661,8 +661,8 @@ sessionStorage.origenDatos = $('input[name="origen"]').val();
 
 
 $(function () {
-    sessionStorage.removeItem('origenDatos');
-    alert(sessionStorage.origenDatos)
+    //sessionStorage.removeItem('origenDatos');
+    //alert(sessionStorage.origenDatos)
 
  
   if (typeof (sessionStorage.origenDatos) != "undefined") {
