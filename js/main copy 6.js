@@ -82,7 +82,6 @@ $('#agrega').on('click', function () {
     } else {
 
         prendeCarga();
-        fecha = fechaHora(1);
 
         $.post(rutaCarga, {
             nombre: $('#nombre').val(),
@@ -96,14 +95,13 @@ $('#agrega').on('click', function () {
             operador: $('#operador').val(),
             modelo: $('#modelo').val(),
             img: img,
-            origen: localStorage.origenDatos,
-            fecha : fecha
+            origen: localStorage.origenDatos
         }, function (data) {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos,fecha);
+                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos);
 
             } else {
                 if (img != 'no') {
@@ -116,7 +114,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos,fecha);
+            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos);
 
             resetForm(img,origen);
 
@@ -134,10 +132,10 @@ $('#agrega').on('click', function () {
 ///////////////////////////////////////////////////////////
 
 
-function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD,fecha) {
+function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD) {
 	var d = new Date();
     var n = d.getTime();
-  localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD+ '|' + fecha);
+  localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD);
 }
 
 
@@ -172,7 +170,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
     }else{
     p = todo.split('|');
     //alert(p[0]);
-    cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11],p[12]);
+    cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
     localStorage.removeItem(localStorage.key(i));
 		return false;
 		}	
@@ -197,7 +195,7 @@ if(inicia==(localStorage.length-1)){
 }
 
 
-function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD,fecha){
+function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD){
 	
 	
 	$.post(rutaCarga, {
@@ -212,8 +210,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
                     operador: operador,
                     modelo: modelo,
                     img: imgD,
-                    origen: origenD,
-                    fecha:fecha
+                    origen: origenD
                 }, function (data) {
                     //console.log(data);
                     if (imgD != 'no') {
@@ -685,42 +682,3 @@ $(function () {
 
 
 })
-
-
-
-
-
-function fechaHora(tipo) {
-
-
-    marcacion = new Date()
-	Hora = marcacion.getHours()
-	Minutos = marcacion.getMinutes()
-	Segundos = marcacion.getSeconds()
-
-    if (Hora <= 9)
-        Hora = "0" + Hora
-
-    if (Minutos <= 9)
-        Minutos = "0" + Minutos
-
-    if (Segundos <= 9)
-        Segundos = "0" + Segundos
-
-
-
-    var Dia = new Array("Domingo", "Lunes", "Martes", "Mi&eacute;rcoles", "Jueves", "Viernes", "S&aacute;bado", "Domingo");
-    var Mes = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-    var Hoy = new Date();
-    var Anio = Hoy.getFullYear();
-    var Fecha = Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " , " + Mes[Hoy.getMonth()] + " , " + Anio + "  ";
-    //var Fecha =   Hoy.getDate() + " : " + Hoy.getMonth() + " : " + Anio + "  ";
-
-    if (!tipo) {
-        return Fecha + Hora + ":" + Minutos + ":" + Segundos
-    } else {
-        return Hoy.getFullYear() + '-' + (Hoy.getMonth() + 1) + '-' + Hoy.getDate() + ' ' + Hora + ":" + Minutos + ":" + Segundos
-    }
-
-
-}
