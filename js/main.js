@@ -160,11 +160,12 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
 */
 
-		for (var i = 0; i < 2; i++){
+		for (var i = 0; i < 1; i++){
     alert(localStorage.getItem(localStorage.key(i)));
     todo = localStorage.getItem(localStorage.key(i));
     p = todo.split('|');
     alert(p[0]);
+    localStorage.removeItem(localStorage.key(i));
 			}	
 		
 		
