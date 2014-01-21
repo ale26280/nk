@@ -187,7 +187,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 
 
         } else { //fin local storage lenght
-            if (localStorage.length == 1) {
+            if ((localStorage.length-1) == 0) {
                 $('.cargando').fadeOut();
                 $('#compruebalocal').fadeIn();
                 
@@ -611,11 +611,12 @@ function totalOrigen() {
 
 
 function totalLocal() {
-    if (localStorage.length > 0) {
+    if ((localStorage.length-1) > 0) {
         $('#compruebalocal').fadeIn();
 
     } else {
         $('#compruebalocal').fadeOut();
+         $('.cargando').fadeOut();
     }
     $('#totalLocal').html(localStorage.length - 1);
 
