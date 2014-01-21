@@ -147,11 +147,13 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 
 
 function compruebaDbLocal() {
+
     $.post(rutaTest, {
         conect: 1
     }, function (data) {
 
         $('#compruebalocal').fadeOut();
+         $('.cargando').fadeOut();
         inicia = 0;
         //alert(localStorage.length)
         if (localStorage.length > 0) {
@@ -188,6 +190,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
             if (localStorage.length == 1) {
                 $('.cargando').fadeOut();
                 $('#compruebalocal').fadeIn();
+                
             }
         }
 
