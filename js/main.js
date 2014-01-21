@@ -372,7 +372,7 @@ function capturePhoto() {
         destinationType: destinationType.FILE_URI,
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 440,
-        targetHeight: 275,
+        targetHeight: 248,
         saveToPhotoAlbum: true
     });
 }
