@@ -160,22 +160,14 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
 */
 
-		//for (var i = 0; i < 1; i++){
-		for (var i = 0; i < localStorage.length; i++){
+		for (var i = 0; i < 1; i++){
 		inicia++
     //alert(localStorage.getItem(localStorage.key(i)));
     todo = localStorage.getItem(localStorage.key(i));
-    var n = todo.indexOf("|");
-    if(n=='-1'){
-    }else{
     p = todo.split('|');
     //alert(p[0]);
     cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
     localStorage.removeItem(localStorage.key(i));
-		return false;
-		}	
-			
-			
 			}	
 		
 		
