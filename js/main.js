@@ -653,14 +653,16 @@ sessionStorage.origenDatos = $('input[name="origen"]').val();
 
 
     $('#origen').fadeOut();
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
 
 
 }
 
 
 $(function () {
-    //localStorage.removeItem('origen');
-    //alert(localStorage.origenDatos)
+    sessionStorage.removeItem('origenDatos');
+    alert(sessionStorage.origenDatos)
 
  
   if (typeof (sessionStorage.origenDatos) != "undefined") {
