@@ -154,7 +154,7 @@ $.post(rutaTest, {
     //alert(localStorage.length)
     if (localStorage.length > 0) {
     	$('.cargando').fadeIn();
-    	$('.cargando').html('<b>Cargando 1 de ' + (localStorage.length-1) + '</b>');
+    	$('.cargando').html('<b>Cargando  ' + (localStorage.length-1) + '</b>');
     	/*
 item = localStorage.getItem(localStorage.key(0)).split('|')
     	alert(localStorage.getItem(localStorage.key(0)));
@@ -184,7 +184,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 	
 
 }else{//fin local storage lenght
-if(inicia==localStorage.length){
+if(inicia==(localStorage.length-1)){
 					$('.cargando').fadeOut();
 					$('#compruebalocal').fadeIn();
 				}
