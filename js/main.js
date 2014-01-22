@@ -215,13 +215,13 @@ function obtieneLocales() {
 
 function compruebaDbLocal() {
 	alert(obtieneLocales()+' '+obtieneLocalesActualizados())
-    /*
+    
 if (obtieneLocales() == 0) {
         alert('Actualizado')
         $('.cargando').fadeOut()
         return false;
     }
-*/
+
 
     $.post(rutaTest, {
         conect: 1
@@ -249,9 +249,9 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
                 var n = todo.indexOf("|");
                 if (n == '-1') {} else {
                     p = todo.split('|');
-                    //alert(p[0]);
+                    alert(p[13]);
                     if (p[13]) {
-
+							alert('es '+p[13])
                     } else {
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                         agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
@@ -813,7 +813,7 @@ function totalLocal() {
 
     tTod = localStorage.length - 1;
 
-    $('#totalLocal').html(tTod);
+    $('#totalLocal').html(obtieneLocales());
 
 }
 
@@ -1004,7 +1004,7 @@ function obtieneLocalesActualizados() {
 
 function compruebaDbLocalActualizados(v) {
     totalSer = v;
-    totalLoc = obtieneLocalesActualizados()
+    totalLoc = obtieneLocalesActualizados();
     alert( v +' '+ totalLoc )
 
     //return false;
