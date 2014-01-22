@@ -84,7 +84,7 @@ $('#agrega').on('click', function () {
         prendeCarga();
         fecha = fechaHora(1);
         //lo agrega de todos modos
-        agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+        
 
         $.post(rutaCarga, {
             nombre: $('#nombre').val(),
@@ -124,7 +124,8 @@ $('#agrega').on('click', function () {
 
         })
 
-
+		
+		agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
 
     }
