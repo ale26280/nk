@@ -561,14 +561,17 @@ function limpaLocalStorage() {
                
                 //alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
-                var n = todo.indexOf("|");
+                alert(todo)
+               /*
+ var n = todo.indexOf("|");
                 if (n == '-1') {} else {
-                   	alert(todo)
+                   	
                     localStorage.removeItem(localStorage.key(i));
                     totalLocal();
                     
                    
                 }
+*/
                
 
 
