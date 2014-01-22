@@ -567,9 +567,9 @@ function limpaLocalStorage() {
                 if (n == '-1') {
 	                alert('or '+todo)
                 } else {
-                   	
+                   	alert(todo)
                     localStorage.removeItem(localStorage.key(i));
-                    //alert(todo)
+                    
                     totalLocal();
                     
                    
