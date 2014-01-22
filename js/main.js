@@ -563,32 +563,8 @@ function limpaLocalStorage() {
 		 var origenTem = localStorage.origenDatos
 		 localStorage.clear()
 		 localStorage.origenDatos = origenTem;
-		 
-		/*
-  for (var i = 0; i < localStorage.length; i++) {
-               
-                //alert(localStorage.getItem(localStorage.key(i)));
-                todo = localStorage.getItem(localStorage.key(i));
-                
-               
-				var n = todo.indexOf("|");
-                if (n == '-1') {
-	                alert('or '+todo)
-                } else {
-                   	alert(todo)
-                    localStorage.removeItem(localStorage.key(i));
-                    
-                    totalLocal();
-                    
-                   
-                }
-
-               
-
-
-            }
-*/
-			alert('Registros eliminados.'+localStorage.origenDatos)
+		 totalLocal();
+		 alert('Registros eliminados.'+localStorage.origenDatos)
 			
 			
 		
@@ -623,7 +599,7 @@ $('#borraDatos').on('click', function () {
 //alert('')
 
 if(localStorage.length==1){
-			 alert('No hay registros que eliminar'+localStorage.length)
+			 alert('No hay registros que eliminar')
 			 return false;
 		 }
 		
