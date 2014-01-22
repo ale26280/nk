@@ -708,7 +708,7 @@ function totalLocal() {
     
     tTod = localStorage.length - 1;
     
-    $('#totalLocal').html( tTod / 2 );
+    $('#totalLocal').html( tTod  );
 
 }
 
@@ -820,5 +820,167 @@ function fechaHora(tipo) {
 
 
 $('#compruebaServidor').on('click',function () {
-    alert('comprueba locales actualizados contra servidor')
+    //alert('comprueba locales actualizados contra servidor')
+    compruebaDbLocalActualizados();
 })
+
+
+
+
+///////////////////////////////////////////////////////////
+///////////////// ingresa los locales //////////////////////
+///////////////////////////////////////////////////////////
+
+
+function compruebaDbLocalActualizados() {
+var localesActualizados = 0;
+
+ for (var i = 0; i < localStorage.length; i++) {
+                
+                //alert(localStorage.getItem(localStorage.key(i)));
+                todo = localStorage.getItem(localStorage.key(i));
+                var n = todo.indexOf("|");
+                if (n == '-1') {} else {
+                    p = todo.split('|');
+                    //alert(p[0]);
+                    if (p[13]) {
+                    localesActualizados++
+						
+                    }
+                }
+
+
+            }
+            
+            
+var totalServidorOrigen;
+
+ $.post(rutaTotalRegistros, {
+        origen: localStorage.origenDatos
+    }, function (data) {
+    totalServidorOrigen = data;
+        
+        });
+
+if(data==localesActualizados){
+	        alert('actualizado');
+        }else{
+
+    $.post(rutaTest, {
+        conect: 1
+    }, function (data) {
+
+    
+        inicia = 0;
+        //alert(localStorage.length)
+        if ((localStorage.length - 1) > 0) {
+
+            for (var i = 0; i < localStorage.length; i++) {
+                inicia++
+                //alert(localStorage.getItem(localStorage.key(i)));
+                todo = localStorage.getItem(localStorage.key(i));
+                var n = todo.indexOf("|");
+                if (n == '-1') {} else {
+                    p = todo.split('|');
+                    //alert(p[0]);
+                    if (p[13]) {
+						cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                    }
+                    return false;
+                }
+
+
+            }
+
+
+
+        } 
+        })
+
+    }
+
+
+}
+
+
+
+function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
+
+
+    $.post(rutaCarga, {
+        nombre: nombre,
+        apellido: apellido,
+        dia: dia,
+        mes: mes,
+        ano: ano,
+        telefono: telefono,
+        dni: dni,
+        correo: correo,
+        operador: operador,
+        modelo: modelo,
+        img: imgD,
+        origen: origenD,
+        fecha: fecha
+    }, function (data) {
+        //console.log(data);
+        if (imgD != 'no') {
+            uploadPhotoLocalActualizado(imgD);
+            //localStorage.removeItem(key);
+            //alert('con img')
+            totalLocal();
+            totalOrigen();
+        } else {
+            //alert('sin img');
+            //localStorage.removeItem(key);
+            totalLocal();
+            totalOrigen();
+            compruebaDbLocalActualizados()
+
+        }
+        //alert(v[10])
+
+    }).fail(function () {
+        alert('Error al cargar');
+
+    });
+
+
+
+
+}
+
+
+
+
+function uploadPhotoLocalActualizado(imageURI) {
+    //alert(imageURI)
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    //options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+    options.fileName = imageURI.replace(" ", "");
+    options.mimeType = "image/jpeg";
+
+    var params = {};
+    params.value1 = "test";
+    params.value2 = "param";
+
+    options.params = params;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURI, encodeURI(rutaUpload), winLocal, failLocal, options);
+}
+
+function winLocal(r) {
+    //alert('subida')
+    //oculta_carga();
+    //console.log("Code = " + r.responseCode);
+    //console.log("Response = " + r.response);
+    //console.log("Sent = " + r.bytesSent);
+    compruebaDbLocalActualizados();
+}
+
+function failLocal(error) {
+    //alert("An error has occurred: Code = " + error.code);
+    //alert("upload error source " + error.source);
+    //alert("upload error target " + error.target);
+}
