@@ -568,8 +568,8 @@ function limpaLocalStorage() {
 	                alert('or '+todo)
                 } else {
                    	
-                    //localStorage.removeItem(localStorage.key(i));
-                    alert(todo)
+                    localStorage.removeItem(localStorage.key(i));
+                    //alert(todo)
                     totalLocal();
                     
                    
