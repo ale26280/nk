@@ -557,6 +557,7 @@ function limpaLocalStorage() {
 		 //localStorage.clear();
 		 if(localStorage.length==1){
 			 alert('No hay registros que eliminar'+localStorage.length)
+			 return false;
 		 }
 		 
 		  for (var i = 0; i < localStorage.length; i++) {
@@ -617,6 +618,7 @@ $('#borraDatos').on('click', function () {
 
 if(localStorage.length==1){
 			 alert('No hay registros que eliminar'+localStorage.length)
+			 return false;
 		 }
 		
 navigator.notification.prompt(
