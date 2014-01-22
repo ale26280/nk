@@ -597,7 +597,30 @@ $('#configClose').on('click', function () {
 
 
 $('#borraDatos').on('click', function () {
-    limpaLocalStorage()
+//    limpaLocalStorage();
+alert('')
+		
+		var permiso = prompt("Ingrese password","");
+
+if (permiso!=null){
+  if(permiso=='exidor'){
+	  console.log('borra')
+	  var r = confirm("Los registros no se puden recuperar. Desea continuar?");
+	  if (r == true){
+		 localStorage.clear();
+		 //alert('Borra.')
+		  }else{
+			  alert('Proceso cancelado.')
+		  }
+			  
+	}else{
+	  alert('Password incorrecto.')
+	  }
+}
+    totalLocal();
+
+
+
 
 })
 
