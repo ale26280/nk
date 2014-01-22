@@ -553,9 +553,23 @@ function failLocal(error) {
 
 
 function limpaLocalStorage() {
+var permiso = prompt("Ingrese password","");
 
-    localStorage.clear();
-
+if (permiso!=null){
+  if(permiso=='exidor'){
+	  console.log('borra')
+	  var r = confirm("Los registros no se puden recuperar. Desea continuar?");
+	  if (r == true){
+		 localStorage.clear();
+		 //alert('Borra.')
+		  }else{
+			  alert('Proceso cancelado.')
+		  }
+			  
+	}else{
+	  alert('Password incorrecto.')
+	  }
+}
     totalLocal();
 }
 
