@@ -594,6 +594,7 @@ $('.configOpen').on('click', function () {
     totalOrigen();
     totalLocal();
     estadoRed();
+    $('.cargando').fadeOut();
 
 })
 
@@ -875,7 +876,7 @@ function obtieneLocalesActualizados(v){
 function compruebaDbLocalActualizados(v) {
 totalSer = v;
 totalLoc = obtieneLocalesActualizados()
-alert( v +' '+ totalLoc )
+//alert( v +' '+ totalLoc )
 
 //return false;
 
