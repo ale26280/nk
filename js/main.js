@@ -705,7 +705,10 @@ function totalLocal() {
         $('#compruebalocal').fadeOut();
         $('.cargando').fadeOut();
     }
-    $('#totalLocal').html( ( (localStorage.length - 1) / 2) + ' ' + localStorage.length - 1);
+    
+    tTod = localStorage.length - 1;
+    
+    $('#totalLocal').html( tTod / 2 );
 
 }
 
@@ -816,6 +819,6 @@ function fechaHora(tipo) {
 
 
 
-$('#compruebaServidor').on(function () {
+$('#compruebaServidor').on('click',function () {
     alert('comprueba locales actualizados contra servidor')
 })
