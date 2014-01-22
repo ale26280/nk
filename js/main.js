@@ -556,11 +556,16 @@ function limpaLocalStorage() {
 
 		 //localStorage.clear();
 		 if(localStorage.length==1){
-			 alert('No hay registros que eliminar'+localStorage.length)
+			 alert('No hay registros que eliminar')
 			 return false;
 		 }
 		 
-		  for (var i = 0; i < localStorage.length; i++) {
+		 var origenTem = localStorage.origenDatos
+		 localStorage.clear()
+		 localStorage.origenDatos = origenTem;
+		 
+		/*
+  for (var i = 0; i < localStorage.length; i++) {
                
                 //alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
@@ -582,7 +587,8 @@ function limpaLocalStorage() {
 
 
             }
-			alert('Registros eliminados.')
+*/
+			alert('Registros eliminados.'+localStorage.origenDatos)
 			
 			
 		
