@@ -951,7 +951,7 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
-            compruebaDbLocalActualizados()
+            obtieneTotal()
 
         }
         //alert(v[10])
@@ -993,7 +993,7 @@ function winLocal(r) {
     //console.log("Code = " + r.responseCode);
     //console.log("Response = " + r.response);
     //console.log("Sent = " + r.bytesSent);
-    compruebaDbLocalActualizados();
+    obtieneTotal();
 }
 
 function failLocal(error) {
