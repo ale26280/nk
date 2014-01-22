@@ -852,7 +852,7 @@ function obtieneLocalesActualizados(v){
 
  for (var i = 0; i < localStorage.length; i++) {
                 
-                //alert(localStorage.getItem(localStorage.key(i)));
+                alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
                 var n = todo.indexOf("|");
                 if (n == '-1') {} else {
