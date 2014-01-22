@@ -828,7 +828,7 @@ $('#compruebaServidor').on('click',function () {
 
 
 ///////////////////////////////////////////////////////////
-///////////////// ingresa los locales //////////////////////
+////// ingresa los locales actualizados //////////////////////
 ///////////////////////////////////////////////////////////
 
 function obtieneTotal(){
@@ -838,10 +838,10 @@ function obtieneTotal(){
         origen: localStorage.origenDatos
     }, function (data) {
     totalServidorOrigen = data;
-        
+        return totalServidorOrigen;
         });
 		
-		return totalServidorOrigen;
+		
 }
 
 function obtieneLocalesActualizados(){
