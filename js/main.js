@@ -873,12 +873,13 @@ function obtieneLocalesActualizados(v){
 
 
 function compruebaDbLocalActualizados(v) {
-
+totalSer = v;
+totalLoc = obtieneLocalesActualizados()
 alert( v +' '+ obtieneLocalesActualizados() )
 
-return false;
+//return false;
 
-if(data==localesActualizados){
+if(totalSer==totalLoc){
 	        alert('actualizado');
         }else{
 
