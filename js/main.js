@@ -563,7 +563,7 @@ function limpaLocalStorage() {
                 todo = localStorage.getItem(localStorage.key(i));
                 var n = todo.indexOf("|");
                 if (n == '-1') {} else {
-                   
+                   	alert(todo)
                     localStorage.removeItem(localStorage.key(i));
                     totalLocal();
                     
