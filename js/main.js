@@ -140,8 +140,8 @@ $('#agrega').on('click', function () {
 
 
 function chechActualiza(val){
-	
-	alert( localStorage.getItem(val) )
+	alert(val)
+	alert( localStorage.getItem(''+val+'') )
 	
 }
 
