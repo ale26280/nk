@@ -555,7 +555,9 @@ function failLocal(error) {
 function limpaLocalStorage() {
 
 		 //localStorage.clear();
-		 
+		 if(localStorage.length==1){
+			 alert('No hay registros que eliminar'+localStorage.length)
+		 }
 		 
 		  for (var i = 0; i < localStorage.length; i++) {
                
@@ -620,7 +622,7 @@ navigator.notification.prompt(
             ['Aceptar','Cancelar'],             // buttonLabels
             ''                 // defaultText
         );
-    totalLocal();
+    //totalLocal();
 
 
 
