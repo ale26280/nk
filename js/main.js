@@ -848,7 +848,7 @@ function obtieneTotal(){
 
 
 function obtieneLocalesActualizados(v){
-	var localesActualizados = 0;
+	var t = 0;
 
  for (var i = 0; i < localStorage.length; i++) {
                 
@@ -859,7 +859,7 @@ function obtieneLocalesActualizados(v){
                     p = todo.split('|');
                     //alert(p[0]);
                     if (p[13]) {
-                    localesActualizados++
+                    t++
 						
                     }
                 }
@@ -867,7 +867,7 @@ function obtieneLocalesActualizados(v){
 
             }
             
-            return localesActualizados;
+            return t;
 
 }
 
@@ -875,7 +875,7 @@ function obtieneLocalesActualizados(v){
 function compruebaDbLocalActualizados(v) {
 totalSer = v;
 totalLoc = obtieneLocalesActualizados()
-alert( v +' '+ obtieneLocalesActualizados() )
+alert( v +' '+ totalLoc )
 
 //return false;
 
