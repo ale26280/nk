@@ -182,7 +182,7 @@ function obtieneLocales() {
 
 
 function compruebaDbLocal() {
-	
+	alert(obtieneLocales()+' '+obtieneLocalesActualizados())
     if (obtieneLocales() == 0) {
         alert('Actualizado')
         $('.cargando').fadeOut()
