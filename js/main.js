@@ -83,6 +83,8 @@ $('#agrega').on('click', function () {
 
         prendeCarga();
         fecha = fechaHora(1);
+        //lo agrega de todos modos
+        agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
         $.post(rutaCarga, {
             nombre: $('#nombre').val(),
@@ -103,7 +105,7 @@ $('#agrega').on('click', function () {
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
 
-                agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+               // agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
             } else {
                 if (img != 'no') {
@@ -116,7 +118,7 @@ $('#agrega').on('click', function () {
 
         }).error(function () {
 
-            agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+            //agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
             resetForm(img, origen);
 
@@ -175,7 +177,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
                     p = todo.split('|');
                     //alert(p[0]);
                     cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
-                    localStorage.removeItem(localStorage.key(i));
+                    //localStorage.removeItem(localStorage.key(i));
                     return false;
                 }
 
@@ -595,14 +597,19 @@ $('#compruebalocal').on('click', function () {
 
 function totalOrigen() {
 
-
+	$('#nombreOrigen').html(localStorage.origenDatos);
 
     $.post(rutaTotalRegistros, {
         origen: localStorage.origenDatos
     }, function (data) {
-        $('#totalOrigen').html(data);
+    	if(data==localStorage.length-1){
+        $('#totalOrigen').html('Actualizado');
+        }else{
+	     $('#totalOrigen').html('No Actualizado');   
+        }
+    
     }).fail(function () {
-        $('#nombreOrigen').html(localStorage.origenDatos);
+        
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
 
     })
