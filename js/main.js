@@ -598,31 +598,59 @@ $('#configClose').on('click', function () {
 
 $('#borraDatos').on('click', function () {
 //    limpaLocalStorage();
-alert('')
+//alert('')
 		
-		var permiso = prompt("Ingrese password","");
-
-if (permiso!=null){
-  if(permiso=='exidor'){
-	  console.log('borra')
-	  var r = confirm("Los registros no se puden recuperar. Desea continuar?");
-	  if (r == true){
-		 localStorage.clear();
-		 //alert('Borra.')
-		  }else{
-			  alert('Proceso cancelado.')
-		  }
-			  
-	}else{
-	  alert('Password incorrecto.')
-	  }
-}
+navigator.notification.prompt(
+            "Ingrese password",  // message
+            onPrompt,                  // callback to invoke
+            'Datos',            // title
+            ['Aceptar','Cancelar'],             // buttonLabels
+            ''                 // defaultText
+        );
     totalLocal();
 
 
 
 
 })
+
+
+
+
+
+function onPrompt(results) {
+    //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+    
+    if(results.input1=='exidor'){
+    
+    		
+    navigator.notification.confirm(
+        'Los registros no se puden recuperar. Desea continuar?', // message
+         onConfirm,            // callback to invoke with index of button pressed
+        'Confirma',           // title
+        ['Cancelar','Continuar']         // buttonLabels
+    );
+
+    
+    
+    
+    }else{
+	  alert('Password incorrecto.')
+    }
+    
+}   
+
+
+function onConfirm(buttonIndex) {
+    alert('You selected button ' + buttonIndex);
+} 
+
+
+
+
+
+
+
 
 
 $('#compruebalocal').on('click', function () {
