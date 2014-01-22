@@ -565,15 +565,17 @@ function limpaLocalStorage() {
                 if (n == '-1') {} else {
                    
                     localStorage.removeItem(localStorage.key(i));
+                    totalLocal();
+                    
                    
                 }
                
 
 
             }
-			
 			alert('Registros eliminados.')
-			totalLocal();
+			
+			
 		
 		 
 }
