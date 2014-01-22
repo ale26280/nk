@@ -838,10 +838,14 @@ function obtieneTotal(){
         origen: localStorage.origenDatos
     }, function (data) {
     totalServidorOrigen = data;
-        return totalServidorOrigen;
+        imprime(totalServidorOrigen)
         });
 		
 		
+}
+
+function imprime(v){
+	return v;
 }
 
 function obtieneLocalesActualizados(){
