@@ -831,9 +831,21 @@ $('#compruebaServidor').on('click',function () {
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
 
+function obtieneTotal(){
+	var totalServidorOrigen;
 
-function compruebaDbLocalActualizados() {
-var localesActualizados = 0;
+ $.post(rutaTotalRegistros, {
+        origen: localStorage.origenDatos
+    }, function (data) {
+    totalServidorOrigen = data;
+        
+        });
+		
+		return totalServidorOrigen;
+}
+
+function obtieneLocalesActualizados(){
+	var localesActualizados = 0;
 
  for (var i = 0; i < localStorage.length; i++) {
                 
@@ -852,15 +864,16 @@ var localesActualizados = 0;
 
             }
             
-            
-var totalServidorOrigen;
+            return localesActualizados;
 
- $.post(rutaTotalRegistros, {
-        origen: localStorage.origenDatos
-    }, function (data) {
-    totalServidorOrigen = data;
-        
-        });
+}
+
+
+function compruebaDbLocalActualizados() {
+
+alert( obtieneTotal() +' '+ obtieneLocalesActualizados() )
+
+return false;
 
 if(data==localesActualizados){
 	        alert('actualizado');
