@@ -146,7 +146,7 @@ $('#agrega').on('click', function () {
 
 function chechActualiza(val){
 	alert(val)
-	alert( localStorage.getItem(''+val+'') )
+	alert( localStorage.getItem('' + val + '') )
 	
 }
 
@@ -161,7 +161,7 @@ function chechActualiza(val){
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
     var d = new Date();
     var n = d.getTime();
-    localStorage.setItem('' + n + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha);
+    localStorage.setItem('' + fecha + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha);
 }
 
 
