@@ -821,7 +821,8 @@ function fechaHora(tipo) {
 
 $('#compruebaServidor').on('click',function () {
     //alert('comprueba locales actualizados contra servidor')
-    compruebaDbLocalActualizados();
+    //compruebaDbLocalActualizados();
+    obtieneTotal();
 })
 
 
@@ -838,17 +839,15 @@ function obtieneTotal(){
         origen: localStorage.origenDatos
     }, function (data) {
     totalServidorOrigen = data;
-        imprime(totalServidorOrigen)
+        compruebaDbLocalActualizados(totalServidorOrigen)
         });
 		
 		
 }
 
-function imprime(v){
-	return v;
-}
 
-function obtieneLocalesActualizados(){
+
+function obtieneLocalesActualizados(v){
 	var localesActualizados = 0;
 
  for (var i = 0; i < localStorage.length; i++) {
@@ -873,9 +872,9 @@ function obtieneLocalesActualizados(){
 }
 
 
-function compruebaDbLocalActualizados() {
+function compruebaDbLocalActualizados(v) {
 
-alert( obtieneTotal() +' '+ obtieneLocalesActualizados() )
+alert( v +' '+ obtieneLocalesActualizados() )
 
 return false;
 
