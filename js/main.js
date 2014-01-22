@@ -114,9 +114,9 @@ $('#agrega').on('click', function () {
                 
                 
                 //actualiza registro a actualizado
-				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+				//agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 				
-				//chechActualiza(fecha)
+				chechActualiza(fecha)
 
                 
                 
@@ -931,7 +931,7 @@ function obtieneLocalesActualizados(v) {
 function compruebaDbLocalActualizados(v) {
     totalSer = v;
     totalLoc = obtieneLocalesActualizados()
-    //alert( v +' '+ totalLoc )
+    alert( v +' '+ totalLoc )
 
     //return false;
 
