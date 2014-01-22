@@ -183,7 +183,10 @@ function obtieneLocales(){
 
 function compruebaDbLocal() {
 
-	alert(obtieneLocales())
+	if(obtieneLocales()==0){
+		alert('Actualizado')
+		return false;
+	}
 
     $.post(rutaTest, {
         conect: 1
