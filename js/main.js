@@ -153,29 +153,29 @@ function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, cor
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
 
-function obtieneLocales(){
-	var t = 0;
+function obtieneLocales() {
+    var t = 0;
 
- for (var i = 0; i < localStorage.length; i++) {
-                
-                //alert(localStorage.getItem(localStorage.key(i)));
-                todo = localStorage.getItem(localStorage.key(i));
-                var n = todo.indexOf("|");
-                if (n == '-1') {} else {
-                    p = todo.split('|');
-                    //alert(p[0]);
-                    if (p[13]) {
-                    
-						
-                    }else{
-	                   t++ 
-                    }
-                }
+    for (var i = 0; i < localStorage.length; i++) {
+
+        //alert(localStorage.getItem(localStorage.key(i)));
+        todo = localStorage.getItem(localStorage.key(i));
+        var n = todo.indexOf("|");
+        if (n == '-1') {} else {
+            p = todo.split('|');
+            //alert(p[0]);
+            if (p[13]) {
 
 
+            } else {
+                t++
             }
-            
-            return t;
+        }
+
+
+    }
+
+    return t;
 
 }
 
@@ -183,10 +183,10 @@ function obtieneLocales(){
 
 function compruebaDbLocal() {
 
-	if(obtieneLocales()==0){
-		alert('Actualizado')
-		return false;
-	}
+    if (obtieneLocales() == 0) {
+        alert('Actualizado')
+        return false;
+    }
 
     $.post(rutaTest, {
         conect: 1
@@ -194,8 +194,8 @@ function compruebaDbLocal() {
 
         $('#compruebalocal').fadeOut();
 
-       // $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>').fadeIn();
-        $('.cargando').html('<b>Cargando '+ '</b>').fadeIn();
+        // $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>').fadeIn();
+        $('.cargando').html('<b>Cargando ' + '</b>').fadeIn();
         inicia = 0;
         //alert(localStorage.length)
         if ((localStorage.length - 1) > 0) {
@@ -234,7 +234,7 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 
 
         } else { //fin local storage lenght
-            if ((localStorage.length - 1)/2 <= 0) {
+            if ((localStorage.length - 1) / 2 <= 0) {
                 $('.cargando').fadeOut();
                 $('#compruebalocal').fadeIn();
 
@@ -738,10 +738,10 @@ function totalLocal() {
         $('#compruebalocal').fadeOut();
         $('.cargando').fadeOut();
     }
-    
+
     tTod = localStorage.length - 1;
-    
-    $('#totalLocal').html( tTod  );
+
+    $('#totalLocal').html(tTod);
 
 }
 
@@ -852,7 +852,7 @@ function fechaHora(tipo) {
 
 
 
-$('#compruebaServidor').on('click',function () {
+$('#compruebaServidor').on('click', function () {
     //alert('comprueba locales actualizados contra servidor')
     //compruebaDbLocalActualizados();
     obtieneTotal();
@@ -865,86 +865,86 @@ $('#compruebaServidor').on('click',function () {
 ////// ingresa los locales actualizados //////////////////////
 ///////////////////////////////////////////////////////////
 
-function obtieneTotal(){
-	var totalServidorOrigen;
+function obtieneTotal() {
+    var totalServidorOrigen;
 
- $.post(rutaTotalRegistros, {
+    $.post(rutaTotalRegistros, {
         origen: localStorage.origenDatos
     }, function (data) {
-    totalServidorOrigen = data;
+        totalServidorOrigen = data;
         compruebaDbLocalActualizados(totalServidorOrigen)
-        });
-		
-		
+    });
+
+
 }
 
 
 
-function obtieneLocalesActualizados(v){
-	var t = 0;
+function obtieneLocalesActualizados(v) {
+    var t = 0;
 
- for (var i = 0; i < localStorage.length; i++) {
-                
-                //alert(localStorage.getItem(localStorage.key(i)));
-                todo = localStorage.getItem(localStorage.key(i));
-                var n = todo.indexOf("|");
-                if (n == '-1') {} else {
-                    p = todo.split('|');
-                    //alert(p[0]);
-                    if (p[13]) {
-                    t++
-						
-                    }
-                }
+    for (var i = 0; i < localStorage.length; i++) {
 
+        //alert(localStorage.getItem(localStorage.key(i)));
+        todo = localStorage.getItem(localStorage.key(i));
+        var n = todo.indexOf("|");
+        if (n == '-1') {} else {
+            p = todo.split('|');
+            //alert(p[0]);
+            if (p[13]) {
+                t++
 
             }
-            
-            return t;
+        }
+
+
+    }
+
+    return t;
 
 }
 
 
 function compruebaDbLocalActualizados(v) {
-totalSer = v;
-totalLoc = obtieneLocalesActualizados()
-//alert( v +' '+ totalLoc )
+    totalSer = v;
+    totalLoc = obtieneLocalesActualizados()
+    //alert( v +' '+ totalLoc )
 
-//return false;
+    //return false;
 
-if(totalSer==totalLoc){
-	        alert('actualizado');
-        }else{
+    if (totalSer == totalLoc) {
+        alert('actualizado');
+    } else {
 
-    $.post(rutaTest, {
-        conect: 1
-    }, function (data) {
+        $.post(rutaTest, {
+            conect: 1
+        }, function (data) {
 
-    
-        inicia = 0;
-        //alert(localStorage.length)
-        if ((localStorage.length - 1) > 0) {
 
-            for (var i = 0; i < localStorage.length; i++) {
-                inicia++
-                //alert(localStorage.getItem(localStorage.key(i)));
-                todo = localStorage.getItem(localStorage.key(i));
-                var n = todo.indexOf("|");
-                if (n == '-1') {} else {
-                    p = todo.split('|');
-                    //alert(p[0]);
-                    if (p[13]) {
-						cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+            inicia = 0;
+            //alert(localStorage.length)
+            if ((localStorage.length - 1) > 0) {
+
+                for (var i = 0; i < localStorage.length; i++) {
+                    inicia++
+                    //alert(localStorage.getItem(localStorage.key(i)));
+                    todo = localStorage.getItem(localStorage.key(i));
+                    var n = todo.indexOf("|");
+                    if (n == '-1') {} else {
+                        p = todo.split('|');
+                        //alert(p[0]);
+                        if (p[13]) {
+                            cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                        }
+                        return false;
                     }
-                    return false;
+
+
                 }
 
 
+
             }
-
-
-
-        } 
         })
 
     }
