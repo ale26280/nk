@@ -558,7 +558,7 @@ function limpaLocalStorage() {
 		 
 		 
 		  for (var i = 0; i < localStorage.length; i++) {
-                inicia++
+               
                 //alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
                 var n = todo.indexOf("|");
@@ -567,14 +567,12 @@ function limpaLocalStorage() {
                     localStorage.removeItem(localStorage.key(i));
                    
                 }
-                
-                if(localStorage.length==1){
-	                 alert('Registros eliminados.')
-                }
+               
 
 
             }
-		 
+			
+			alert('Registros eliminados.')
 			totalLocal();
 		
 		 
