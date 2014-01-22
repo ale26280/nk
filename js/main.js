@@ -114,7 +114,7 @@ $('#agrega').on('click', function () {
                 
                 
                 //actualiza registro a actualizado
-				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+				//agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 				
 				//chechActualiza(fecha)
 
