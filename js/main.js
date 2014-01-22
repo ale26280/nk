@@ -153,8 +153,37 @@ function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, cor
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
 
+function obtieneLocales(){
+	var t = 0;
+
+ for (var i = 0; i < localStorage.length; i++) {
+                
+                //alert(localStorage.getItem(localStorage.key(i)));
+                todo = localStorage.getItem(localStorage.key(i));
+                var n = todo.indexOf("|");
+                if (n == '-1') {} else {
+                    p = todo.split('|');
+                    //alert(p[0]);
+                    if (p[13]) {
+                    
+						
+                    }else{
+	                   t++ 
+                    }
+                }
+
+
+            }
+            
+            return t;
+
+}
+
+
 
 function compruebaDbLocal() {
+
+	alert(obtieneLocales())
 
     $.post(rutaTest, {
         conect: 1
