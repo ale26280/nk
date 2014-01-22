@@ -104,7 +104,11 @@ $('#agrega').on('click', function () {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
-				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+				//actualiza registro a actualizado
+				//agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+				
+				chechActualiza(fecha)
+				
                 // agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
             } else {
@@ -130,6 +134,19 @@ $('#agrega').on('click', function () {
     }
 
 })
+
+
+
+
+
+function chechActualiza(val){
+	
+	alert( localStorage.getItem(val) )
+	
+}
+
+
+
 
 ///////////////////////////////////////////////////////////
 ///////////////// ingresa //////////////////////////////////
@@ -856,7 +873,7 @@ function fechaHora(tipo) {
 $('#compruebaServidor').on('click', function () {
     //alert('comprueba locales actualizados contra servidor')
     //compruebaDbLocalActualizados();
-    obtieneTotal();
+    obtieneTotalS();
 })
 
 
@@ -866,7 +883,7 @@ $('#compruebaServidor').on('click', function () {
 ////// ingresa los locales actualizados //////////////////////
 ///////////////////////////////////////////////////////////
 
-function obtieneTotal() {
+function obtieneTotalS() {
     var totalServidorOrigen;
 
     $.post(rutaTotalRegistros, {
@@ -985,7 +1002,7 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
-            obtieneTotal()
+            obtieneTotalS()
 
         }
         //alert(v[10])
@@ -1027,7 +1044,7 @@ function winLocal(r) {
     //console.log("Code = " + r.responseCode);
     //console.log("Response = " + r.response);
     //console.log("Sent = " + r.bytesSent);
-    obtieneTotal();
+    obtieneTotalS();
 }
 
 function failLocal(error) {
