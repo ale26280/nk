@@ -104,7 +104,7 @@ $('#agrega').on('click', function () {
             //console.log(data);
             // 1 si es correcto limpia formulario si devuelve error carga en local storage
             if (data == 2) {
-
+				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
                 // agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 
             } else {
@@ -182,7 +182,7 @@ function obtieneLocales() {
 
 
 function compruebaDbLocal() {
-
+	
     if (obtieneLocales() == 0) {
         alert('Actualizado')
         return false;
