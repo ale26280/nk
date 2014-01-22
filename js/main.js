@@ -205,11 +205,13 @@ function obtieneLocales() {
 
 function compruebaDbLocal() {
 	alert(obtieneLocales()+' '+obtieneLocalesActualizados())
-    if (obtieneLocales() == 0) {
+    /*
+if (obtieneLocales() == 0) {
         alert('Actualizado')
         $('.cargando').fadeOut()
         return false;
     }
+*/
 
     $.post(rutaTest, {
         conect: 1
