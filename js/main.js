@@ -685,12 +685,14 @@ function totalOrigen() {
     $.post(rutaTotalRegistros, {
         origen: localStorage.origenDatos
     }, function (data) {
-    	if(data==localStorage.length-1){
+    	/*
+if(data==localStorage.length-1){
         $('#totalOrigen').html('Actualizado');
         }else{
 	     $('#totalOrigen').html('No Actualizado');   
         }
-    
+*/	
+    $('#totalOrigen').html(data)
     }).fail(function () {
         
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
