@@ -553,24 +553,10 @@ function failLocal(error) {
 
 
 function limpaLocalStorage() {
-var permiso = prompt("Ingrese password","");
 
-if (permiso!=null){
-  if(permiso=='exidor'){
-	  console.log('borra')
-	  var r = confirm("Los registros no se puden recuperar. Desea continuar?");
-	  if (r == true){
 		 localStorage.clear();
-		 //alert('Borra.')
-		  }else{
-			  alert('Proceso cancelado.')
-		  }
-			  
-	}else{
-	  alert('Password incorrecto.')
-	  }
-}
-    totalLocal();
+		 alert('Registros eliminados.')
+		 totalLocal();
 }
 
 
@@ -642,7 +628,10 @@ function onPrompt(results) {
 
 
 function onConfirm(buttonIndex) {
-    alert('You selected button ' + buttonIndex);
+//2 es aceptar
+    if(buttonIndex==2){
+	    limpaLocalStorage();
+    };
 } 
 
 
