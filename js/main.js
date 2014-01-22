@@ -705,7 +705,7 @@ function totalLocal() {
         $('#compruebalocal').fadeOut();
         $('.cargando').fadeOut();
     }
-    $('#totalLocal').html(localStorage.length - 1 / 2);
+    $('#totalLocal').html( ( (localStorage.length - 1) / 2) + ' ' + localStorage.length - 1);
 
 }
 
