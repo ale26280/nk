@@ -1,10 +1,16 @@
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
 var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
 var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
 var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
-var origen;
+//var origen;
 
-
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 $('#agrega').on('click', function () {
@@ -113,8 +119,8 @@ $('#agrega').on('click', function () {
                 }
                 
                 
-                //actualiza registro a actualizado
-				//agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+                //si ingresa actualiza el registro
+				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
 				
 				//chechActualiza(fecha)
 
@@ -144,18 +150,20 @@ $('#agrega').on('click', function () {
 
 
 
+/*
 function chechActualiza(val){
 	alert(val)
 	alert( localStorage.getItem('' + val + '') )
 	
 }
+*/
 
 
 
 
-///////////////////////////////////////////////////////////
-///////////////// ingresa //////////////////////////////////
-///////////////////////////////////////////////////////////
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
@@ -171,9 +179,9 @@ function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, cor
 }
 
 
-///////////////////////////////////////////////////////////
-///////////////// ingresa los locales //////////////////////
-///////////////////////////////////////////////////////////
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function obtieneLocales() {
     var t = 0;
@@ -201,7 +209,9 @@ function obtieneLocales() {
 
 }
 
-
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function compruebaDbLocal() {
 	alert(obtieneLocales()+' '+obtieneLocalesActualizados())
@@ -271,6 +281,11 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
 function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
 
 
@@ -317,10 +332,9 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
 }
 
 
-
-///////////////////////////////////////////////////////////
-//////reset formulario y muestra aviso id /////////////////
-///////////////////////////////////////////////////////////
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function resetForm(img, origen) {
 
@@ -357,10 +371,9 @@ function resetForm(img, origen) {
 
 }
 
-
-///////////////////////////////////////////////////////////
-///////////////// eventos //////////////////////////////////
-///////////////////////////////////////////////////////////
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 $('#abreBases').on('click', function () {
     window.scrollTo(0, 0);
@@ -372,6 +385,11 @@ $('#abreBases').on('click', function () {
 
 })
 
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 $('#closeMuestra').on('click', function () {
     $('#basesMuestra').fadeOut('slow', function () {
         $('.form').fadeIn();
@@ -381,9 +399,9 @@ $('#closeMuestra').on('click', function () {
 })
 
 
-///////////////////////////////////////////////////////////
-///////////////// preload //////////////////////////////////
-///////////////////////////////////////////////////////////
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 var preload = $('#preload');
@@ -437,6 +455,12 @@ var app = {
     },
 
 };
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
 
 //captura foto
 function capturePhoto() {
@@ -579,6 +603,10 @@ function fail(error) {
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 
 function uploadPhotoLocal(imageURI) {
     //alert(imageURI)
@@ -641,6 +669,10 @@ function limpaLocalStorage() {
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 
 $('.configOpen').on('click', function () {
     window.scrollTo(0, 0);
@@ -662,6 +694,11 @@ $('#configClose').on('click', function () {
 
 
 })
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 $('#borraDatos').on('click', function () {
@@ -720,7 +757,9 @@ function onConfirm(buttonIndex) {
     };
 }
 
-
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 $('#compruebalocal').on('click', function () {
@@ -728,6 +767,11 @@ $('#compruebalocal').on('click', function () {
     compruebaDbLocal();
 
 })
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 function totalOrigen() {
@@ -754,6 +798,9 @@ if(data==localStorage.length-1){
 
 }
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function totalLocal() {
     if ((localStorage.length - 1) > 0) {
@@ -769,6 +816,10 @@ function totalLocal() {
     $('#totalLocal').html(tTod);
 
 }
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 function estadoRed() {
@@ -791,6 +842,10 @@ function estadoRed() {
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 
 $('#avisoClose').on('click', function () {
 
@@ -799,7 +854,9 @@ $('#avisoClose').on('click', function () {
 })
 
 
-
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function origenApp() {
     //alert(localStorage.origenDatos)
@@ -822,6 +879,8 @@ function origenApp() {
 }
 
 
+
+
 $(function () {
     //localStorage.removeItem('origenDatos');
     //alert(localStorage.origenDatos)
@@ -837,6 +896,9 @@ $(function () {
 })
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 function fechaHora(tipo) {
@@ -875,6 +937,10 @@ function fechaHora(tipo) {
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 
 
 $('#compruebaServidor').on('click', function () {
@@ -885,10 +951,11 @@ $('#compruebaServidor').on('click', function () {
 
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
-///////////////////////////////////////////////////////////
-////// ingresa los locales actualizados //////////////////////
-///////////////////////////////////////////////////////////
+
 
 function obtieneTotalS() {
     var totalServidorOrigen;
@@ -905,7 +972,7 @@ function obtieneTotalS() {
 
 
 
-function obtieneLocalesActualizados(v) {
+function obtieneLocalesActualizados() {
     var t = 0;
 
     for (var i = 0; i < localStorage.length; i++) {
@@ -928,6 +995,11 @@ function obtieneLocalesActualizados(v) {
     return t;
 
 }
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 
 function compruebaDbLocalActualizados(v) {
@@ -978,6 +1050,10 @@ function compruebaDbLocalActualizados(v) {
 }
 
 
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
 
 function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
 
@@ -1025,7 +1101,9 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
 }
 
 
-
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
 
 function uploadPhotoLocalActualizado(imageURI) {
     //alert(imageURI)
@@ -1059,3 +1137,8 @@ function failLocal(error) {
     //alert("upload error source " + error.source);
     //alert("upload error target " + error.target);
 }
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
