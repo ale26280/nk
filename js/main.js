@@ -614,6 +614,10 @@ $('#configClose').on('click', function () {
 $('#borraDatos').on('click', function () {
 //    limpaLocalStorage();
 //alert('')
+
+if(localStorage.length==1){
+			 alert('No hay registros que eliminar'+localStorage.length)
+		 }
 		
 navigator.notification.prompt(
             "Ingrese password",  // message
