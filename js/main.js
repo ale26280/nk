@@ -143,6 +143,12 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 }
 
 
+function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
+ 
+    localStorage.setItem('' + fecha + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha + '|' + 'actualizado' );
+}
+
+
 ///////////////////////////////////////////////////////////
 ///////////////// ingresa los locales //////////////////////
 ///////////////////////////////////////////////////////////
@@ -176,8 +182,13 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
                 if (n == '-1') {} else {
                     p = todo.split('|');
                     //alert(p[0]);
+                    if(p[13]){
+	                    
+                    }else{
                     cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                    agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
                     localStorage.removeItem(localStorage.key(i));
+                    }
                     return false;
                 }
 
@@ -564,7 +575,7 @@ function limpaLocalStorage() {
 		 localStorage.clear()
 		 localStorage.origenDatos = origenTem;
 		 totalLocal();
-		 alert('Registros eliminados.'+localStorage.origenDatos)
+		 alert('Registros eliminados.');
 			
 			
 		
