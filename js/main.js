@@ -478,7 +478,29 @@ function obtieneLocalesActualizados() {
 function compruebaDbLocalActualizados(v) {
 
     totalSer = v;
-    totalLoc = obtieneLocalesActualizados();
+    totalLoc = 0;
+    
+    for (var i = 0; i < localStorage.length; i++) {
+
+        //alert(localStorage.getItem(localStorage.key(i)));
+        todo = localStorage.getItem(localStorage.key(i));
+        var n = todo.indexOf("|");
+        if (n == '-1') {} else {
+            p = todo.split('|');
+            //alert(p[0]);
+            alert(todo);
+            if (p[13]=='actualizado') {
+            	
+                totalLoc++
+				}
+        }
+
+
+    }
+
+    
+    
+    
     alert( v +' '+ totalLoc )
 
     return false;
