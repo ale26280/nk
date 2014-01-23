@@ -861,7 +861,7 @@ function totalLocal() {
         if (n1 == '-1') {} else {
             p1 = todo1.split('|');
             //alert(p[0]);
-            alert(todo1);
+            //alert(todo1);
             if (p1[13]=='actualizado') {
             	
                 totalLoc++
