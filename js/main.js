@@ -516,7 +516,7 @@ function compruebaDbLocalActualizados(v) {
     }
 
   
-  if(totalSer==comprobados){
+  if(totalLoc==comprobados){
 	    alert('Todos comprobados')
 	    return false;
     }
