@@ -165,6 +165,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
 
     localStorage.setItem('' + fecha + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha + '|' + 'actualizado');
+    alert('ac')
 }
 
 
