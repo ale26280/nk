@@ -253,7 +253,7 @@ alert(locales)
                         ort = p[11];
                         fet = p[12];
                        
-                        alert(localStorage.getItem('' + p[12] + ''))
+                        //alert(localStorage.getItem('' + p[12] + ''))
                         localStorage.removeItem('' + p[12] + '');
                         
                         agregaLSActualizado(nt, at, dt, mt, ant, tt, dnt, cot, opt, mot, imt, ort, fet);
@@ -505,7 +505,7 @@ function compruebaDbLocalActualizados(v) {
         if (n1 == '-1') {} else {
             p1 = todo1.split('|');
             //alert(p[0]);
-            alert(todo1);
+            //alert(todo1);
             if (p1[13]=='actualizado') {
             	
                 totalLoc++
@@ -520,10 +520,10 @@ function compruebaDbLocalActualizados(v) {
     
     alert( v +' '+ totalLoc )
     if (eval(totalSer) == eval(totalLoc)) {
-    	alert('act')
+    	alert('Actualizado')
     }else{
-	    alert('no act carga')
-    }
+	    //alert('no act carga')
+   
 
     return false;
 
@@ -561,6 +561,8 @@ function compruebaDbLocalActualizados(v) {
     
 
     }
+    
+     }
 
 
 }
