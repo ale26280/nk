@@ -523,7 +523,7 @@ function compruebaDbLocalActualizados(v) {
 
     
     
-    alert( v +' '+ totalLoc + 'comprobados '+comprobados )
+    alert( v +' '+ totalLoc + ' comprobados '+comprobados )
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
     	return false;
