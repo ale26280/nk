@@ -479,20 +479,14 @@ function compruebaDbLocalActualizados(v) {
     totalLoc = obtieneLocalesActualizados();
     alert( v +' '+ totalLoc )
 
-    //return false;
+    return false;
 
-    if (totalSer == totalLoc) {
+    if (eval(totalSer) == eval(totalLoc)) {
         alert('actualizado');
         return false;
     } else {
-
-/*        $.post(rutaTest, {
-            conect: 1
-        }, function (data) {
-*/
-
-
-            inicia = 0;
+			
+			inicia = 0;
             //alert(localStorage.length)
             if ((localStorage.length - 1) > 0) {
 
@@ -505,6 +499,7 @@ function compruebaDbLocalActualizados(v) {
                         p = todo.split('|');
                         //alert(p[0]);
                         if (p[13]) {
+                        	alert(todo);
                             cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                             return false;
                         }
@@ -517,7 +512,7 @@ function compruebaDbLocalActualizados(v) {
 
 
             }
-     //   })
+    
 
     }
 
