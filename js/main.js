@@ -556,11 +556,7 @@ function compruebaDbLocalActualizados(v) {
     
 
     }
-    
-     }
 
-
-}
 
 
 // --------------------------------------------------------------
@@ -600,7 +596,7 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
-            obtieneTotalS():
+            obtieneTotalS();
 
         }
         //alert(v[10])
