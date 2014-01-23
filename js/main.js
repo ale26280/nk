@@ -217,7 +217,7 @@ alert(locales)
 			 return false;
 		}
 */
-
+		$('.cargando').fadeOut();
     
         inicia = 0;
         //alert(localStorage.length)
@@ -424,18 +424,6 @@ function failLocal(error) {
 
 
 
-function obtieneTotalS() {
-    var totalServidorOrigen;
-
-    $.post(rutaTotalRegistros, {
-        origen: localStorage.origenDatos
-    }, function (data) {
-        totalServidorOrigen = data;
-        compruebaDbLocalActualizados(totalServidorOrigen)
-    });
-
-
-}
 
 
 
@@ -464,12 +452,29 @@ function obtieneLocalesActualizados() {
 }
 
 
+
+function obtieneTotalS() {
+    var totalServidorOrigen;
+
+    $.post(rutaTotalRegistros, {
+        origen: localStorage.origenDatos
+    }, function (data) {
+        totalServidorOrigen = data;
+        compruebaDbLocalActualizados(totalServidorOrigen)
+    });
+
+
+}
+
+
+
 // --------------------------------------------------------------
 // 
 // --------------------------------------------------------------
 
 
 function compruebaDbLocalActualizados(v) {
+
     totalSer = v;
     totalLoc = obtieneLocalesActualizados();
     alert( v +' '+ totalLoc )
@@ -478,11 +483,13 @@ function compruebaDbLocalActualizados(v) {
 
     if (totalSer == totalLoc) {
         alert('actualizado');
+        return false;
     } else {
 
-        $.post(rutaTest, {
+/*        $.post(rutaTest, {
             conect: 1
         }, function (data) {
+*/
 
 
             inicia = 0;
@@ -510,7 +517,7 @@ function compruebaDbLocalActualizados(v) {
 
 
             }
-        })
+     //   })
 
     }
 
