@@ -232,16 +232,16 @@ if ( eval(locales) == eval(localesActualizados) ) {
 
             for (var i = 0; i < localStorage.length; i++) {
                 inicia++
-                //alert(localStorage.getItem(localStorage.key(i)));
+                alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
                 var n = todo.indexOf("|");
                 if (n == '-1') {} else {
                     p = todo.split('|');
-                    alert(p[13]);
+                    
                     if (p[13]) {
-							alert('es '+p[13])
+							alert('p13 '+p[13])
                     } else {
-                    		alert('es '+p[0])
+                    		alert('p01 '+p[0])
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                         agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
                         localStorage.removeItem(localStorage.key(i));
@@ -253,13 +253,15 @@ if ( eval(locales) == eval(localesActualizados) ) {
             }
 
 
-        } else { //fin local storage lenght
+        } /*
+else { //fin local storage lenght
             if ((localStorage.length - 1) / 2 <= 0) {
                 $('.cargando').fadeOut();
                 $('#compruebalocal').fadeIn();
 
             }
         }
+*/
 
     });
 
@@ -302,6 +304,8 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
             totalLocal();
             totalOrigen();
             compruebaDbLocal()
+              $('.cargando').fadeOut();
+                $('#compruebalocal').fadeIn();
 
         }
         //alert(v[10])
@@ -348,105 +352,6 @@ var app = {
     },
 
 };
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-
-//captura foto
-function capturePhoto() {
-
-    // Take picture using device camera and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-        quality: 100,
-        destinationType: destinationType.FILE_URI,
-        encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 440,
-        targetHeight: 248,
-        saveToPhotoAlbum: true
-    });
-}
-
-//si esta ok la captura
-
-function onPhotoDataSuccess(imageURI) {
-  
-    movePic(imageURI);
-}
-
-
-//si esta mal la captura
-
-function onFail(message) {
-    alert('Error al tomar foto');
-}
-
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-//mueve la foto 
-
-
-function movePic(file) {
-    window.resolveLocalFileSystemURI(file, resolveOnSuccess, resOnError);
-}
-
-function resolveOnSuccess(entry) {
-    var d = new Date();
-    var n = d.getTime();
-    //new file name
-    // var newFileName = n + ".jpg";
-    var newFileName = entry.name;
-    var myFolderApp = "Nokia";
-
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
-            //The folder is created if doesn't exist
-
-
-
-            fileSys.root.getDirectory(myFolderApp, {
-                    create: true,
-                    exclusive: false
-                },
-                function (directory) {
-                    entry.moveTo(directory, newFileName, successMove, resOnError);
-
-
-                },
-                resOnError);
-        },
-        resOnError);
-}
-
-// si mueve y esta ok
-
-
-function successMove(entry) {
-    //devuelve la ruta de la imagen
-    //alert(entry.fullPath)
-
-    to = entry.fullPath.split('/');
-    imgTemporal = to[7];
-    imgTemporalCompleta = entry.fullPath;
-    $('#imageWrap').fadeIn('fast', function () {
-        $('#smallImage').attr('src', entry.fullPath).fadeIn()
-    });
-
-
-}
-
-// si mueve y esta mal
-
-function resOnError(error) {
-    alert(error.code);
-}
-
-
 
 
 // --------------------------------------------------------------
@@ -510,6 +415,8 @@ function uploadPhotoLocal(imageURI) {
 function winLocal(r) {
 
     compruebaDbLocal();
+     $('.cargando').fadeOut();
+     $('#compruebalocal').fadeIn()
 }
 
 function failLocal(error) {
@@ -519,144 +426,6 @@ function failLocal(error) {
 
 
 
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-function limpaLocalStorage() {
-
-    //localStorage.clear();
-    if (localStorage.length == 1) {
-        alert('No hay registros que eliminar')
-        return false;
-    }
-
-    var origenTem = localStorage.origenDatos
-    localStorage.clear()
-    localStorage.origenDatos = origenTem;
-    totalLocal();
-    alert('Registros eliminados.');
-
-
-
-
-}
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-$('.configOpen').on('click', function () {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    $('.form').fadeOut('slow', function () {
-        $('#configMuestra').fadeIn();
-    });
-    totalOrigen();
-    totalLocal();
-    estadoRed();
-    $('.cargando').fadeOut();
-
-})
-
-$('#configClose').on('click', function () {
-    $('#configMuestra').fadeOut('slow', function () {
-        $('.form').fadeIn();
-    });
-
-
-})
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-$('#borraDatos').on('click', function () {
-    //    limpaLocalStorage();
-    //alert('')
-
-    if (localStorage.length == 1) {
-        alert('No hay registros que eliminar')
-        return false;
-    }
-
-    navigator.notification.prompt(
-        "Ingrese password", // message
-        onPrompt, // callback to invoke
-        'Datos', // title
-        ['Aceptar', 'Cancelar'], // buttonLabels
-        '' // defaultText
-    );
-    //totalLocal();
-
-
-
-
-})
-
-
-
-
-function onPrompt(results) {
-    //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
-
-    if (results.input1 == 'exidor') {
-
-
-        navigator.notification.confirm(
-            'Los registros no se puden recuperar. Desea continuar?', // message
-            onConfirm, // callback to invoke with index of button pressed
-            'Confirma', // title
-            ['Cancelar', 'Continuar'] // buttonLabels
-        );
-
-
-
-
-    } else {
-        alert('Password incorrecto.')
-    }
-
-}
-
-
-function onConfirm(buttonIndex) {
-    //2 es aceptar
-    if (buttonIndex == 2) {
-        limpaLocalStorage();
-    };
-}
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-$('#compruebalocal').on('click', function () {
-
-    compruebaDbLocal();
-
-})
-
-
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-
-$('#compruebaServidor').on('click', function () {
-    //alert('comprueba locales actualizados contra servidor')
-    //compruebaDbLocalActualizados();
-    obtieneTotalS();
-})
 
 
 
@@ -833,18 +602,12 @@ function uploadPhotoLocalActualizado(imageURI) {
 }
 
 function winLocal(r) {
-    //alert('subida')
-    //oculta_carga();
-    //console.log("Code = " + r.responseCode);
-    //console.log("Response = " + r.response);
-    //console.log("Sent = " + r.bytesSent);
+
     obtieneTotalS();
 }
 
 function failLocal(error) {
-    //alert("An error has occurred: Code = " + error.code);
-    //alert("upload error source " + error.source);
-    //alert("upload error target " + error.target);
+
 }
 
 
@@ -1101,3 +864,242 @@ $('#avisoClose').on('click', function () {
     $('#aviso').fadeOut();
 
 })
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+
+//captura foto
+function capturePhoto() {
+
+    // Take picture using device camera and retrieve image as base64-encoded string
+    navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+        quality: 100,
+        destinationType: destinationType.FILE_URI,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 440,
+        targetHeight: 248,
+        saveToPhotoAlbum: true
+    });
+}
+
+//si esta ok la captura
+
+function onPhotoDataSuccess(imageURI) {
+  
+    movePic(imageURI);
+}
+
+
+//si esta mal la captura
+
+function onFail(message) {
+    alert('Error al tomar foto');
+}
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+//mueve la foto 
+
+
+function movePic(file) {
+    window.resolveLocalFileSystemURI(file, resolveOnSuccess, resOnError);
+}
+
+function resolveOnSuccess(entry) {
+    var d = new Date();
+    var n = d.getTime();
+    //new file name
+    // var newFileName = n + ".jpg";
+    var newFileName = entry.name;
+    var myFolderApp = "Nokia";
+
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSys) {
+            //The folder is created if doesn't exist
+
+
+
+            fileSys.root.getDirectory(myFolderApp, {
+                    create: true,
+                    exclusive: false
+                },
+                function (directory) {
+                    entry.moveTo(directory, newFileName, successMove, resOnError);
+
+
+                },
+                resOnError);
+        },
+        resOnError);
+}
+
+// si mueve y esta ok
+
+
+function successMove(entry) {
+    //devuelve la ruta de la imagen
+    //alert(entry.fullPath)
+
+    to = entry.fullPath.split('/');
+    imgTemporal = to[7];
+    imgTemporalCompleta = entry.fullPath;
+    $('#imageWrap').fadeIn('fast', function () {
+        $('#smallImage').attr('src', entry.fullPath).fadeIn()
+    });
+
+
+}
+
+// si mueve y esta mal
+
+function resOnError(error) {
+    alert(error.code);
+}
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+function limpaLocalStorage() {
+
+    //localStorage.clear();
+    if (localStorage.length == 1) {
+        alert('No hay registros que eliminar')
+        return false;
+    }
+
+    var origenTem = localStorage.origenDatos
+    localStorage.clear()
+    localStorage.origenDatos = origenTem;
+    totalLocal();
+    alert('Registros eliminados.');
+
+
+
+
+}
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+$('.configOpen').on('click', function () {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    $('.form').fadeOut('slow', function () {
+        $('#configMuestra').fadeIn();
+    });
+    totalOrigen();
+    totalLocal();
+    estadoRed();
+    $('.cargando').fadeOut();
+
+})
+
+$('#configClose').on('click', function () {
+    $('#configMuestra').fadeOut('slow', function () {
+        $('.form').fadeIn();
+    });
+
+
+})
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+$('#borraDatos').on('click', function () {
+    //    limpaLocalStorage();
+    //alert('')
+
+    if (localStorage.length == 1) {
+        alert('No hay registros que eliminar')
+        return false;
+    }
+
+    navigator.notification.prompt(
+        "Ingrese password", // message
+        onPrompt, // callback to invoke
+        'Datos', // title
+        ['Aceptar', 'Cancelar'], // buttonLabels
+        '' // defaultText
+    );
+    //totalLocal();
+
+
+
+
+})
+
+
+
+
+function onPrompt(results) {
+    //alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+
+    if (results.input1 == 'exidor') {
+
+
+        navigator.notification.confirm(
+            'Los registros no se puden recuperar. Desea continuar?', // message
+            onConfirm, // callback to invoke with index of button pressed
+            'Confirma', // title
+            ['Cancelar', 'Continuar'] // buttonLabels
+        );
+
+
+
+
+    } else {
+        alert('Password incorrecto.')
+    }
+
+}
+
+
+function onConfirm(buttonIndex) {
+    //2 es aceptar
+    if (buttonIndex == 2) {
+        limpaLocalStorage();
+    };
+}
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+$('#compruebalocal').on('click', function () {
+
+    compruebaDbLocal();
+
+})
+
+
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+
+$('#compruebaServidor').on('click', function () {
+    //alert('comprueba locales actualizados contra servidor')
+    //compruebaDbLocalActualizados();
+    obtieneTotalS();
+})
+
