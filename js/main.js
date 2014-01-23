@@ -424,36 +424,6 @@ function failLocal(error) {
 // --------------------------------------------------------------
 
 
-
-
-
-
-function obtieneLocalesActualizados() {
-    var t = 0;
-
-    for (var i = 0; i < localStorage.length; i++) {
-
-        //alert(localStorage.getItem(localStorage.key(i)));
-        todo = localStorage.getItem(localStorage.key(i));
-        var n = todo.indexOf("|");
-        if (n == '-1') {} else {
-            p = todo.split('|');
-            //alert(p[0]);
-            if (p[13]) {
-                t++
-
-            }
-        }
-
-
-    }
-
-    return t;
-
-}
-
-
-
 function obtieneTotalS() {
     var totalServidorOrigen;
 
@@ -466,6 +436,37 @@ function obtieneTotalS() {
 
 
 }
+
+
+
+function obtieneLocalesActualizados() {
+    var tt = 0;
+
+    for (var i = 0; i < localStorage.length; i++) {
+
+        //alert(localStorage.getItem(localStorage.key(i)));
+        todo = localStorage.getItem(localStorage.key(i));
+        var n = todo.indexOf("|");
+        if (n == '-1') {} else {
+            p = todo.split('|');
+            //alert(p[0]);
+            alert(todo);
+            if (p[13]=='actualizado') {
+            	
+                tt++
+				}
+        }
+
+
+    }
+
+    return tt;
+
+}
+
+
+
+
 
 
 
