@@ -165,7 +165,7 @@ function agregaLS(nombre, apellido, dia, mes, ano, telefono, dni, correo, operad
 function agregaLSActualizado(nombre, apellido, dia, mes, ano, telefono, dni, correo, operador, modelo, imgD, origenD, fecha) {
 
     localStorage.setItem('' + fecha + '', nombre + '|' + apellido + '|' + dia + '|' + mes + '|' + ano + '|' + telefono + '|' + dni + '|' + correo + '|' + operador + '|' + modelo + '|' + imgD + '|' + origenD + '|' + fecha + '|' + 'actualizado');
-    alert('ac')
+    //alert('ac')
 }
 
 
@@ -522,34 +522,30 @@ function compruebaDbLocalActualizados(v) {
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
     	return false;
-    }else{
-	    alert('no act carga')
-   
-
-    //return false;
-
-    if (eval(totalSer) == eval(totalLoc)) {
-        alert('actualizado');
-        return false;
     } else {
 			
 			//inicia = 0;
             //alert(localStorage.length)
-            if (localStorage.length > 0) {
+
 
                 for (var i = 0; i < localStorage.length; i++) {
                     //inicia++
                     //alert(localStorage.getItem(localStorage.key(i)));
-                    todo = localStorage.getItem(localStorage.key(i));
-                    var n = todo.indexOf("|");
-                    if (n == '-1') {} else {
-                        p = todo.split('|');
+                    todo2 = localStorage.getItem(localStorage.key(i));
+                    var n2 = todo.indexOf("|");
+                    if (n2 == '-1') {} else {
+                        p2 = todo2.split('|');
                         //alert(p[0]);
-                        if (p[13]) {
+                        if (p2[13]) {
                         	//alert(todo);
-                            cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                        	if (p2[14]) {
+                        	}else{
+                            cargaDesdeLocalActualizado(p2[0], p2[1], p2[2], p2[3], p2[4], p2[5], p2[6], p2[7], p2[8], p2[9], p2[10], p2[11], p2[12]);
+                            localStorage.setItem('' + fecha + '',p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
                             return false;
-                        }
+							}
+							
+							}
                         
                     }
 
@@ -557,8 +553,6 @@ function compruebaDbLocalActualizados(v) {
                 }
 
 
-
-            }
     
 
     }
@@ -606,7 +600,7 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
-            obtieneTotalS()
+            obtieneTotalS():
 
         }
         //alert(v[10])
