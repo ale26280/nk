@@ -297,7 +297,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
         origen: origenD,
         fecha: fecha
     }, function (data) {
-        alert(data);
+        //alert(data);
         if (imgD != 'no') {
             uploadPhotoLocal(imgD);
             //localStorage.removeItem(key);
@@ -518,9 +518,10 @@ function compruebaDbLocalActualizados(v) {
     
     
     
-    //alert( v +' '+ totalLoc )
+    alert( v +' '+ totalLoc )
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
+    	return false;
     }else{
 	    alert('no act carga')
    
@@ -591,7 +592,7 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
         origen: origenD,
         fecha: fecha
     }, function (data) {
-        //console.log(data);
+        alert(data);
         if (imgD != 'no') {
             uploadPhotoLocalActualizado(imgD);
             //localStorage.removeItem(key);
