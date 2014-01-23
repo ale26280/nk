@@ -239,9 +239,25 @@ alert(locales)
 							$('.cargando').html('<b>Cargando ' + '</b>').fadeIn();
                     	//alert('p01 '+p[0])
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
-                        agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
+                        nt = p[0];
+                        at = p[1];
+                        dt = p[2];
+                        mt = p[3];
+                        ant = p[4];
+                        tt = p[5];
+                        dnt = p[6];
+                        cot = p[7];
+                        opt = p[8];
+                        mot = p[9];
+                        imt = p[10];
+                        ort = p[11];
+                        fet = p[12];
+                       
                         alert(localStorage.getItem('' + p[12] + ''))
                         localStorage.removeItem('' + p[12] + '');
+                        
+                        agregaLSActualizado(nt, at, dt, mt, ant, tt, dnt, cot, opt, mot, imt, ort, fet);
+                        
                         return false;
                     }
                     
