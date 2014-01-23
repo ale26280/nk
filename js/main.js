@@ -516,10 +516,10 @@ function compruebaDbLocalActualizados(v) {
     }
 
   
-  if(totalLoc==comprobados){
+  if(totalLoc==0){
 	    alert('Todos comprobados')
-	    restableceComprobados();
-	    
+	    //restableceComprobados();
+	    restableceTemporales();
 	    
 	    return false;
     }
@@ -548,14 +548,16 @@ function compruebaDbLocalActualizados(v) {
                         //if (p2[13]) {
                         	alert(todo);
                         	
-                        	if(p2[14]) {
+                        	/*
+if(p2[14]) {
                         	alert(p[14]);
                         	}else{
+*/
                             cargaDesdeLocalActualizado(p2[0], p2[1], p2[2], p2[3], p2[4], p2[5], p2[6], p2[7], p2[8], p2[9], p2[10], p2[11], p2[12]);
-                            //localStorage.removeItem('' + p2[12] + '');
-                            localStorage.setItem('' + p2[12] + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
+                            localStorage.removeItem(localStorage.key(i));
+                            //localStorage.setItem('' + p2[12] + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
                             return false;
-							}
+							//}
 							
 						//	}
                         
@@ -572,32 +574,47 @@ function compruebaDbLocalActualizados(v) {
 // 
 // --------------------------------------------------------------
     
-function restableceComprobados(){
+function restableceTemporales(){
 	
-	        for (var i = 0; i < localStorage.length; i++) {
-                    //inicia++
-                    //alert(localStorage.getItem(localStorage.key(i)));
-                    todo2 = localStorage.getItem(localStorage.key(i));
-                    var n2 = todo.indexOf("|");
-                    if (n2 == '-1') {} else {
-                        p2 = todo2.split('|');
-                        alert(p2[14]);
-                        if (p2[14]) {
-                        	
+	        for (var i = 0; i < registrosTemp.length; i++) {
+                
                             
-                            localStorage.setItem('' + p2[12] + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] );
+                            localStorage.setItem('' + registrosTemp[12] + '', registrosTemp[0] + '|' + registrosTemp[1] + '|' + registrosTemp[2] + '|' + registrosTemp[3] + '|' + registrosTemp[4] + '|' + registrosTemp[5] + '|' + registrosTemp[6] + '|' +  registrosTemp[7] + '|' + registrosTemp[8] + '|' + registrosTemp[9] + '|' + registrosTemp[10] + '|' + registrosTemp[11] + '|' + registrosTemp[12] + '|' + registrosTemp[13] );
                            
-							
-							
-							}
-                        
-                    }
 
 
                 }
 	
 }
 
+var registrosTemp = [];
+
+function creaTemporales(){
+	
+	for (var i = 0; i < localStorage.length; i++) {
+                    //inicia++
+                    //alert(localStorage.getItem(localStorage.key(i)));
+                    todo2 = localStorage.getItem(localStorage.key(i));
+                    var n2 = todo.indexOf("|");
+                    if (n2 == '-1') {} else {
+                        p2 = todo2.split('|');
+                                                	
+                            
+                            registrosTemp.push( p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] );
+                           
+							
+							
+							
+                        
+                    }
+
+
+                }
+
+	
+	
+	
+}
 
 // --------------------------------------------------------------
 // 
@@ -1202,6 +1219,7 @@ var comprobados;
 $('#compruebaServidor').on('click', function () {
     alert('comprueba locales actualizados contra servidor')
     //compruebaDbLocalActualizados();
+    creaTemporales();
     comprobados = 0;
     obtieneTotalS();
 })
