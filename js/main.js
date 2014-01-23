@@ -120,7 +120,7 @@ $('#agrega').on('click', function () {
                 
                 
                 //si ingresa actualiza el registro
-				agregaLSActualizado($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha);
+				agregaLS($("#nombre").val(), $("#apellido").val(), $("#dia").val(), $("#mes").val(), $("#ano").val(), $("#telefono").val(), $("#dni").val(), $("#correo").val(), $("#operador").val(), $("#modelo").val(), img, localStorage.origenDatos, fecha + '|' + 'actualizado');
 				
 				//chechActualiza(fecha)
 
@@ -146,17 +146,6 @@ $('#agrega').on('click', function () {
 
 })
 
-
-
-
-
-/*
-function chechActualiza(val){
-	alert(val)
-	alert( localStorage.getItem('' + val + '') )
-	
-}
-*/
 
 
 
@@ -214,7 +203,8 @@ function obtieneLocales() {
 // --------------------------------------------------------------
 
 function compruebaDbLocal() {
-	alert(obtieneLocales()+' '+obtieneLocalesActualizados())
+
+alert(obtieneLocales()+' '+obtieneLocalesActualizados())
     
 if (obtieneLocales() == 0) {
         alert('Actualizado')
@@ -235,13 +225,6 @@ if (obtieneLocales() == 0) {
         //alert(localStorage.length)
         if ((localStorage.length - 1) > 0) {
 
-
-            /*
-item = localStorage.getItem(localStorage.key(0)).split('|')
-    	alert(localStorage.getItem(localStorage.key(0)));
-*/
-
-            //for (var i = 0; i < 1; i++){
             for (var i = 0; i < localStorage.length; i++) {
                 inicia++
                 //alert(localStorage.getItem(localStorage.key(i)));
@@ -262,10 +245,6 @@ item = localStorage.getItem(localStorage.key(0)).split('|')
 
 
             }
-
-
-            //cargaDesdeLocal(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
-            //localStorage.removeItem(localStorage.key(0));
 
 
         } else { //fin local storage lenght
@@ -332,92 +311,6 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
 }
 
 
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-function resetForm(img, origen) {
-
-    $("#nombre").val('');
-    $("#apellido").val('');
-    $("#dia").val('');
-    $("#mes").val('');
-    $("#ano").val('');
-    $("#telefono").val('');
-    $("#dni").val('');
-    $("#correo").val('');
-    //$("#operador").prop('selectedIndex', 0);
-    $("#operador").val('');
-    $("#modelo").val('');
-    $('#imageWrap').fadeOut('fast');
-    $('#smallImage').fadeOut('fast', function () {
-        $('#smallImage').attr('src', '');
-    });
-    apagaCarga();
-    $("#gracias").show().delay(800).fadeOut('slow', function () {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0;
-
-        if (img != 'no') {
-            $('#origneFoto').html(localStorage.origenDatos);
-            $('#idFoto').html(img.replace('//Nokia/', ''));
-            $('#aviso').fadeIn();
-        }
-
-
-    });
-
-
-
-}
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-$('#abreBases').on('click', function () {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    $('.form').fadeOut('slow', function () {
-        $('#basesMuestra').fadeIn();
-    })
-
-
-})
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-$('#closeMuestra').on('click', function () {
-    $('#basesMuestra').fadeOut('slow', function () {
-        $('.form').fadeIn();
-    });
-
-
-})
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-var preload = $('#preload');
-
-function prendeCarga() {
-    preload.fadeIn();
-
-}
-
-
-function apagaCarga() {
-
-    preload.fadeOut();
-}
-
-
 
 
 // --------------------------------------------------------------
@@ -433,17 +326,11 @@ var app = {
     initialize: function () {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+   
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
+  
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
@@ -479,13 +366,7 @@ function capturePhoto() {
 //si esta ok la captura
 
 function onPhotoDataSuccess(imageURI) {
-    //var smallImage = document.getElementById('smallImage');
-
-    //smallImage.style.display = 'block';
-    //muestra la foto 
-    //smallImage.src = imageURI;
-    //mueve la foto 
-    //alert(imageURI)
+  
     movePic(imageURI);
 }
 
@@ -589,17 +470,11 @@ function uploadPhoto(imageURI) {
 }
 
 function win(r) {
-    //alert('subida')
-    //oculta_carga();
-    console.log("Code = " + r.responseCode);
-    console.log("Response = " + r.response);
-    console.log("Sent = " + r.bytesSent);
+   
 }
 
 function fail(error) {
-    //alert("An error has occurred: Code = " + error.code);
-    //alert("upload error source " + error.source);
-    //alert("upload error target " + error.target);
+   
 }
 
 
@@ -627,18 +502,12 @@ function uploadPhotoLocal(imageURI) {
 }
 
 function winLocal(r) {
-    //alert('subida')
-    //oculta_carga();
-    //console.log("Code = " + r.responseCode);
-    //console.log("Response = " + r.response);
-    //console.log("Sent = " + r.bytesSent);
+
     compruebaDbLocal();
 }
 
 function failLocal(error) {
-    //alert("An error has occurred: Code = " + error.code);
-    //alert("upload error source " + error.source);
-    //alert("upload error target " + error.target);
+
 }
 
 
@@ -769,172 +638,6 @@ $('#compruebalocal').on('click', function () {
 })
 
 
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-function totalOrigen() {
-
-    $('#nombreOrigen').html(localStorage.origenDatos);
-
-    $.post(rutaTotalRegistros, {
-        origen: localStorage.origenDatos
-    }, function (data) {
-        /*
-if(data==localStorage.length-1){
-        $('#totalOrigen').html('Actualizado');
-        }else{
-	     $('#totalOrigen').html('No Actualizado');   
-        }
-*/
-        $('#totalOrigen').html(data)
-    }).fail(function () {
-
-        $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
-
-    })
-
-
-}
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-function totalLocal() {
-    if ((localStorage.length - 1) > 0) {
-        $('#compruebalocal').fadeIn();
-
-    } else {
-        $('#compruebalocal').fadeOut();
-        $('.cargando').fadeOut();
-    }
-
-    tTod = localStorage.length - 1;
-
-    $('#totalLocal').html(obtieneLocales());
-
-}
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-function estadoRed() {
-
-    $.post(rutaTest, {
-        conect: 1
-    }, function (data) {
-
-
-        $('#estadoRed').html('<span style="color:green">Conectado</span>');
-
-
-    }).fail(function () {
-
-        $('#estadoRed').html('<span style="color:red">Sin conexión</span>');
-
-    })
-
-
-}
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-$('#avisoClose').on('click', function () {
-
-    $('#aviso').fadeOut();
-
-})
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-function origenApp() {
-    //alert(localStorage.origenDatos)
-
-    if ($('input[name="origen"]').val() == '') {
-        //if (typeof (localStorage.origenDatos) == "undefined") {
-        alert('Debe ingresar un origen para usar la app.')
-        return false;
-    }
-
-    localStorage.origenDatos = $('input[name="origen"]').val();
-
-
-
-    $('#origen').fadeOut();
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-
-
-}
-
-
-
-
-$(function () {
-    //localStorage.removeItem('origenDatos');
-    //alert(localStorage.origenDatos)
-
-
-    if (typeof (localStorage.origenDatos) != "undefined") {
-        $('#origen').hide();
-    }
-
-
-
-
-})
-
-
-// --------------------------------------------------------------
-// 
-// --------------------------------------------------------------
-
-
-function fechaHora(tipo) {
-
-
-    marcacion = new Date()
-    Hora = marcacion.getHours()
-    Minutos = marcacion.getMinutes()
-    Segundos = marcacion.getSeconds()
-
-    if (Hora <= 9)
-        Hora = "0" + Hora
-
-    if (Minutos <= 9)
-        Minutos = "0" + Minutos
-
-    if (Segundos <= 9)
-        Segundos = "0" + Segundos
-
-
-
-    var Dia = new Array("Domingo", "Lunes", "Martes", "Mi&eacute;rcoles", "Jueves", "Viernes", "S&aacute;bado", "Domingo");
-    var Mes = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-    var Hoy = new Date();
-    var Anio = Hoy.getFullYear();
-    var Fecha = Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " , " + Mes[Hoy.getMonth()] + " , " + Anio + "  ";
-    //var Fecha =   Hoy.getDate() + " : " + Hoy.getMonth() + " : " + Anio + "  ";
-
-    if (!tipo) {
-        return Fecha + Hora + ":" + Minutos + ":" + Segundos
-    } else {
-        return Hoy.getFullYear() + '-' + (Hoy.getMonth() + 1) + '-' + Hoy.getDate() + ' ' + Hora + ":" + Minutos + ":" + Segundos
-    }
-
-
-}
 
 
 // --------------------------------------------------------------
@@ -1142,3 +845,253 @@ function failLocal(error) {
 // --------------------------------------------------------------
 // 
 // --------------------------------------------------------------
+
+
+
+function resetForm(img, origen) {
+
+    $("#nombre").val('');
+    $("#apellido").val('');
+    $("#dia").val('');
+    $("#mes").val('');
+    $("#ano").val('');
+    $("#telefono").val('');
+    $("#dni").val('');
+    $("#correo").val('');
+    //$("#operador").prop('selectedIndex', 0);
+    $("#operador").val('');
+    $("#modelo").val('');
+    $('#imageWrap').fadeOut('fast');
+    $('#smallImage').fadeOut('fast', function () {
+        $('#smallImage').attr('src', '');
+    });
+    apagaCarga();
+    $("#gracias").show().delay(800).fadeOut('slow', function () {
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
+
+        if (img != 'no') {
+            $('#origneFoto').html(localStorage.origenDatos);
+            $('#idFoto').html(img.replace('//Nokia/', ''));
+            $('#aviso').fadeIn();
+        }
+
+
+    });
+
+
+
+}
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+$('#abreBases').on('click', function () {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    $('.form').fadeOut('slow', function () {
+        $('#basesMuestra').fadeIn();
+    })
+
+
+})
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+$('#closeMuestra').on('click', function () {
+    $('#basesMuestra').fadeOut('slow', function () {
+        $('.form').fadeIn();
+    });
+
+
+})
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+var preload = $('#preload');
+
+function prendeCarga() {
+    preload.fadeIn();
+
+}
+
+
+function apagaCarga() {
+
+    preload.fadeOut();
+}
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+function fechaHora(tipo) {
+
+
+    marcacion = new Date()
+    Hora = marcacion.getHours()
+    Minutos = marcacion.getMinutes()
+    Segundos = marcacion.getSeconds()
+
+    if (Hora <= 9)
+        Hora = "0" + Hora
+
+    if (Minutos <= 9)
+        Minutos = "0" + Minutos
+
+    if (Segundos <= 9)
+        Segundos = "0" + Segundos
+
+
+
+    var Dia = new Array("Domingo", "Lunes", "Martes", "Mi&eacute;rcoles", "Jueves", "Viernes", "S&aacute;bado", "Domingo");
+    var Mes = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var Hoy = new Date();
+    var Anio = Hoy.getFullYear();
+    var Fecha = Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " , " + Mes[Hoy.getMonth()] + " , " + Anio + "  ";
+    //var Fecha =   Hoy.getDate() + " : " + Hoy.getMonth() + " : " + Anio + "  ";
+
+    if (!tipo) {
+        return Fecha + Hora + ":" + Minutos + ":" + Segundos
+    } else {
+        return Hoy.getFullYear() + '-' + (Hoy.getMonth() + 1) + '-' + Hoy.getDate() + ' ' + Hora + ":" + Minutos + ":" + Segundos
+    }
+
+
+}
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+function origenApp() {
+    //alert(localStorage.origenDatos)
+
+    if ($('input[name="origen"]').val() == '') {
+        //if (typeof (localStorage.origenDatos) == "undefined") {
+        alert('Debe ingresar un origen para usar la app.')
+        return false;
+    }
+
+    localStorage.origenDatos = $('input[name="origen"]').val();
+
+
+
+    $('#origen').fadeOut();
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+
+
+}
+
+
+
+
+$(function () {
+    //localStorage.removeItem('origenDatos');
+    //alert(localStorage.origenDatos)
+
+
+    if (typeof (localStorage.origenDatos) != "undefined") {
+        $('#origen').hide();
+    }
+
+
+
+
+})
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+function totalOrigen() {
+
+    $('#nombreOrigen').html(localStorage.origenDatos);
+
+    $.post(rutaTotalRegistros, {
+        origen: localStorage.origenDatos
+    }, function (data) {
+        /*
+if(data==localStorage.length-1){
+        $('#totalOrigen').html('Actualizado');
+        }else{
+	     $('#totalOrigen').html('No Actualizado');   
+        }
+*/
+        $('#totalOrigen').html(data)
+    }).fail(function () {
+
+        $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
+
+    })
+
+
+}
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+function totalLocal() {
+    if ((localStorage.length - 1) > 0) {
+        $('#compruebalocal').fadeIn();
+
+    } else {
+        $('#compruebalocal').fadeOut();
+        $('.cargando').fadeOut();
+    }
+
+    tTod = localStorage.length - 1;
+
+    $('#totalLocal').html(obtieneLocales());
+
+}
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+function estadoRed() {
+
+    $.post(rutaTest, {
+        conect: 1
+    }, function (data) {
+
+
+        $('#estadoRed').html('<span style="color:green">Conectado</span>');
+
+
+    }).fail(function () {
+
+        $('#estadoRed').html('<span style="color:red">Sin conexión</span>');
+
+    })
+
+
+}
+
+
+// --------------------------------------------------------------
+// 
+// --------------------------------------------------------------
+
+
+$('#avisoClose').on('click', function () {
+
+    $('#aviso').fadeOut();
+
+})
