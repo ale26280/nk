@@ -579,7 +579,7 @@ function restableceComprobados(){
                     var n2 = todo.indexOf("|");
                     if (n2 == '-1') {} else {
                         p2 = todo2.split('|');
-                        //alert(p[0]);
+                        alert(p2[14]);
                         if (p2[14]) {
                         	
                             
