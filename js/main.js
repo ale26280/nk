@@ -203,9 +203,9 @@ function obtieneLocales() {
 // --------------------------------------------------------------
 
 function compruebaDbLocal() {
-/*
 
-alert(obtieneLocales()+' '+obtieneLocalesActualizados())
+
+//alert(obtieneLocales()+' '+obtieneLocalesActualizados())
 
 locales = obtieneLocales();
 localesActualizados = obtieneLocalesActualizados();
@@ -215,7 +215,7 @@ if ( eval(locales) == eval(localesActualizados) ) {
         $('.cargando').fadeOut()
         return false;
     }
-*/
+
 
 
     $.post(rutaTest, {
@@ -232,16 +232,16 @@ if ( eval(locales) == eval(localesActualizados) ) {
 
             for (var i = 0; i < localStorage.length; i++) {
                 inicia++
-                alert(localStorage.getItem(localStorage.key(i)));
+                //alert(localStorage.getItem(localStorage.key(i)));
                 todo = localStorage.getItem(localStorage.key(i));
                 var n = todo.indexOf("|");
                 if (n == '-1') {} else {
                     p = todo.split('|');
                     
-                    if (p[13]=='actualizado') {
+                    if (p[13]) {
 							//alert('p13 '+p[13])
                     } else {
-                    	alert('p01 '+p[0])
+                    	//alert('p01 '+p[0])
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                         agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
                         localStorage.removeItem(localStorage.key(i));
@@ -511,8 +511,9 @@ function compruebaDbLocalActualizados(v) {
                         //alert(p[0]);
                         if (p[13]) {
                             cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
+                            return false;
                         }
-                        return false;
+                        
                     }
 
 
