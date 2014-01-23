@@ -515,9 +515,11 @@ function compruebaDbLocalActualizados(v) {
 
     }
 
-    if(totalSer==comprobados){
+  /*
+  if(totalSer==comprobados){
 	    alert('Todos comprobados')
     }
+*/
     
     
     alert( v +' '+ totalLoc + 'comprobados '+comprobados )
@@ -540,7 +542,7 @@ function compruebaDbLocalActualizados(v) {
                         //alert(p[0]);
                         if (p2[13]) {
                         	alert(todo);
-                        	comprobados++
+                        	comprobados++;
                         	//if(p2[14]) {
                         	//}else{
                             cargaDesdeLocalActualizado(p2[0], p2[1], p2[2], p2[3], p2[4], p2[5], p2[6], p2[7], p2[8], p2[9], p2[10], p2[11], p2[12]);
