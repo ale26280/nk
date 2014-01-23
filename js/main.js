@@ -577,9 +577,9 @@ if(p2[14]) {
 function restableceTemporales(){
 	
 	        for (var i = 0; i < registrosTemp.length; i++) {
-                
+                			valor = registrosTemp[i].split('|');
                             
-                            localStorage.setItem('' + registrosTemp[12] + '', registrosTemp[0] + '|' + registrosTemp[1] + '|' + registrosTemp[2] + '|' + registrosTemp[3] + '|' + registrosTemp[4] + '|' + registrosTemp[5] + '|' + registrosTemp[6] + '|' +  registrosTemp[7] + '|' + registrosTemp[8] + '|' + registrosTemp[9] + '|' + registrosTemp[10] + '|' + registrosTemp[11] + '|' + registrosTemp[12] + '|' + registrosTemp[13] );
+                            localStorage.setItem('' + valor[12] + '', valor[0] + '|' + valor[1] + '|' + valor[2] + '|' + valor[3] + '|' + valor[4] + '|' + valor[5] + '|' + registrosTemp[6] + '|' +  valor[7] + '|' + valor[8] + '|' + valor[9] + '|' + valor[10] + '|' + valor[11] + '|' + valor[12] + '|' + valor[13] );
                            
 
 
