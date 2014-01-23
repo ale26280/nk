@@ -1160,11 +1160,12 @@ $('#compruebalocal').on('click', function () {
 // --------------------------------------------------------------
 
 
+var comprobados;
 
 $('#compruebaServidor').on('click', function () {
-    //alert('comprueba locales actualizados contra servidor')
+    alert('comprueba locales actualizados contra servidor')
     //compruebaDbLocalActualizados();
-    var comprobados = 0;
+    comprobados = 0;
     obtieneTotalS();
 })
 
