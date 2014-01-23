@@ -535,7 +535,7 @@ function compruebaDbLocalActualizados(v) {
 			
 			//inicia = 0;
             //alert(localStorage.length)
-
+			alert('carga aca')
 
                 for (var i = 0; i < localStorage.length; i++) {
                     //inicia++
