@@ -205,8 +205,11 @@ function obtieneLocales() {
 function compruebaDbLocal() {
 
 alert(obtieneLocales()+' '+obtieneLocalesActualizados())
+
+locales = obtieneLocales();
+localesActualizados = obtieneLocalesActualizados();
     
-if (obtieneLocales() == obtieneLocalesActualizados()) {
+if ( eval(locales) == eval(localesActualizados) ) {
         alert('Actualizado')
         $('.cargando').fadeOut()
         return false;
