@@ -863,7 +863,7 @@ function origenApp() {
 
 $(function () {
     //localStorage.removeItem('origenDatos');
-    //alert(localStorage.origenDatos)
+    alert(localStorage.origenDatos)
 
 
     if (typeof (localStorage.origenDatos) != "undefined") {
