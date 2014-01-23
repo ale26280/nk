@@ -518,11 +518,11 @@ function compruebaDbLocalActualizados(v) {
     
     
     
-    alert( v +' '+ totalLoc )
+    //alert( v +' '+ totalLoc )
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
     }else{
-	    //alert('no act carga')
+	    alert('no act carga')
    
 
     //return false;
@@ -532,12 +532,12 @@ function compruebaDbLocalActualizados(v) {
         return false;
     } else {
 			
-			inicia = 0;
+			//inicia = 0;
             //alert(localStorage.length)
-            if ((localStorage.length - 1) > 0) {
+            if (localStorage.length > 0) {
 
                 for (var i = 0; i < localStorage.length; i++) {
-                    inicia++
+                    //inicia++
                     //alert(localStorage.getItem(localStorage.key(i)));
                     todo = localStorage.getItem(localStorage.key(i));
                     var n = todo.indexOf("|");
@@ -545,7 +545,7 @@ function compruebaDbLocalActualizados(v) {
                         p = todo.split('|');
                         //alert(p[0]);
                         if (p[13]) {
-                        	alert(todo);
+                        	//alert(todo);
                             cargaDesdeLocalActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                             return false;
                         }
