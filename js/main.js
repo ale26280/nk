@@ -526,6 +526,7 @@ function compruebaDbLocalActualizados(v) {
     alert( v +' '+ totalLoc + ' comprobados '+comprobados )
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
+    	//resetea comprobado
     	return false;
     } else {
 			
@@ -544,10 +545,10 @@ function compruebaDbLocalActualizados(v) {
                         if (p2[13]) {
                         	alert(todo);
                         	
-                        	//if(p2[14]) {
-                        	//}else{
+                        	if(p2[14]) {
+                        	}else{
                             cargaDesdeLocalActualizado(p2[0], p2[1], p2[2], p2[3], p2[4], p2[5], p2[6], p2[7], p2[8], p2[9], p2[10], p2[11], p2[12]);
-                            //localStorage.setItem('' + fecha + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
+                            localStorage.setItem('' + fecha + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
                             return false;
 							}
 							
@@ -558,6 +559,8 @@ function compruebaDbLocalActualizados(v) {
 
                 }
 
+				}
+				
 				}
     
 
