@@ -515,11 +515,12 @@ function compruebaDbLocalActualizados(v) {
 
     }
 
-  /*
+  
   if(totalSer==comprobados){
 	    alert('Todos comprobados')
+	    return false;
     }
-*/
+
     
     
     alert( v +' '+ totalLoc + 'comprobados '+comprobados )
