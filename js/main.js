@@ -595,11 +595,13 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
         if (imgD != 'no') {
             uploadPhotoLocalActualizado(imgD);
             //localStorage.removeItem(key);
-            //alert('con img')
+            //
+            alert('con img local actualizado')
             totalLocal();
             totalOrigen();
         } else {
-            //alert('sin img');
+            //
+            alert('sin img local actualizado');
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
