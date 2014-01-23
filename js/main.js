@@ -286,7 +286,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
         origen: origenD,
         fecha: fecha
     }, function (data) {
-        //console.log(data);
+        alert(data);
         if (imgD != 'no') {
             uploadPhotoLocal(imgD);
             //localStorage.removeItem(key);
