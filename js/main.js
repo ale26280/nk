@@ -206,7 +206,7 @@ function compruebaDbLocal() {
 
 alert(obtieneLocales()+' '+obtieneLocalesActualizados())
     
-if (obtieneLocales() == 0) {
+if (obtieneLocales() == obtieneLocalesActualizados()) {
         alert('Actualizado')
         $('.cargando').fadeOut()
         return false;
