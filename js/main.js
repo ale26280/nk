@@ -525,7 +525,7 @@ function compruebaDbLocalActualizados(v) {
 	    //alert('no act carga')
    
 
-    return false;
+    //return false;
 
     if (eval(totalSer) == eval(totalLoc)) {
         alert('actualizado');
