@@ -209,10 +209,11 @@ function compruebaDbLocal() {
 
 locales = obtieneLocales();
 localesActualizados = obtieneLocalesActualizados();
-
+alert(locales)
 		if(eval(locales)==0){
 			$('.cargando').fadeOut();
 			 $('#compruebalocal').fadeIn();
+			 return false;
 		}
 
         $('#compruebalocal').fadeOut();
