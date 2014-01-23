@@ -554,7 +554,7 @@ if(p2[14]) {
                         	}else{
 */
                             cargaDesdeLocalActualizado(p2[0], p2[1], p2[2], p2[3], p2[4], p2[5], p2[6], p2[7], p2[8], p2[9], p2[10], p2[11], p2[12]);
-                            localStorage.removeItem('' + p2[12] + '');
+                            //localStorage.removeItem('' + p2[12] + '');
                             //localStorage.setItem('' + p2[12] + '', p2[0] + '|' + p2[1] + '|' + p2[2] + '|' + p2[3] + '|' + p2[4] + '|' + p2[5] + '|' + p2[6] + '|' +  p2[7] + '|' + p2[8] + '|' + p2[9] + '|' + p2[10] + '|' + p2[11] + '|' + p2[12] + '|' + p2[13] + '|' + 'comprobado');
                             return false;
 							//}
@@ -864,7 +864,7 @@ function origenApp() {
 
 $(function () {
     //localStorage.removeItem('origenDatos');
-    alert(localStorage.origenDatos)
+    //alert(localStorage.origenDatos)
 
 
     if (typeof (localStorage.origenDatos) != "undefined") {
@@ -1221,7 +1221,7 @@ $('#compruebalocal').on('click', function () {
 var comprobados;
 
 $('#compruebaServidor').on('click', function () {
-    alert('comprueba locales actualizados contra servidor')
+    alert('Comprueba locales actualizados contra el servidor')
     //compruebaDbLocalActualizados();
     creaTemporales();
     comprobados = 0;
