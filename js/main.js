@@ -584,6 +584,9 @@ function restableceTemporales(){
 
 
                 }
+                
+                totalLocal();
+                totalOrigen();
 	
 }
 
