@@ -203,6 +203,7 @@ function obtieneLocales() {
 // --------------------------------------------------------------
 
 function compruebaDbLocal() {
+/*
 
 alert(obtieneLocales()+' '+obtieneLocalesActualizados())
 
@@ -214,6 +215,7 @@ if ( eval(locales) == eval(localesActualizados) ) {
         $('.cargando').fadeOut()
         return false;
     }
+*/
 
 
     $.post(rutaTest, {
@@ -239,6 +241,7 @@ if ( eval(locales) == eval(localesActualizados) ) {
                     if (p[13]) {
 							alert('es '+p[13])
                     } else {
+                    		alert('es '+p[0])
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                         agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
                         localStorage.removeItem(localStorage.key(i));
