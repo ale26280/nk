@@ -577,6 +577,7 @@ if(p2[14]) {
 function restableceTemporales(){
 	
 	        for (var i = 0; i < registrosTemp.length; i++) {
+	        			alert(registrosTemp[i])
                 			valor = registrosTemp[i].split('|');
                             
                             localStorage.setItem('' + valor[12] + '', valor[0] + '|' + valor[1] + '|' + valor[2] + '|' + valor[3] + '|' + valor[4] + '|' + valor[5] + '|' + registrosTemp[6] + '|' +  valor[7] + '|' + valor[8] + '|' + valor[9] + '|' + valor[10] + '|' + valor[11] + '|' + valor[12] + '|' + valor[13] );
