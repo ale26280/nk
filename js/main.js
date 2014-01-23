@@ -516,7 +516,7 @@ function compruebaDbLocalActualizados(v) {
     }
 
     if(totalSer==comprobados){
-	    alert('todos comprobados')
+	    alert('Todos comprobados')
     }
     
     
@@ -558,7 +558,7 @@ function compruebaDbLocalActualizados(v) {
 				}
     
 
-    }
+    
 
 
 
