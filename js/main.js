@@ -209,18 +209,11 @@ function compruebaDbLocal() {
 
 locales = obtieneLocales();
 localesActualizados = obtieneLocalesActualizados();
-    
-if ( eval(locales) == eval(localesActualizados) ) {
-        alert('Actualizado')
-        $('.cargando').fadeOut()
-        return false;
-    }
 
-
-
-    $.post(rutaTest, {
-        conect: 1
-    }, function (data) {
+		if(eval(locales)==0){
+			$('.cargando').fadeOut();
+			 $('#compruebalocal').fadeIn();
+		}
 
         $('#compruebalocal').fadeOut();
 
@@ -254,17 +247,9 @@ if ( eval(locales) == eval(localesActualizados) ) {
             }
 
 
-        } /*
-else { //fin local storage lenght
-            if ((localStorage.length - 1) / 2 <= 0) {
-                $('.cargando').fadeOut();
-                $('#compruebalocal').fadeIn();
-
-            }
-        }
-*/
-
-    });
+        } 
+        
+        
 
 }
 
@@ -305,8 +290,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
             totalLocal();
             totalOrigen();
             compruebaDbLocal()
-              $('.cargando').fadeOut();
-                $('#compruebalocal').fadeIn();
+            
 
         }
         //alert(v[10])
@@ -416,8 +400,7 @@ function uploadPhotoLocal(imageURI) {
 function winLocal(r) {
 
     compruebaDbLocal();
-     $('.cargando').fadeOut();
-     $('#compruebalocal').fadeIn()
+   
 }
 
 function failLocal(error) {
