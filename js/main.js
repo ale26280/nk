@@ -207,6 +207,7 @@ function compruebaDbLocal() {
 
 //alert(obtieneLocales()+' '+obtieneLocalesActualizados())
 
+/*
 locales = obtieneLocales();
 localesActualizados = obtieneLocalesActualizados();
 alert(locales)
@@ -215,11 +216,9 @@ alert(locales)
 			 $('#compruebalocal').fadeIn();
 			 return false;
 		}
+*/
 
-        $('#compruebalocal').fadeOut();
-
-        // $('.cargando').html('<b>Cargando  ' + (localStorage.length - 1) + '</b>').fadeIn();
-        $('.cargando').html('<b>Cargando ' + '</b>').fadeIn();
+    
         inicia = 0;
         //alert(localStorage.length)
         if ((localStorage.length - 1) > 0) {
@@ -235,6 +234,8 @@ alert(locales)
                     if (p[13]) {
 							//alert('p13 '+p[13])
                     } else {
+                    	    $('#compruebalocal').fadeOut();
+							$('.cargando').html('<b>Cargando ' + '</b>').fadeIn();
                     	//alert('p01 '+p[0])
                         cargaDesdeLocal(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12]);
                         agregaLSActualizado(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12])
@@ -298,6 +299,8 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
 
     }).fail(function () {
         alert('Error al cargar');
+        $('.cargando').fadeOut();
+		$('#compruebalocal').fadeIn();
 
     });
 
@@ -401,6 +404,7 @@ function uploadPhotoLocal(imageURI) {
 function winLocal(r) {
 
     compruebaDbLocal();
+   
    
 }
 
