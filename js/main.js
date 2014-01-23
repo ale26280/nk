@@ -298,7 +298,7 @@ function cargaDesdeLocal(nombre, apellido, dia, mes, ano, telefono, dni, correo,
         //alert(v[10])
 
     }).fail(function () {
-        alert('Error al cargar');
+        alert('Error al cargar local');
         $('.cargando').fadeOut();
 		$('#compruebalocal').fadeIn();
 
