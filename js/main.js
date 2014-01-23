@@ -798,9 +798,12 @@ if(data==localStorage.length-1){
         }
 */
         $('#totalOrigen').html(data)
+         $('#compruebalocal,#compruebaServidor').show();
     }).fail(function () {
 
         $('#totalOrigen').html('<span style="color:red">Sin conexión</span>');
+        
+        $('#compruebalocal,#compruebaServidor').hide();
 
     })
 
