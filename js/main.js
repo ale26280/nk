@@ -845,6 +845,29 @@ function totalLocal() {
     tTod = localStorage.length - 1;
 
     $('#totalLocal').html(obtieneLocales());
+    
+     totalLoc = 0;
+    
+    for (var i = 0; i < localStorage.length; i++) {
+
+        //alert(localStorage.getItem(localStorage.key(i)));
+        todo1 = localStorage.getItem(localStorage.key(i));
+        var n1 = todo1.indexOf("|");
+        if (n1 == '-1') {} else {
+            p1 = todo1.split('|');
+            //alert(p[0]);
+            alert(todo1);
+            if (p1[13]=='actualizado') {
+            	
+                totalLoc++
+				}
+        }
+
+
+    }
+    $('#totalLocalAc').html(totalLoc);
+    
+    
 
 }
 
