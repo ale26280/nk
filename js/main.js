@@ -859,7 +859,7 @@ function origenApp() {
 
 
 $(function () {
-    //localStorage.removeItem('origenDatos');
+    localStorage.removeItem('origenDatos');
     //alert(localStorage.origenDatos)
 
 
