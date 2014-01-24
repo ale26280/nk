@@ -467,7 +467,7 @@ function obtieneLocalesActualizados() {
         if (n == '-1') {} else {
             p = todo.split('|');
             //alert(p[0]);
-            alert(todo);
+            //alert(todo);
             if (p[13]=='actualizado') {
             	
                 tt++
@@ -526,7 +526,7 @@ function compruebaDbLocalActualizados(v) {
 
     
     
-    alert( v +' '+ totalLoc + ' comprobados '+comprobados )
+    //alert( v +' '+ totalLoc + ' comprobados '+comprobados )
     if (eval(totalSer) == eval(totalLoc)) {
     	alert('Actualizado')
     	//resetea comprobado
@@ -535,7 +535,7 @@ function compruebaDbLocalActualizados(v) {
 			
 			//inicia = 0;
             //alert(localStorage.length)
-			alert('carga ')
+			//alert('carga ')
 
                 for (var i = 0; i < localStorage.length; i++) {
                     //inicia++
@@ -546,7 +546,7 @@ function compruebaDbLocalActualizados(v) {
                         p2 = todo2.split('|');
                         //alert(p[0]);
                         //if (p2[13]) {
-                        	alert(todo2);
+                        	//alert(todo2);
                         	
                         	/*
 if(p2[14]) {
@@ -577,7 +577,7 @@ if(p2[14]) {
 function restableceTemporales(){
 	
 	        for (var i = 0; i < registrosTemp.length; i++) {
-	        			alert(registrosTemp[i])
+	        			//alert(registrosTemp[i])
                 			valor = registrosTemp[i].split('|');
                             
                             localStorage.setItem('' + valor[12] + '', valor[0] + '|' + valor[1] + '|' + valor[2] + '|' + valor[3] + '|' + valor[4] + '|' + valor[5] + '|' + registrosTemp[6] + '|' +  valor[7] + '|' + valor[8] + '|' + valor[9] + '|' + valor[10] + '|' + valor[11] + '|' + valor[12] + '|' + valor[13] );
@@ -650,12 +650,12 @@ function cargaDesdeLocalActualizado(nombre, apellido, dia, mes, ano, telefono, d
             uploadPhotoLocalActualizado(imgD);
             //localStorage.removeItem(key);
             //
-            alert('con img local actualizado')
+            //alert('con img local actualizado')
             totalLocal();
             totalOrigen();
         } else {
             //
-            alert('sin img local actualizado');
+            //alert('sin img local actualizado');
             //localStorage.removeItem(key);
             totalLocal();
             totalOrigen();
