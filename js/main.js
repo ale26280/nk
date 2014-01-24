@@ -963,7 +963,7 @@ function estadoRed() {
     }, function (data) {
 
 
-        $('#estadoRed').html('<span style="color:green">Conectado</span>');
+        $('#estadoRed').html('<span style="color:green">Conectado</span> ');
 
 
     }).fail(function () {
