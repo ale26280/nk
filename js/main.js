@@ -599,7 +599,7 @@ function creaTemporales(){
                     //inicia++
                     //alert(localStorage.getItem(localStorage.key(i)));
                     todo2 = localStorage.getItem(localStorage.key(i));
-                    var n2 = todo.indexOf("|");
+                    var n2 = todo2.indexOf("|");
                     if (n2 == '-1') {} else {
                         p2 = todo2.split('|');
                                                 	
