@@ -416,7 +416,7 @@ function uploadPhotoLocal(imageURI) {
     options.params = params;
 
     var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI(rutaUpload), winLocal, failLocal, options);
+    ft.upload(imageURI, encodeURI(rutaUpload), compruebaDbLocal, failLocal, options);
 }
 
 function winLocal(r) {

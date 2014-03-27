@@ -541,7 +541,7 @@ function uploadPhotoLocal(imageURI) {
 }
 
 function winLocal(r) {
-    //alert('subida')
+    alert('subida')
     //oculta_carga();
     //console.log("Code = " + r.responseCode);
     //console.log("Response = " + r.response);
