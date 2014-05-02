@@ -2,10 +2,10 @@
 // 
 // --------------------------------------------------------------
 
-var rutaCarga = 'http://kwst.com.ar/nokia/app2/ingresa.php';
-var rutaUpload = 'http://kwst.com.ar/nokia/app2/upload.php';
-var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app2/cantidad.php';
-var rutaTest = 'http://kwst.com.ar/nokia/app2/test.php';
+var rutaCarga = 'http://kwst.com.ar/nokia/app/ingresa.php';
+var rutaUpload = 'http://kwst.com.ar/nokia/app/upload.php';
+var rutaTotalRegistros = 'http://kwst.com.ar/nokia/app/cantidad.php';
+var rutaTest = 'http://kwst.com.ar/nokia/app/test.php';
 //var origen;
 
 // --------------------------------------------------------------
@@ -416,7 +416,7 @@ function uploadPhotoLocal(imageURI) {
     options.params = params;
 
     var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI(rutaUpload), compruebaDbLocal, failLocal, options);
+    ft.upload(imageURI, encodeURI(rutaUpload), winLocal, failLocal, options);
 }
 
 function winLocal(r) {
